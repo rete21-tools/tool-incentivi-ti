@@ -1,0 +1,1944 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Configuratore Incentivi Transizione Energetica — Rete 21 — ci05 22/06/2026</title>
+<meta name="description" content="Trova gli incentivi per la transizione energetica adatti alla tua situazione: scegli il tuo percorso tra privato, impresa, PA, CER, agrivoltaico, condominio. A cura di Rete 21.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --r21-green: #b5bb00;
+    --r21-green-dark: #9aa000;
+    --r21-green-soft: #eaf0b3;
+    --r21-green-bg: #f7f9e6;
+    --r21-dark: #414745;
+    --r21-dark-2: #2d3230;
+    --r21-gray: #6b7270;
+    --r21-gray-light: #e8ebe9;
+    --r21-bg: #ffffff;
+    --r21-bg-alt: #f7f8f6;
+    --r21-border: #e1e4e0;
+    --r21-shadow: 0 2px 12px rgba(65,71,69,0.08);
+    --r21-shadow-strong: 0 8px 32px rgba(65,71,69,0.12);
+    --font-main: 'Montserrat', Helvetica, Arial, Lucida, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-main);
+    font-weight: 400;
+    color: var(--r21-dark);
+    background: var(--r21-bg);
+    line-height: 1.6;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  a { color: var(--r21-green-dark); text-decoration: none; transition: color .2s ease; }
+  a:hover { color: var(--r21-dark); }
+
+  /* TOP BAR */
+  .topbar { background: var(--r21-green); color: #fff; font-size: 13px; font-weight: 500; padding: 8px 0; }
+  .topbar-inner { max-width: 1760px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .topbar a { color: #fff; }
+  .topbar a:hover { color: var(--r21-dark-2); }
+  .topbar-left { display: flex; gap: 24px; flex-wrap: wrap; }
+  .topbar-left span { display: inline-flex; align-items: center; gap: 6px; }
+  .topbar-right { display: flex; gap: 14px; }
+
+  /* HEADER */
+  .header { background: #fff; border-bottom: 1px solid var(--r21-border); position: sticky; top: 0; z-index: 100; box-shadow: 0 1px 6px rgba(65,71,69,0.04); }
+  .header-inner { max-width: 1760px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+  .logo img { height: 54px; width: auto; display: block; }
+  .main-nav { display: flex; gap: 2px; flex-wrap: wrap; align-items: center; justify-content: flex-end; flex: 1; }
+  .main-nav > a { color: var(--r21-dark); font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 0.3px; padding: 10px 11px; border-radius: 4px; transition: all .2s ease; white-space: nowrap; }
+  .main-nav > a:hover, .main-nav > a.active { color: var(--r21-green-dark); background: var(--r21-green-bg); }
+  .mobile-toggle { display: none; background: transparent; border: 2px solid var(--r21-dark); color: var(--r21-dark); padding: 8px 12px; cursor: pointer; border-radius: 4px; font-family: var(--font-main); font-weight: 700; }
+
+  @media (max-width: 1760px) { .main-nav > a { font-size: 12px; padding: 9px 9px; } }
+  @media (max-width: 1000px) { .main-nav > a { font-size: 11.5px; padding: 8px 8px; } .logo img { height: 46px; } }
+  @media (max-width: 720px) {
+    .header-inner { flex-wrap: nowrap; }
+    .mobile-toggle { display: block; }
+    .main-nav { display: none; position: absolute; top: 100%; left: 0; right: 0; background: #fff; flex-direction: column; align-items: stretch; padding: 12px 24px 20px; border-bottom: 1px solid var(--r21-border); box-shadow: 0 6px 18px rgba(65,71,69,0.08); }
+    .main-nav.open { display: flex; }
+    .main-nav > a { width: 100%; padding: 12px 10px; font-size: 13px; }
+  }
+
+  /* HERO */
+  .page-hero { background: linear-gradient(135deg, var(--r21-dark) 0%, var(--r21-dark-2) 100%); color: #fff; padding: 56px 24px 64px; position: relative; overflow: hidden; }
+  .page-hero::before { content: ""; position: absolute; top: -50%; right: -10%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(181,187,0,0.18) 0%, transparent 70%); pointer-events: none; }
+  .page-hero-inner { max-width: 1760px; margin: 0 auto; position: relative; z-index: 1; }
+  .breadcrumb { font-size: 13px; color: rgba(255,255,255,0.75); margin-bottom: 18px; font-weight: 500; }
+  .breadcrumb a { color: var(--r21-green); }
+  .breadcrumb a:hover { color: #fff; }
+  .breadcrumb .sep { margin: 0 8px; opacity: 0.5; }
+  .page-hero h1 { font-family: var(--font-main); font-size: clamp(32px, 5vw, 48px); font-weight: 800; line-height: 1.15; letter-spacing: -0.5px; margin-bottom: 18px; }
+  .page-hero h1 em { color: var(--r21-green); font-style: normal; font-weight: 800; }
+  .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
+  .hero-badge { background: rgba(181,187,0,0.15); color: var(--r21-green); border: 1px solid rgba(181,187,0,0.45); padding: 7px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 0.3px; }
+
+  /* LAYOUT */
+  .main-wrap { max-width: 1760px; margin: -32px auto 0; padding: 0 24px 60px; position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 320px; gap: 32px; }
+  @media (max-width: 900px) { .main-wrap { grid-template-columns: 1fr; } }
+
+  .content { background: #fff; border-radius: 8px; box-shadow: var(--r21-shadow-strong); padding: 40px; }
+  @media (max-width: 600px) { .content { padding: 24px 18px; } }
+
+  h2.section-title { font-size: 26px; font-weight: 700; color: var(--r21-dark-2); margin-bottom: 18px; letter-spacing: -0.3px; }
+  h2.section-title em { color: var(--r21-green-dark); font-style: normal; }
+
+  /* =========================================================
+     SWITCHER (modalità visualizzazione)
+     ========================================================= */
+  .view-switcher {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    margin-bottom: 28px;
+    border: 2px solid var(--r21-green);
+    border-radius: 6px;
+    overflow: hidden;
+    width: fit-content;
+    max-width: 100%;
+  }
+  .view-btn {
+    font-family: var(--font-main);
+    font-weight: 700;
+    font-size: 13px;
+    padding: 11px 20px;
+    border: none;
+    cursor: pointer;
+    transition: all .2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    background: #fff;
+    color: var(--r21-green-dark);
+    white-space: nowrap;
+  }
+  @media (max-width: 560px) { .view-btn { font-size: 12px; padding: 10px 14px; flex: 1 1 auto; } }
+  .view-btn.active { background: var(--r21-green); color: #fff; }
+  .view-btn:not(.active):hover { background: var(--r21-green-bg); }
+  .view-btn + .view-btn { border-left: 2px solid var(--r21-green); }
+
+  /* =========================================================
+     SELETTORE PERCORSO
+     ========================================================= */
+  .percorso-selector {
+    display: none;
+    margin-bottom: 28px;
+  }
+  .percorso-selector.visible { display: block; }
+
+  .percorso-intro {
+    background: var(--r21-green-bg);
+    border-left: 4px solid var(--r21-green);
+    padding: 16px 20px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    font-size: 14.5px;
+    color: var(--r21-dark);
+  }
+  .percorso-intro strong { color: var(--r21-dark-2); }
+
+  .percorso-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  @media (max-width: 700px) { .percorso-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 420px) { .percorso-grid { grid-template-columns: 1fr; } }
+
+  .percorso-card {
+    border: 2px solid var(--r21-border);
+    border-radius: 8px;
+    padding: 18px 14px 14px;
+    cursor: pointer;
+    transition: all .2s ease;
+    background: #fff;
+    text-align: center;
+    user-select: none;
+    position: relative;
+  }
+  .percorso-card:hover { border-color: var(--r21-green); background: var(--r21-green-bg); }
+  .percorso-card.selected {
+    border-color: var(--r21-green);
+    background: var(--r21-green-bg);
+    box-shadow: 0 0 0 2px var(--r21-green);
+  }
+  .percorso-card.selected::after {
+    content: "✓";
+    position: absolute;
+    top: 8px; right: 10px;
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--r21-green-dark);
+  }
+  .percorso-icon { font-size: 28px; margin-bottom: 8px; line-height: 1; }
+  .percorso-label { font-size: 13px; font-weight: 700; color: var(--r21-dark-2); line-height: 1.3; }
+  .percorso-sublabel { font-size: 11px; color: var(--r21-gray); font-weight: 500; margin-top: 3px; }
+
+  .percorso-result-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--r21-dark-2);
+    margin-bottom: 16px;
+    padding: 14px 18px;
+    background: var(--r21-green);
+    color: #fff;
+    border-radius: 6px;
+    display: none;
+  }
+  .percorso-result-title.visible { display: block; }
+
+  /* =========================================================
+     VISTA PER TIPOLOGIA (accordion classico)
+     ========================================================= */
+  .view-tipologia { display: block; }
+  .view-percorso  { display: none; }
+  .view-cer       { display: none; }
+  .view-gac       { display: none; }
+
+  /* Pannelli dettaglio CER / GAC */
+  .detail-hero {
+    border-radius: 8px;
+    padding: 22px 26px;
+    margin-bottom: 22px;
+    color: #fff;
+    background: linear-gradient(135deg, var(--r21-dark) 0%, var(--r21-dark-2) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .detail-hero::before {
+    content: "";
+    position: absolute; top: -40%; right: -8%;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(181,187,0,0.22) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .detail-hero h3 { font-size: 22px; font-weight: 800; margin-bottom: 8px; position: relative; z-index: 1; }
+  .detail-hero h3 em { color: var(--r21-green); font-style: normal; }
+  .detail-hero p { font-size: 14.5px; color: rgba(255,255,255,0.88); position: relative; z-index: 1; max-width: 760px; }
+  .detail-hero .dh-badges { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; position: relative; z-index: 1; }
+  .detail-hero .dh-badge { background: rgba(181,187,0,0.16); color: var(--r21-green); border: 1px solid rgba(181,187,0,0.45); padding: 5px 12px; border-radius: 20px; font-size: 11.5px; font-weight: 600; }
+
+  .norm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 18px; }
+  @media (max-width: 680px) { .norm-grid { grid-template-columns: 1fr; } }
+  .norm-block {
+    border: 1px solid var(--r21-border);
+    border-left: 4px solid var(--r21-green);
+    border-radius: 6px;
+    padding: 16px 18px;
+    background: var(--r21-bg-alt);
+  }
+  .norm-block h4 { font-size: 14px; font-weight: 800; color: var(--r21-dark-2); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.4px; }
+  .norm-block ul { list-style: none; padding: 0; margin: 0; }
+  .norm-block li { font-size: 13px; color: var(--r21-dark); padding: 5px 0 5px 16px; position: relative; line-height: 1.5; }
+  .norm-block li::before { content: "▸"; position: absolute; left: 0; top: 5px; color: var(--r21-green-dark); font-weight: 700; }
+  .norm-block li strong { color: var(--r21-dark-2); }
+  .norm-block.accent { background: var(--r21-green-bg); }
+
+  /* =========================================================
+     INTRO box tipologia
+     ========================================================= */
+  .intro {
+    background: var(--r21-green-bg);
+    border-left: 4px solid var(--r21-green);
+    padding: 20px 24px;
+    border-radius: 4px;
+    margin-bottom: 28px;
+    font-size: 15px;
+    color: var(--r21-dark);
+  }
+  .intro strong { color: var(--r21-dark-2); font-weight: 700; }
+
+  /* =========================================================
+     Accordion categorie (condiviso)
+     ========================================================= */
+  .expand-controls { display: flex; gap: 10px; margin-bottom: 24px; flex-wrap: wrap; }
+  .expand-btn { font-family: var(--font-main); font-weight: 600; font-size: 13px; padding: 9px 16px; border: 2px solid var(--r21-green); color: var(--r21-green-dark); background: #fff; border-radius: 4px; cursor: pointer; transition: all .2s ease; text-transform: uppercase; letter-spacing: 0.4px; }
+  .expand-btn:hover { background: var(--r21-green); color: #fff; }
+
+  .category { border: 1px solid var(--r21-border); border-radius: 6px; margin-bottom: 14px; overflow: hidden; background: #fff; transition: box-shadow .2s ease; }
+  .category:hover { box-shadow: var(--r21-shadow); }
+  .category-header { display: flex; align-items: center; gap: 14px; padding: 18px 22px; cursor: pointer; user-select: none; background: #fff; transition: background .2s ease; }
+  .category-header:hover { background: var(--r21-bg-alt); }
+  .category.open .category-header { background: var(--r21-bg-alt); border-bottom: 1px solid var(--r21-border); }
+  .category-num { flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; background: var(--r21-green); color: #fff; font-weight: 700; font-size: 15px; display: flex; align-items: center; justify-content: center; }
+  .category-title { flex: 1; font-size: 17px; font-weight: 700; color: var(--r21-dark-2); }
+  .category-count { font-size: 12px; font-weight: 600; color: var(--r21-gray); background: var(--r21-gray-light); padding: 4px 10px; border-radius: 12px; letter-spacing: 0.3px; }
+  .category-arrow { color: var(--r21-green-dark); font-size: 14px; transition: transform .25s ease; }
+  .category.open .category-arrow { transform: rotate(180deg); }
+  .category-body { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+  .category.open .category-body { max-height: 3000px; }
+  .category-body-inner { padding: 20px 22px 24px; }
+
+  /* =========================================================
+     CARDS PERCORSO (vista per percorso)
+     ========================================================= */
+  .incentivo-card {
+    border: 1px solid var(--r21-border);
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: var(--r21-shadow);
+    transition: box-shadow .2s ease;
+  }
+  .incentivo-card:hover { box-shadow: var(--r21-shadow-strong); }
+  .incentivo-card[data-percorsi] { display: none; }
+  .incentivo-card.show { display: block; }
+
+  .card-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 18px 20px 14px;
+    border-bottom: 1px solid var(--r21-border);
+    background: var(--r21-bg-alt);
+  }
+  .card-head-left { flex: 1; }
+  .card-name { font-size: 16px; font-weight: 800; color: var(--r21-dark-2); margin-bottom: 4px; }
+  .card-categoria { font-size: 11px; font-weight: 600; color: var(--r21-gray); text-transform: uppercase; letter-spacing: 0.4px; }
+  .card-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+
+  .card-body { padding: 18px 20px 20px; }
+  .card-body p { font-size: 14px; color: var(--r21-dark); line-height: 1.6; margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body strong { color: var(--r21-dark-2); font-weight: 700; }
+
+  .card-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--r21-border);
+  }
+  @media (max-width: 500px) { .card-meta { grid-template-columns: 1fr; } }
+
+  .card-meta-item { font-size: 13px; }
+  .card-meta-label { font-weight: 700; color: var(--r21-dark-2); font-size: 11px; text-transform: uppercase; letter-spacing: 0.3px; margin-bottom: 3px; }
+  .card-meta-value { color: var(--r21-dark); }
+
+  /* empty state */
+  .empty-state {
+    display: none;
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--r21-gray);
+    font-size: 15px;
+  }
+  .empty-state.show { display: block; }
+
+  /* =========================================================
+     TABELLA (vista tipologia)
+     ========================================================= */
+  .table-wrap { overflow-x: auto; }
+  table.incentivi { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 640px; }
+  table.incentivi thead th { background: var(--r21-dark-2); color: #fff; text-align: left; padding: 12px 14px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+  table.incentivi tbody td { padding: 14px; border-bottom: 1px solid var(--r21-border); vertical-align: top; }
+  table.incentivi tbody tr:last-child td { border-bottom: none; }
+  table.incentivi tbody tr:hover { background: var(--r21-bg-alt); }
+  table.incentivi td.name { font-weight: 700; color: var(--r21-dark-2); width: 20%; }
+  table.incentivi td.desc { color: var(--r21-dark); width: 34%; line-height: 1.55; }
+  table.incentivi td.beneficiari { width: 14%; }
+  table.incentivi td.scadenza { width: 14%; }
+  table.incentivi td.stato { width: 18%; }
+  table.incentivi strong { color: var(--r21-dark-2); font-weight: 700; }
+
+  /* =========================================================
+     BADGE CONDIVISI
+     ========================================================= */
+  .ben-badge { display: inline-block; padding: 5px 11px; border-radius: 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.4px; text-transform: uppercase; white-space: nowrap; margin-bottom: 4px; }
+  .ben-privati  { background: #e8f5e9; color: #2e7d32; }
+  .ben-imprese  { background: #fff4d6; color: #8a6d00; }
+  .ben-pa       { background: #d9e9ff; color: #1b4b85; }
+  .ben-cer      { background: #ffe4cc; color: #a24300; }
+  .ben-tutti    { background: var(--r21-green-bg); color: var(--r21-green-dark); }
+  .ben-cond     { background: #ece4f5; color: #5a2a8a; }
+  .ben-agri     { background: #d6ecd8; color: #2d5f30; }
+
+  .stato-badge { display: inline-block; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; margin-bottom: 4px; }
+  .stato-attivo    { background: var(--r21-green); color: #fff; }
+  .stato-nuovo     { background: var(--r21-green); color: #fff; }
+  .stato-mod       { background: #ffe0b2; color: #7a4100; }
+  .stato-conf      { background: #d6ecd8; color: #2d5f30; }
+  .stato-scad      { background: #fbd5d5; color: #912727; }
+  .stato-prorogato { background: #e0d7f5; color: #4a2a8a; }
+  .stato-att       { background: #d9e9ff; color: #1b4b85; }
+
+  .stato-note { display: block; font-size: 12px; color: var(--r21-gray); font-weight: 500; margin-top: 2px; line-height: 1.4; }
+
+  /* scadenza badge */
+  .scad-badge {
+    display: inline-block;
+    padding: 4px 9px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+  .scad-urgente  { background: #fbd5d5; color: #912727; }
+  .scad-breve    { background: #ffe0b2; color: #7a4100; }
+  .scad-ampia    { background: #d6ecd8; color: #2d5f30; }
+  .scad-continuo { background: var(--r21-green-bg); color: var(--r21-green-dark); }
+  .scad-note { display: block; font-size: 11px; color: var(--r21-gray); margin-top: 2px; line-height: 1.4; font-weight: 500; }
+
+  /* =========================================================
+     NOTE OPERATIVE
+     ========================================================= */
+  .notes-box { background: var(--r21-bg-alt); border: 1px solid var(--r21-border); border-left: 4px solid var(--r21-green); padding: 24px 28px; border-radius: 4px; margin-top: 36px; }
+  .notes-box h3 { font-size: 18px; color: var(--r21-dark-2); font-weight: 700; margin-bottom: 14px; }
+  .notes-box ul { list-style: none; padding: 0; }
+  .notes-box li { padding: 8px 0 8px 26px; position: relative; color: var(--r21-dark); font-size: 14.5px; line-height: 1.55; }
+  .notes-box li::before { content: "▸"; position: absolute; left: 6px; top: 8px; color: var(--r21-green-dark); font-weight: 700; }
+  .notes-box strong { color: var(--r21-dark-2); }
+
+  .source-line { margin-top: 24px; font-size: 12px; color: var(--r21-gray); font-style: italic; padding-top: 18px; border-top: 1px solid var(--r21-border); }
+
+  /* =========================================================
+     SIDEBAR
+     ========================================================= */
+  .sidebar { display: flex; flex-direction: column; gap: 18px; }
+  .side-card { background: #fff; border: 1px solid var(--r21-border); border-radius: 8px; overflow: hidden; box-shadow: var(--r21-shadow); }
+  .side-card-head { background: var(--r21-green); color: #fff; padding: 14px 20px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; }
+  .side-card-body { padding: 20px; }
+  .side-card-body p { font-size: 14px; color: var(--r21-dark); margin-bottom: 14px; line-height: 1.55; }
+
+  .btn-primary, .btn-secondary { display: block; text-align: center; padding: 13px 20px; border-radius: 4px; font-family: var(--font-main); font-weight: 700; font-size: 13px; letter-spacing: 0.5px; text-transform: uppercase; transition: all .2s ease; margin-bottom: 10px; border: 2px solid var(--r21-green); }
+  .btn-primary { background: var(--r21-green); color: #fff; }
+  .btn-primary:hover { background: var(--r21-green-dark); border-color: var(--r21-green-dark); color: #fff; }
+  .btn-secondary { background: #fff; color: var(--r21-green-dark); }
+  .btn-secondary:hover { background: var(--r21-green); color: #fff; }
+
+  .legend-list { list-style: none; padding: 0; }
+  .legend-list li { display: flex; align-items: flex-start; gap: 10px; padding: 7px 0; font-size: 13px; color: var(--r21-dark); }
+  .legend-list .ben-badge { flex-shrink: 0; min-width: 60px; text-align: center; }
+  .legend-list .desc-small { color: var(--r21-gray); font-size: 12.5px; line-height: 1.4; }
+
+  .scad-legend { list-style: none; padding: 0; }
+  .scad-legend li { display: flex; align-items: flex-start; gap: 10px; padding: 7px 0; font-size: 13px; color: var(--r21-dark); border-bottom: 1px dashed var(--r21-border); }
+  .scad-legend li:last-child { border-bottom: none; }
+  .scad-legend .scad-badge { flex-shrink: 0; min-width: 72px; text-align: center; }
+  .scad-legend .desc-small { color: var(--r21-gray); font-size: 12px; line-height: 1.4; }
+
+  .refs-list { list-style: none; padding: 0; }
+  .refs-list li { padding: 10px 0; border-bottom: 1px dashed var(--r21-border); font-size: 13px; color: var(--r21-dark); line-height: 1.5; }
+  .refs-list li:last-child { border-bottom: none; }
+  .refs-list strong { display: block; color: var(--r21-dark-2); margin-bottom: 2px; font-weight: 700; }
+
+  /* =========================================================
+     FOOTER
+     ========================================================= */
+  .footer { background: var(--r21-dark-2); color: #c8ccc9; padding: 40px 24px 24px; margin-top: 40px; }
+  .footer-inner { max-width: 1760px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; flex-wrap: wrap; }
+  .footer-brand { max-width: 480px; }
+  .footer-brand strong { color: #fff; font-weight: 700; }
+  .footer-brand p { font-size: 14px; line-height: 1.6; }
+  .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+  .footer-links a { color: #c8ccc9; font-size: 13px; font-weight: 500; }
+  .footer-links a:hover { color: var(--r21-green); }
+  .footer-bottom { max-width: 1760px; margin: 28px auto 0; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 12px; color: #8a8f8d; text-align: center; }
+
+  /* animazioni */
+  @media (prefers-reduced-motion: no-preference) {
+    .category { animation: fadeUp .5s ease both; }
+    .category:nth-child(1) { animation-delay: .05s; }
+    .category:nth-child(2) { animation-delay: .1s; }
+    .category:nth-child(3) { animation-delay: .15s; }
+    .category:nth-child(4) { animation-delay: .2s; }
+    .category:nth-child(5) { animation-delay: .25s; }
+    .category:nth-child(6) { animation-delay: .3s; }
+    .category:nth-child(7) { animation-delay: .35s; }
+    .category:nth-child(8) { animation-delay: .4s; }
+  }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* === ci05: full-width desktop + colonne Compatibilita'/Azioni === */
+  @media (min-width: 901px){ .main-wrap{ grid-template-columns: 1fr 300px; } }
+  table.incentivi{ min-width: 1100px; }
+  table.incentivi td.name{ width:12%; }
+  table.incentivi td.desc{ width:19%; }
+  table.incentivi td.beneficiari{ width:8%; }
+  table.incentivi td.scadenza{ width:10%; }
+  table.incentivi td.stato{ width:13%; }
+  table.incentivi td.compat{ width:14%; font-size:12.5px; line-height:1.5; }
+  table.incentivi td.azioni{ width:14%; font-size:12.5px; line-height:1.5; }
+  table.incentivi td.compat strong, table.incentivi td.azioni strong{ color:var(--r21-dark-2); font-weight:700; }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-left">
+      <span>📞 <a href="tel:04221628998">0422 162 8998</a></span>
+      <span>✉ <a href="mailto:info@rete21.it">info@rete21.it</a></span>
+    </div>
+    <div class="topbar-right">
+      <a href="https://www.facebook.com/rete21" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.linkedin.com/company/rete21/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <a class="logo" href="https://rete21.it/">
+      <img src="https://rete21.it/wp-content/uploads/2023/10/rete21-impianti-tecnologici.png" alt="Rete 21 — Impianti tecnologici">
+    </a>
+    <button class="mobile-toggle" aria-label="Apri menu" onclick="document.getElementById('mainNav').classList.toggle('open')">☰ MENU</button>
+    <nav class="main-nav" id="mainNav">
+      <a href="https://rete21.it/comunita-energetiche/" class="active">Comunità energetiche</a>
+      <a href="https://rete21.it/#lavori-pubblici">Lavori pubblici</a>
+      <a href="https://rete21.it/#conto-termico">Conto Termico 3.0</a>
+      <a href="https://rete21.it/partners/">Partners</a>
+      <a href="https://rete21.it/entra-in-rete21/">Entra in Rete21</a>
+      <a href="https://rete21.it/opportunita-di-carriera-innovativa-con-rete-21/">Posizioni aperte</a>
+      <a href="https://rete21.it/company-profile/">Company profile</a>
+      <a href="https://rete21.it/news/">News</a>
+      <a href="https://rete21.it/contatti/">Contatti</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb">
+      <a href="https://rete21.it/">Home</a>
+      <span class="sep">»</span>
+      <a href="https://rete21.it/comunita-energetiche/">Comunità energetiche</a>
+      <span class="sep">»</span>
+      Incentivi transizione energetica
+    </div>
+    <h1>Incentivi alla <em>Transizione Energetica</em></h1>
+    <div class="hero-badges">
+      <span class="hero-badge">Per tipologia</span>
+      <span class="hero-badge">Per percorso</span>
+      <span class="hero-badge">Con scadenze</span>
+      <span class="hero-badge">Aggiornato 22 giugno 2026</span><span class="hero-badge">Veneto · Emilia-Romagna · Calabria</span>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN + SIDEBAR -->
+<div class="main-wrap">
+<main class="content">
+
+  <h2 class="section-title">Trova gli incentivi <em>giusti per te</em></h2>
+
+  <!-- SWITCHER VISTE -->
+  <div class="view-switcher">
+    <button class="view-btn active" id="btn-tipologia" onclick="setView('tipologia')">📋 Per tipologia</button>
+    <button class="view-btn" id="btn-percorso" onclick="setView('percorso')">🧭 Per il mio percorso</button>
+    <button class="view-btn" id="btn-cer" onclick="setView('cer')">⚡ CER</button>
+    <button class="view-btn" id="btn-gac" onclick="setView('gac')">🏢 GAC</button>
+  </div>
+
+  <!-- ======================================================
+       VISTA A: PER TIPOLOGIA (accordion classico)
+       ====================================================== -->
+  <div class="view-tipologia" id="view-tipologia">
+
+    <div class="intro">
+      Panoramica completa degli incentivi attivi nel 2026, organizzati per <strong>categoria di misura</strong>. Ogni sezione riporta beneficiari, importi, scadenze e stato aggiornato. Usa la vista <em>Per il mio percorso</em> per filtrare solo gli incentivi adatti alla tua situazione.
+    </div>
+
+    <div class="expand-controls">
+      <button class="expand-btn" onclick="toggleAll(true)">▼ Espandi tutto</button>
+      <button class="expand-btn" onclick="toggleAll(false)">▲ Comprimi tutto</button>
+    </div>
+
+    <!-- CAT 1: CONTO TERMICO 3.0 -->
+    <div class="category open">
+      <div class="category-header" onclick="toggleCategory(this)">
+        <div class="category-num">1</div>
+        <div class="category-title">Conto Termico 3.0 — GSE</div>
+        <div class="category-count">4 misure</div>
+        <div class="category-arrow">▼</div>
+      </div>
+      <div class="category-body">
+        <div class="category-body-inner">
+          <div class="table-wrap">
+            <table class="incentivi">
+              <thead><tr><th>Incentivo</th><th>Descrizione</th><th>Beneficiari</th><th>Scadenza</th><th>Stato</th><th>Compatibilit&agrave; / cumulo</th><th>Azioni &amp; tempi</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td class="name">Pompe di calore (PDC)</td>
+                  <td class="desc">Sostituzione impianti con PDC ad alta efficienza (COP ≥ 3,5). Incentivo fino al <strong>65%</strong> su spesa ammissibile, erogato in rate GSE per max 5 anni</td>
+                  <td class="beneficiari"><span class="ben-badge ben-tutti">Tutti</span></td>
+                  <td class="scadenza"><span class="scad-badge scad-continuo">Continuo</span><span class="scad-note">Fino ad esaurimento fondi annuali (€ 900 M/anno)</span></td>
+                  <td class="stato"><span class="stato-badge stato-attivo">Attivo</span><span class="stato-note">CT 3.0 (D.M. 224/2025) in vigore dal 25/12/2025. <strong>Dal 03/06/2026</strong> nuovi requisiti tecnici PDC (D.Lgs. 5/2026): SCOP minimo elevato, ηs% stagionale obbligatorio. Portale sospeso 03/03–13/04/2026, ora regolarmente attivo.</span></td>
+                <td class="compat">Alternativo a Ecobonus/detrazioni sullo <strong>stesso</strong> intervento (no doppio incentivo). Cumulabile con FV in autoconsumo e CER su impianti distinti.</td><td class="azioni">Lavori con installatore qualificato; domanda al <strong>GSE PortalTermico entro 90 gg</strong> dalla fine lavori. Verificare nuovi requisiti SCOP/&eta;s% (D.Lgs. 5/2026, dal 03/06/2026).</td></tr>
+                <tr>
+                  <td class="name">Caldaie a biomassa/pellet</td>
+                  <td class="desc">Installazione generatori a biomassa classe 5 stelle (Reg. UE 2015/1185). Incentivo fino al <strong>50%</strong>. Obbligo smaltimento certificato del generatore sostituito</td>
+                  <td class="beneficiari"><span class="ben-badge ben-privati">Privati</span><span class="ben-badge ben-pa">PA</span></td>
+                  <td class="scadenza"><span class="scad-badge scad-continuo">Continuo</span><span class="scad-note">Domanda entro 90 gg dalla fine lavori</span></td>
+                  <td class="stato"><span class="stato-badge stato-mod">Modificata</span><span class="stato-note">Obbligo classe 5 stelle (ex 4 stelle)</span></td>
+                <td class="compat">Non cumulabile con Ecobonus sullo stesso generatore. Compatibile con interventi distinti (involucro).</td><td class="azioni">Generatore classe <strong>5 stelle</strong> + smaltimento certificato del vecchio; domanda GSE entro 90 gg da fine lavori.</td></tr>
+                <tr>
+                  <td class="name">Solare termico</td>
+                  <td class="desc">Collettori solari termici per ACS e/o riscaldamento. Incentivo fino al <strong>65%</strong>; premio aggiuntivo per accumulo termico ≥ 20 l/mq. Ammessi anche impianti in CER</td>
+                  <td class="beneficiari"><span class="ben-badge ben-tutti">Tutti</span></td>
+                  <td class="scadenza"><span class="scad-badge scad-continuo">Continuo</span><span class="scad-note">Accesso via portale GSE PortalTermico</span></td>
+                  <td class="stato"><span class="stato-badge stato-conf">Confermata</span><span class="stato-note">Premio accumulo confermato</span></td>
+                <td class="compat">Alternativo alle detrazioni sullo stesso impianto. Ammesso anche in CER.</td><td class="azioni">Installazione + accesso <strong>PortalTermico GSE</strong>; richiedere premio accumulo (&ge;20 l/mq) se applicabile.</td></tr>
+                <tr>
+                  <td class="name">FV + accumulo abbinati a PDC</td>
+                  <td class="desc">Impianti fotovoltaici con sistemi di accumulo e colonnine ricarica EV, incentivabili <strong>solo se abbinati</strong> alla sostituzione dell'impianto di climatizzazione con PDC elettrica</td>
+                  <td class="beneficiari"><span class="ben-badge ben-privati">Privati</span><span class="ben-badge ben-imprese">Imprese</span></td>
+                  <td class="scadenza"><span class="scad-badge scad-continuo">Continuo</span><span class="scad-note">Novità CT 3.0 — fondi dedicati € 150 M/anno imprese</span></td>
+                  <td class="stato"><span class="stato-badge stato-nuovo">Nuovo 2026</span><span class="stato-note">Introdotto dal D.M. 07/08/2025 (in vigore 25/12/2025)</span></td>
+                <td class="compat">Incentivabile <strong>solo se abbinato a PDC</strong>. Non cumulabile con detrazione FV sullo stesso impianto. Compatibile con CER.</td><td class="azioni">Progettare FV+BESS+PDC come unico intervento; domanda GSE con delega installatore. Fondi imprese 150 M&euro;/anno.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CAT 2: DETRAZIONI FISCALI -->
+    <div class="category">
+      <div class="category-header" onclick="toggleCategory(this)">
+        <div class="category-num">2</div>
+        <div class="category-title">Detrazioni fiscali — Ecobonus</div>
+        <div class="category-count">5 misure</div>
+        <div class="category-arrow">▼</div>
+      </div>
+      <div class="category-body">
+        <div class="category-body-inner">
+          <div class="table-wrap">
+            <table class="incentivi">
+              <thead><tr><th>Incentivo</th><th>Descrizione</th><th>Beneficiari</th><th>Scadenza</th><th>Stato</th><th>Compatibilit&agrave; / cumulo</th><th>Azioni &amp; tempi</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td class="name">Ecobonus isolamento</td>
+                  <td class="desc">Detrazione IRPEF/IRES per cappotto termico, coibentazione coperture, pavimenti verso esterno. Per il 2026 aliquota <strong>36%</strong>, elevata al <strong>50% solo per l'abitazione principale</strong>. Spesa max 96.000 €/unità. APE pre/post obbligatorio</td>
+                  <td class="beneficiari"><span class="ben-badge ben-privati">Privati</span><span class="ben-badge ben-imprese">Imprese</span></td>
+                  <td class="scadenza"><span class="scad-badge scad-breve">31/12/2026</span><span class="scad-note">Dal 2027 scende a 30% (36% abit. principale)</span></td>
+                  <td class="stato"><span class="stato-badge stato-mod">Modificata</span><span class="stato-note">Aliquota 2026: 36% / 50% abit. principale</span></td>
+                <td class="compat">Non cumulabile con Conto Termico sullo stesso intervento. Cumulabile con altri bonus su interventi distinti.</td><td class="azioni">APE ante/post + asseverazione; <strong>bonifico parlante</strong>; detrazione in 10 anni. Spesa <strong>entro 31/12/2026</strong> (dal 2027: 30%).</td></tr>
+                <tr>
+                  <td class="name">Ecobonus serramenti</td>
+                  <td class="desc">Sostituzione finestre/porte esterne (Uw ≤ 1,4 W/m²K). Per il 2026 detrazione al <strong>36%</strong>, elevata al <strong>50% solo per abitazione principale</strong>, su spesa max 96.000 €. Asseverazione termotecnica obbligatoria</td>
+                  <td class="beneficiari"><span class="ben-badge ben-privati">Privati</span></td>
+                  <td class="scadenza"><span class="scad-badge scad-breve">31/12/2026</span><span class="scad-note">Esclusi impianti a soli combustibili fossili</span></td>
+                  <td class="stato"><span class="stato-badge stato-mod">Modificata</span><span class="stato-note">Aliquota 2026: 36% / 50% abit. principale</span></td>
+                <td class="compat">Alternativo al Conto Termico sullo stesso serramento. Esclusi impianti a soli fossili.</td><td class="azioni">Asseverazione termotecnica (Uw&le;1,4) + bonifico parlante. Spesa <strong>entro 31/12/2026</strong>.</td></tr>
+                <tr>
+                  <td class="name">Bonus FV — Bonus ristrutturazioni</td>
+                  <td class="desc">Detrazione per FV su unità residenziale (<strong>art. 16-bis TUIR</strong>, non Ecobonus). Per il 2026: <strong>50% solo abitazione principale</strong>, <strong>36%</strong> altri immobili. Spesa max 96.000 €. In generale compatibile con SSP/RID (salvo casi Superbonus)</td>
+                  <td class="beneficiari"><span class="ben-badge ben-privati">Privati</span></td>
+                  <td class="scadenza"><span class="scad-badge scad-breve">31/12/2026</span><span class="scad-note">Dal 2027: 36% abit. principale / 30% altri</span></td>
+                  <td class="stato"><span class="stato-badge stato-conf">Confermata</span></td>
+                <td class="compat">In generale compatibile con SSP/RID (salvo Superbonus). Non cumulabile con CT 3.0 FV sullo stesso impianto.</td><td class="azioni">Comunicazione fine lavori; bonifico parlante; detrazione 10 anni. Spesa <strong>entro 31/12/2026</strong> (poi 36%/30%).</td></tr>
+                <tr>
+                  <td class="name">Detrazione BESS residenziale</td>
+                  <td class="desc">Detrazione per sistemi di accumulo abbinati a FV (art. 16-bis TUIR). Per il 2026: <strong>50% abitazione principale</strong>, <strong>36%</strong> altri immobili, su spesa max 96.000 €</td>
+                  <td class="beneficiari"><span class="ben-badge ben-privati">Privati</span></td>
+                  <td class="scadenza"><span class="scad-badge scad-breve">31/12/2026</span><span class="scad-note">Verificare cumulo con Bonus FV sullo stesso intervento</span></td>
+                  <td class="stato"><span class="stato-badge stato-conf">Confermata</span></td>
+                <td class="compat">Verificare cumulo con Bonus FV sullo stesso intervento (limite spesa unica 96.000 &euro;).</td><td class="azioni">BESS abbinato a FV; bonifico parlante; spesa <strong>entro 31/12/2026</strong>.</td></tr>
+                <tr>
+                  <td class="name">Bonus colonnine ricarica EV</td>
+                  <td class="desc">Agevolazione per infrastrutture di ricarica EV in ambito domestico. <strong>Importi e modalità da verificare sul portale MIMIT/Ecobonus</strong> per l'annualità in corso (misura soggetta a rifinanziamento e regole specifiche)</td>
+                  <td class="beneficiari"><span class="ben-badge ben-privati">Privati</span></td>
+                  <td class="scadenza"><span class="scad-badge scad-att">Da verificare</span><span class="scad-note">Soggetta a stanziamento annuale MIMIT</span></td>
+                  <td class="stato"><span class="stato-badge stato-att">Da verificare</span></td>
+                <td class="compat">Soggetto a regole specifiche; verificare cumulo con altri bonus EV/FV.</td><td class="azioni">Verificare apertura e stanziamento sul <strong>portale MIMIT-Ecobonus</strong> per l'annualit&agrave; in corso.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CAT 3: FER / GSE -->
+    <div class="category">
+      <div class="category-header" onclick="toggleCategory(this)">
+        <div class="category-num">3</div>
+        <div class="category-title">Incentivi FER — Grandi impianti e immissione (GSE)</div>
+        <div class="category-count">4 voci</div>
+        <div class="category-arrow">▼</div>
+      </div>
+      <div class="category-body">
+        <div class="category-body-inner">
+          <div class="table-wrap">
+            <table class="incentivi">
+              <thead><tr><th>Incentivo</th><th>Descrizione</th><th>Beneficiari</th><th>Scadenza</th><th>Stato</th><th>Compatibilit&agrave; / cumulo</th><th>Azioni &amp; tempi</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td class="name">Tariffa FER X / FER X transitorio</td>
+                  <td class="desc">Incentivo per rinnovabili "mature" (FV, eolico onshore, idroelettrico). Accesso diretto fino a 1 MW, aste competitive oltre 1 MW. Durata <strong>20 anni</strong>. Il <strong>FER X transitorio</strong> ha operato fino al 31/12/2025; per il seguito fa fede il <strong>FER X ordinario</strong></td>
+                  <td class="beneficiari"><span class="ben-badge ben-imprese">Produttori</span><span class="ben-badge ben-cer">CER</span></td>
+                  <td class="scadenza"><span class="scad-badge scad-att">Da verificare</span><span class="scad-note">Verificare aperture/contingenti FER X sul sito GSE</span></td>
+                  <td class="stato"><span class="stato-badge stato-mod">FER X definitivo</span><span class="stato-note">Decreto FER X <strong>definitivo firmato</strong> dal MASE: 37,15 GW totali, 10 GW riservati a impianti ≤1 MW (accesso diretto). Manifestazioni d'interesse attese fine estate 2026, prima asta in autunno. FER X transitorio scaduto 31/12/2025</span></td>
+                <td class="compat">Tariffa onnicomprensiva: <strong>non cumulabile</strong> con altri incentivi sulla stessa energia. Alternativa a RID e a tariffa CER sullo stesso impianto.</td><td class="azioni"><strong>FER X definitivo firmato</strong> (37,15 GW; 10 GW riservati &le;1 MW ad accesso diretto; prezzi 2026 ~80-90 &euro;/MWh). Manifestazioni d'interesse attese a <strong>fine estate 2026</strong>, prima asta in autunno. Predisporre titoli autorizzativi.</td></tr>
+                <tr>
+                  <td class="name">Tariffa FER 2 (impianti innovativi)</td>
+                  <td class="desc">Riservata a impianti <strong>innovativi</strong>: FV floating su acque interne/offshore, eolico offshore, geotermico, biogas, biomasse, solare termodinamico. <strong>Non</strong> è il meccanismo per il FV a terra ordinario (per quello vale FER X). <strong>⚡ NUOVA FINESTRA:</strong> 08/06/2026 – 07/08/2026 — 3° bando Gruppo A (biogas/biomasse), 2° bando Gruppo D (FV floating), 1° bando Gruppo C-1 (geotermia zero emissioni). Portale FER-E, regole operative D.D. MASE 64/2025</td>
+                  <td class="beneficiari"><span class="ben-badge ben-imprese">Produttori</span></td>
+                  <td class="scadenza"><span class="scad-badge scad-breve">07/08/2026</span><span class="scad-note">Finestra APERTA dal 08/06/2026 — scade 07/08/2026. Portale FER-E</span></td>
+                  <td class="stato"><span class="stato-badge stato-attivo">Aperto</span><span class="stato-note">Finestra attiva dal 08/06/2026 — D.D. MASE n.44 del 20/04/2026. Chiusura 07/08/2026</span></td>
+                <td class="compat">Tariffa alternativa a RID/CER sullo stesso impianto. Cumulo con conto capitale entro i limiti di aiuto.</td><td class="azioni">&#9889; <strong>Finestra APERTA 08/06&ndash;07/08/2026</strong> (portale FER-E). Iscrivere il progetto al bando di Gruppo pertinente entro <strong>07/08/2026</strong>.</td></tr>
+                <tr>
+                  <td class="name">Ritiro dedicato (RID)</td>
+                  <td class="desc">Modalità di valorizzazione dell'energia immessa in rete a prezzi di mercato zonale, gestita dal GSE. È l'alternativa principale allo Scambio sul Posto, ormai chiuso a nuove richieste. Prezzi aggiornati periodicamente</td>
+                  <td class="beneficiari"><span class="ben-badge ben-privati">Privati</span><span class="ben-badge ben-imprese">Imprese</span></td>
+                  <td class="scadenza"><span class="scad-badge scad-continuo">Continuo</span><span class="scad-note">Convenzione GSE rinnovabile</span></td>
+                  <td class="stato"><span class="stato-badge stato-attivo">Attivo</span></td>
+                <td class="compat">Compatibile con detrazioni fiscali FV (residenziale). Alternativo a SSP (chiuso) e alle tariffe FER/CER sulla stessa energia.</td><td class="azioni">Stipulare <strong>convenzione GSE</strong> dopo l'allaccio; nessuna asta. Valutare vs autoconsumo/CER.</td></tr>
+                <tr>
+                  <td class="name">⚠ Scambio sul Posto (SSP)</td>
+                  <td class="desc"><strong>Chiuso a nuove richieste dal 26 settembre 2025</strong> (delibera ARERA 78/2025). Non è più attivabile per i nuovi impianti; le convenzioni esistenti proseguono fino a scadenza naturale. Per i nuovi impianti si usa RID, autoconsumo o CER</td>
+                  <td class="beneficiari"><span class="ben-badge ben-privati">Solo contratti esistenti</span></td>
+                  <td class="scadenza"><span class="scad-badge scad-urgente">Chiuso</span><span class="scad-note">Nuove domande non più ammesse</span></td>
+                  <td class="stato"><span class="stato-badge stato-scad">Superato</span><span class="stato-note">In dismissione progressiva</span></td>
+                <td class="compat">Chiuso a nuove richieste; convenzioni in essere proseguono. Per i nuovi impianti usare RID/CER/autoconsumo.</td><td class="azioni">Nessuna nuova adesione (ARERA 78/2025). <strong>Pianificare migrazione a RID o CER</strong>.</td></tr>
+                <tr>
+                  <td class="name">Incentivo agrivoltaico avanzato</td>
+                  <td class="desc">Tariffa incentivante per agrivoltaico avanzato (art. 4 D.Lgs. 190/2024) con mantenimento <strong>80% PLV</strong>. Premio <strong>+10%</strong> sulla tariffa base per integrazione monitoraggio agricolo</td>
+                  <td class="beneficiari"><span class="ben-badge ben-agri">Imprese agricole</span></td>
+                  <td class="scadenza"><span class="scad-badge scad-breve">31/12/2026</span><span class="scad-note">D.M. attuativo — prime domande 2026</span></td>
+                  <td class="stato"><span class="stato-badge stato-nuovo">Nuovo 2026</span><span class="stato-note">Definito dalla Legge 4/2026</span></td>
+                <td class="compat">Tariffa alternativa a RID. Possibile cumulo con contributi conto capitale entro i limiti di aiuto.</td><td class="azioni">Progetto con <strong>&ge;80% PLV</strong> + monitoraggio agricolo per premio +10%. Prime domande entro 2026.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CAT 4: CER -->
+    <div class="category">
+      <div class="category-header" onclick="toggleCategory(this)">
+        <div class="category-num">4</div>
+        <div class="category-title">Comunità Energetiche Rinnovabili (CER)</div>
+        <div class="category-count">3 misure</div>
+        <div class="category-arrow">▼</div>
+      </div>
+      <div class="category-body">
+        <div class="category-body-inner">
+          <div class="table-wrap">
+            <table class="incentivi">
+              <thead><tr><th>Incentivo</th><th>Descrizione</th><th>Beneficiari</th><th>Scadenza</th><th>Stato</th><th>Compatibilit&agrave; / cumulo</th><th>Azioni &amp; tempi</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td class="name">Tariffa incentivante CER</td>
+                  <td class="desc">Tariffa sull'energia condivisa: <strong>110 €/MWh</strong> (impianti ≤ 200 kW) e <strong>100 €/MWh</strong> (> 200 kW) per <strong>20 anni</strong>, oltre alla restituzione ARERA. Cumulabile con il contributo PNRR (in tal caso la tariffa è rimodulata secondo le regole CACER)</td>
+                  <td class="beneficiari"><span class="ben-badge ben-cer">CER</span></td>
+                  <td class="scadenza"><span class="scad-badge scad-continuo">Continuo</span><span class="scad-note">Portale GSE aperto dal 24/02/2025</span></td>
+                  <td class="stato"><span class="stato-badge stato-attivo">Attivo</span></td>
+                <td class="compat">Cumulabile con <strong>contributo PNRR 40%</strong> (tariffa rimodulata, regole CACER). Non cumulabile con FER/RID sulla stessa energia condivisa.</td><td class="azioni">Costituire la CER e ottenere riconoscimento GSE <strong>prima dell'esercizio</strong>; domanda tariffa entro 120 gg dall'allaccio. Contingente 5 GW fino al 31/12/2027.</td></tr>
+                <tr>
+                  <td class="name">Contributo PNRR CER (M2C2)</td>
+                  <td class="desc">Contributo in conto capitale fino al <strong>40%</strong> per impianti FER ≤ 1 MW in CER, esteso ai Comuni con meno di <strong>50.000 abitanti</strong> (D.M. MASE 2025). Fondo 2,2 mld €. <strong>Sportello domande chiuso al 30/11/2025</strong></td>
+                  <td class="beneficiari"><span class="ben-badge ben-cer">CER</span><span class="ben-badge ben-pa">PA locale</span></td>
+                  <td class="scadenza"><span class="scad-badge scad-urgente">30/06/2026</span><span class="scad-note">Stipula accordi GSE — <strong>vincolo fine lavori ELIMINATO</strong> (DL PNRR 2026); esercizio entro 31/12/2027</span></td>
+                  <td class="stato"><span class="stato-badge stato-mod">Modificata</span><span class="stato-note">DL PNRR 2026: eliminato vincolo fine lavori 30/06. Solo stipula accordi entro 30/06/2026</span></td>
+                <td class="compat">Cumulabile con tariffa GSE (rimodulata) e con bando MASE Sud nei limiti. No altri fondi pubblici sulla stessa spesa.</td><td class="azioni">&#9888; <strong>Stipula accordi GSE entro 30/06/2026</strong> (possibile proroga +60 gg). Vincolo fine lavori ELIMINATO; esercizio entro 31/12/2027.</td></tr>
+                <tr>
+                  <td class="name">IVA agevolata 10% CER</td>
+                  <td class="desc">Aliquota IVA agevolata al <strong>10%</strong> (anziché 22%) per cessioni di energia da CER a soci/aderenti. Applicazione automatica in fattura dal gestore CER</td>
+                  <td class="beneficiari"><span class="ben-badge ben-cer">CER / Soci</span></td>
+                  <td class="scadenza"><span class="scad-badge scad-ampia">Strutturale</span><span class="scad-note">Introdotto dalla Legge 4/2026, art. 9</span></td>
+                  <td class="stato"><span class="stato-badge stato-nuovo">Nuovo 2026</span></td>
+                <td class="compat">Si applica in fattura; compatibile con tariffa e PNRR.</td><td class="azioni">Verificare <strong>applicazione automatica in fattura</strong> dal gestore CER (Legge 4/2026, art. 9).</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CAT 5: IMPRESE -->
+    <div class="category">
+      <div class="category-header" onclick="toggleCategory(this)">
+        <div class="category-num">5</div>
+        <div class="category-title">Imprese — Transizione 5.0 e crediti d'imposta</div>
+        <div class="category-count">4 misure</div>
+        <div class="category-arrow">▼</div>
+      </div>
+      <div class="category-body">
+        <div class="category-body-inner">
+          <div class="table-wrap">
+            <table class="incentivi">
+              <thead><tr><th>Incentivo</th><th>Descrizione</th><th>Beneficiari</th><th>Scadenza</th><th>Stato</th><th>Compatibilit&agrave; / cumulo</th><th>Azioni &amp; tempi</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td class="name">Piano Transizione 5.0</td>
+                  <td class="desc"><strong>Il credito d'imposta Transizione 5.0 è scaduto il 31/12/2025</strong> e non è più attivabile per nuovi investimenti nel 2026. Per il 2026 è stato introdotto un nuovo <strong>Iperammortamento</strong> (maggiorazioni fino al 180% per beni 4.0). <strong>Dal 12/06/2026 è operativa sul portale GSE la piattaforma di prenotazione</strong> dell'Iperammortamento, con circa 10 mld € di risorse per il triennio; investimenti agevolabili dal 01/01/2026 al 30/09/2028. Per gli "esodati" (investimenti 2025 non ancora liquidati), il tavolo MIMIT del 01/04/2026 ha ripristinato 200 M€. Certificazione EGE obbligatoria per accessi T5.0 residui</td>
+                  <td class="beneficiari"><span class="ben-badge ben-imprese">Imprese</span></td>
+                  <td class="scadenza"><span class="scad-badge scad-att">Aperto dal 12/06/2026</span><span class="scad-note">Prenotazione Iperammortamento — investimenti fino al 30/09/2028</span></td>
+                  <td class="stato"><span class="stato-badge stato-attivo">Attivo</span><span class="stato-note">Iperammortamento 2026: piattaforma prenotazione GSE operativa dal 12/06/2026 (~10 mld €). D.M. MIMIT 04/05/2026 (decreto attuativo). Fondi residui per "esodati" 2025. DL 38/2026: eliminato vincolo Made-in-EU (eccetto moduli FV/celle).</span></td>
+                <td class="compat">Iperammortamento non cumulabile con T5.0 sullo stesso bene; cumulabile con credito FV aziendale entro il costo.</td><td class="azioni"><strong>Prenotare su piattaforma GSE</strong> (aperta dal 12/06/2026); investimenti 01/01/2026&ndash;30/09/2028. Certificazione EGE per T5.0 residui; 'esodati' 2025 con fondi ripristinati.</td></tr>
+                <tr>
+                  <td class="name">Credito d'imposta FV aziendale</td>
+                  <td class="desc">Credito al <strong>30%</strong> per impianti FV ≥ 100 kW su edifici produttivi. Cumulabile con Transizione 5.0 entro il limite del costo sostenuto</td>
+                  <td class="beneficiari"><span class="ben-badge ben-imprese">PMI / Industria</span></td>
+                  <td class="scadenza"><span class="scad-badge scad-breve">31/12/2026</span><span class="scad-note">Soglia ridotta da 200 kW a 100 kW nel 2026</span></td>
+                  <td class="stato"><span class="stato-badge stato-mod">Modificata</span></td>
+                <td class="compat">Cumulabile con <strong>Transizione 5.0 / Iperammortamento</strong> entro il limite del costo sostenuto.</td><td class="azioni">Impianto FV <strong>&ge;100 kW</strong> su edificio produttivo; spesa entro 31/12/2026.</td></tr>
+                <tr>
+                  <td class="name">Contratto di sviluppo — Eff. energetica</td>
+                  <td class="desc">Contributo + finanziamento agevolato per programmi ≥ 1,5 M€ con riduzione consumi del <strong>20%</strong>. Gestione Invitalia</td>
+                  <td class="beneficiari"><span class="ben-badge ben-imprese">Grandi imprese</span></td>
+                  <td class="scadenza"><span class="scad-badge scad-urgente">Est. 2026</span><span class="scad-note">Circolare Invitalia attesa entro estate 2026</span></td>
+                  <td class="stato"><span class="stato-badge stato-att">In attivazione</span></td>
+                <td class="compat">Cumulabile con altri aiuti nei limiti di intensit&agrave; UE. Gestione Invitalia.</td><td class="azioni">Programma <strong>&ge;1,5 M&euro;</strong> con &minus;20% consumi; attendere circolare Invitalia (estate 2026).</td></tr>
+                <tr>
+                  <td class="name">Certificati Bianchi (TEE)</td>
+                  <td class="desc">Titoli di Efficienza Energetica per risparmio in TEP. Valore mercato: <strong>450–520 €/TEE</strong>. Obbligo GME per distributori; meccanismo volontario per altri soggetti</td>
+                  <td class="beneficiari"><span class="ben-badge ben-imprese">Imprese / ESCO</span></td>
+                  <td class="scadenza"><span class="scad-badge scad-ampia">Fino al 2030</span><span class="scad-note">Richiesta entro 12 mesi dall'intervento</span></td>
+                  <td class="stato"><span class="stato-badge stato-conf">Confermata</span></td>
+                <td class="compat">Non cumulabile con Conto Termico sullo stesso risparmio. Cumulabile con detrazioni in casi specifici.</td><td class="azioni">Richiesta GSE <strong>entro 12 mesi</strong> dall'intervento; titoli negoziabili su mercato GME (450&ndash;520 &euro;/TEE).</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CAT 6: PA -->
+    <div class="category">
+      <div class="category-header" onclick="toggleCategory(this)">
+        <div class="category-num">6</div>
+        <div class="category-title">Pubblica Amministrazione</div>
+        <div class="category-count">3 misure</div>
+        <div class="category-arrow">▼</div>
+      </div>
+      <div class="category-body">
+        <div class="category-body-inner">
+          <div class="table-wrap">
+            <table class="incentivi">
+              <thead><tr><th>Incentivo</th><th>Descrizione</th><th>Beneficiari</th><th>Scadenza</th><th>Stato</th><th>Compatibilit&agrave; / cumulo</th><th>Azioni &amp; tempi</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td class="name">Conto Termico PA</td>
+                  <td class="desc">Incentivo GSE per riqualificazione edifici pubblici: isolamento, rinnovabili termici, illuminazione LED. Copertura elevata per la PA, maggiorata per i piccoli comuni. <strong>Aliquote esatte da verificare sulle Regole Applicative GSE del CT 3.0</strong></td>
+                  <td class="beneficiari"><span class="ben-badge ben-pa">PA</span></td>
+                  <td class="scadenza"><span class="scad-badge scad-continuo">Continuo</span><span class="scad-note">Accesso diretto senza aste per PA</span></td>
+                  <td class="stato"><span class="stato-badge stato-attivo">Attivo</span></td>
+                <td class="compat">Alternativo a detrazioni (non applicabili a PA). Cumulabile con tariffa CER per FV condivisi.</td><td class="azioni"><strong>Accesso diretto GSE PortalTermico</strong> senza aste; verificare aliquote nelle Regole Applicative CT 3.0.</td></tr>
+                <tr>
+                  <td class="name">PNRR — Edifici scolastici (M4C1)</td>
+                  <td class="desc">Finanziamenti a fondo perduto per efficientamento scuole e istituti. Interventi ammissibili: involucro, impianti termici, FV, accumulo. Gestione MIM</td>
+                  <td class="beneficiari"><span class="ben-badge ben-pa">Enti locali</span></td>
+                  <td class="scadenza"><span class="scad-badge scad-urgente">31/08/2026</span><span class="scad-note">Scadenza lavori prorogata — fine opere</span></td>
+                  <td class="stato"><span class="stato-badge stato-prorogato">Prorogato</span></td>
+                <td class="compat">Fondo perduto; non cumulabile con altri fondi sulla stessa spesa.</td><td class="azioni">&#9888; Concludere lavori <strong>entro 31/08/2026</strong> (prorogato); rendicontare al MIM.</td></tr>
+                <tr>
+                  <td class="name">Fondo Kyoto — Enti pubblici</td>
+                  <td class="desc">Finanziamento agevolato allo <strong>0,5% annuo</strong> per efficienza energetica e FER su immobili pubblici. Nuova tranche CDP disponibile nel 2026</td>
+                  <td class="beneficiari"><span class="ben-badge ben-pa">PA / No profit</span></td>
+                  <td class="scadenza"><span class="scad-badge scad-breve">Giu. 2026</span><span class="scad-note">Nuova tranche CDP attesa entro giugno 2026</span></td>
+                  <td class="stato"><span class="stato-badge stato-att">In attivazione</span></td>
+                <td class="compat">Finanziamento agevolato 0,5%; cumulabile con Conto Termico nei limiti.</td><td class="azioni">Attendere <strong>nuova tranche CDP</strong> (attesa entro giugno 2026); predisporre il progetto.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CAT 7: VENETO REGIONALE -->
+    <div class="category">
+      <div class="category-header" onclick="toggleCategory(this)">
+        <div class="category-num">7</div>
+        <div class="category-title">Misure regionali — Regione Veneto</div>
+        <div class="category-count">5 voci</div>
+        <div class="category-arrow">▼</div>
+      </div>
+      <div class="category-body">
+        <div class="category-body-inner">
+          <div class="intro" style="margin-bottom:18px">
+            Sezione dedicata al territorio <strong>Veneto / Treviso</strong>. I riferimenti normativi sono indicati per orientamento: <strong>importi, dotazioni e scadenze dei bandi regionali vanno sempre verificati sul portale della Regione del Veneto</strong>, perché soggetti a riaperture e rifinanziamenti.
+          </div>
+          <div class="table-wrap">
+            <table class="incentivi">
+              <thead><tr><th>Misura</th><th>Descrizione</th><th>Beneficiari</th><th>Scadenza</th><th>Stato</th><th>Compatibilit&agrave; / cumulo</th><th>Azioni &amp; tempi</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td class="name">L.R. Veneto 16/2022 — CER</td>
+                  <td class="desc">Legge regionale di promozione delle Comunità Energetiche Rinnovabili e degli autoconsumatori collettivi in Veneto. Quadro di riferimento per le configurazioni sul territorio regionale</td>
+                  <td class="beneficiari"><span class="ben-badge ben-cer">CER</span><span class="ben-badge ben-pa">Enti locali</span></td>
+                  <td class="scadenza"><span class="scad-badge scad-ampia">Quadro normativo</span></td>
+                  <td class="stato"><span class="stato-badge stato-conf">Vigente</span></td>
+                <td class="compat">Quadro normativo regionale; si integra con tariffa GSE e PNRR.</td><td class="azioni">Riferimento per le configurazioni CER in Veneto; nessuna scadenza.</td></tr>
+                <tr>
+                  <td class="name">L.R. Veneto 17/2022 — FV a terra</td>
+                  <td class="desc">Disciplina regionale per gli impianti fotovoltaici con moduli a terra e raccordo con il D.Lgs. 190/2024 e l'agrivoltaico. Da leggere insieme alla normativa nazionale sulle aree idonee</td>
+                  <td class="beneficiari"><span class="ben-badge ben-imprese">Imprese</span><span class="ben-badge ben-agri">Agricoltura</span></td>
+                  <td class="scadenza"><span class="scad-badge scad-ampia">Quadro normativo</span></td>
+                  <td class="stato"><span class="stato-badge stato-conf">Vigente</span></td>
+                <td class="compat">Da leggere con D.Lgs. 190/2024 (aree idonee).</td><td class="azioni">Verificare compatibilit&agrave; urbanistica e aree idonee prima del progetto.</td></tr>
+                <tr>
+                  <td class="name">PR Veneto FESR 2021–2027 — CER (Az. 2.2.1)</td>
+                  <td class="desc">Bando regionale a sostegno delle CER (es. DGR 758/2025). Il secondo bando risulta con termine prorogato al <strong>5 febbraio 2026</strong>: alla data odierna va considerato <strong>scaduto</strong>. Possibili nuove finestre da verificare</td>
+                  <td class="beneficiari"><span class="ben-badge ben-cer">CER</span></td>
+                  <td class="scadenza"><span class="scad-badge scad-urgente">05/02/2026</span><span class="scad-note">Bando scaduto — attendere eventuali riaperture</span></td>
+                  <td class="stato"><span class="stato-badge stato-scad">Scaduto</span></td>
+                <td class="compat">Contributo regionale cumulabile con tariffa GSE nei limiti di aiuto; verificare con PNRR.</td><td class="azioni">Bando 2&deg; <strong>scaduto 05/02/2026</strong> (6 M&euro;, fino 40%/300k&euro;). Attendere riaperture sul sistema Fondi.RVE.</td></tr>
+                <tr>
+                  <td class="name">Fondo Veneto Energia — Imprese (Az. 2.1.2)</td>
+                  <td class="desc">Misura del PR Veneto FESR 2021–2027 per l'efficientamento energetico delle PMI venete (DGR 1418/2024). Fondo perduto <strong>fino al 20%</strong> + finanziamento <strong>50% tasso zero</strong>. Investimento ammissibile: min 100.000 € / max <strong>1.000.000 €</strong> (DGR 557/2025: massimale elevato da 600.000 €). Riduzione consumi ≥ 30% obbligatoria. Procedura <strong>valutativa</strong> (aggiornata da sportello)</td>
+                  <td class="beneficiari"><span class="ben-badge ben-imprese">PMI venete</span></td>
+                  <td class="scadenza"><span class="scad-badge scad-continuo">Valutativa</span><span class="scad-note">Dotazione 31 M€ — verificare disponibilità residua</span></td>
+                  <td class="stato"><span class="stato-badge stato-mod">Aggiornata</span><span class="stato-note">DGR 557/2025: max spesa elevato a 1.000.000 €. Procedura ora valutativa. Verificare portale Veneto Innovazione</span></td>
+                <td class="compat">Fondo perduto 20% + finanziamento tasso zero 50%; verificare cumulo con crediti nazionali.</td><td class="azioni"><strong>Procedura valutativa</strong> (DGR 557/2025): invest. 100k&ndash;1M&euro;, &minus;30% consumi. Verificare dotazione residua su Veneto Innovazione.</td></tr>
+                <tr>
+                  <td class="name">CCIAA Treviso-Belluno — Bando doppia transizione</td>
+                  <td class="desc">Bando camerale a sostegno della <strong>doppia transizione digitale ed ecologica</strong> delle MPMI (digitalizzazione + efficienza energetica). Contributo a fondo perduto <strong>50%</strong> (<strong>60%</strong> per imprese con Rating di legalità). Dotazione <strong>800.000 €</strong>, procedura a sportello. Sede o unità operativa nella circoscrizione Treviso-Belluno</td>
+                  <td class="beneficiari"><span class="ben-badge ben-imprese">MPMI TV-BL</span></td>
+                  <td class="scadenza"><span class="scad-badge scad-urgente">09/04/2026</span><span class="scad-note">Edizione 2026 chiusa — bando annuale ricorrente</span></td>
+                  <td class="stato"><span class="stato-badge stato-scad">Scaduto</span><span class="stato-note">Aperto 10/03/2026 — chiuso 09/04/2026. Attendere edizione 2027</span></td>
+                  <td class="compat">Contributo camerale cumulabile con incentivi nazionali su spese distinte, nei limiti del de minimis.</td>
+                  <td class="azioni">Bando <strong>scaduto 09/04/2026</strong>. <strong>Domanda PRIMA dell'avvio lavori</strong>. Monitorare <strong>tb.camcom.gov.it</strong> per la riapertura annuale.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CAT 8: BESS -->
+    <div class="category">
+      <div class="category-header" onclick="toggleCategory(this)">
+        <div class="category-num">8</div>
+        <div class="category-title">Sistemi di accumulo (BESS)</div>
+        <div class="category-count">2 misure</div>
+        <div class="category-arrow">▼</div>
+      </div>
+      <div class="category-body">
+        <div class="category-body-inner">
+          <div class="table-wrap">
+            <table class="incentivi">
+              <thead><tr><th>Incentivo</th><th>Descrizione</th><th>Beneficiari</th><th>Scadenza</th><th>Stato</th><th>Compatibilit&agrave; / cumulo</th><th>Azioni &amp; tempi</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td class="name">Incentivo BESS industriale</td>
+                  <td class="desc">Tariffa incentivante per sistemi ≥ 200 kWh abbinati a FER. Durata <strong>15 anni</strong>. Accesso diretto per BESS < 1 MWh su edifici produttivi; aste GSE per impianti maggiori</td>
+                  <td class="beneficiari"><span class="ben-badge ben-imprese">Imprese / Produttori</span></td>
+                  <td class="scadenza"><span class="scad-badge scad-att">Att. 2026</span><span class="scad-note">Primo D.M. dedicato — apertura prevista</span></td>
+                  <td class="stato"><span class="stato-badge stato-nuovo">Nuovo 2026</span></td>
+                <td class="compat">Abbinato a FER; verificare cumulo con FER X / Iperammortamento.</td><td class="azioni">Attendere <strong>D.M. dedicato</strong> (apertura prevista 2026); accesso diretto &lt;1 MWh, aste oltre.</td></tr>
+                <tr>
+                  <td class="name">Detrazione BESS residenziale</td>
+                  <td class="desc">Detrazione per accumuli domestici abbinati a FV (art. 16-bis TUIR). Per il 2026: <strong>50% abitazione principale</strong>, <strong>36%</strong> altri immobili, su spesa max 96.000 €</td>
+                  <td class="beneficiari"><span class="ben-badge ben-privati">Privati</span></td>
+                  <td class="scadenza"><span class="scad-badge scad-breve">31/12/2026</span><span class="scad-note">Dal 2027 aliquote ridotte</span></td>
+                  <td class="stato"><span class="stato-badge stato-conf">Confermata</span></td>
+                <td class="compat">Verificare cumulo con Bonus FV sullo stesso intervento (limite spesa unica 96.000 &euro;).</td><td class="azioni">BESS abbinato a FV; bonifico parlante; spesa <strong>entro 31/12/2026</strong>.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- CAT 9: EMILIA-ROMAGNA -->
+    <div class="category">
+      <div class="category-header" onclick="toggleCategory(this)">
+        <div class="category-num">9</div>
+        <div class="category-title">Misure regionali — Regione Emilia-Romagna</div>
+        <div class="category-count">3 voci</div>
+        <div class="category-arrow">&#9660;</div>
+      </div>
+      <div class="category-body">
+        <div class="category-body-inner">
+          <div class="intro" style="margin-bottom:18px">
+            Sezione dedicata al territorio <strong>Emilia-Romagna</strong>. I bandi regionali vanno verificati sul portale della Regione Emilia-Romagna e su <strong>SFINGE 2020</strong>, perché soggetti a riaperture e rifinanziamenti. I due bandi principali aperti nel 2026 risultano attualmente scaduti.
+          </div>
+          <div class="table-wrap">
+            <table class="incentivi">
+              <thead><tr><th>Misura</th><th>Descrizione</th><th>Beneficiari</th><th>Scadenza</th><th>Stato</th><th>Compatibilit&agrave; / cumulo</th><th>Azioni &amp; tempi</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td class="name">Bando CER — PR FESR 2026</td>
+                  <td class="desc">Contributo a <strong>fondo perduto</strong> per impianti FER &#8804; 1 MW in CER. Dotazione <strong>2,5 M&#8364;</strong> fondi europei. Aliquota <strong>35%</strong> (elevata al <strong>40% in aree montane/interne</strong>), massimale <strong>150.000 &#8364;</strong> per soggetto. Procedura a sportello cronologico via SFINGE 2020. Premialita&#768; per CER con soggetti in poverta&#768; energetica o terzo settore</td>
+                  <td class="beneficiari"><span class="ben-badge ben-cer">CER</span></td>
+                  <td class="scadenza"><span class="scad-badge scad-urgente">07/05/2026</span><span class="scad-note">Bando scaduto &mdash; attendere eventuali riaperture</span></td>
+                  <td class="stato"><span class="stato-badge stato-scad">Scaduto</span><span class="stato-note">Aperto 17/03/2026 &mdash; chiuso 07/05/2026</span></td>
+                <td class="compat">Fondo perduto 35&ndash;40% cumulabile con tariffa GSE nei limiti; non con PNRR sulla stessa spesa.</td><td class="azioni">Bando <strong>scaduto 07/05/2026</strong> (2,5 M&euro;, max 150k&euro;, via SFINGE 2020). Attendere riapertura sportello.</td></tr>
+                <tr>
+                  <td class="name">Fondo Energia &mdash; Imprese (sportello 2026)</td>
+                  <td class="desc">Finanziamento agevolato allo <strong>0%</strong> (provvista pubblica 75% + bancaria 25% a Euribor + spread max 4,99%) per efficientamento energetico e impianti FV in autoconsumo. Dotazione <strong>20 M&#8364;</strong>. Investimento min <strong>25.000 &#8364;</strong> / max <strong>1.000.000 &#8364;</strong>. Contributo a fondo perduto <strong>9,375%</strong> per spese tecniche (diagnosi energetica, progetto). Diagnosi energetica previa obbligatoria</td>
+                  <td class="beneficiari"><span class="ben-badge ben-imprese">Imprese (ER)</span></td>
+                  <td class="scadenza"><span class="scad-badge scad-urgente">29/05/2026</span><span class="scad-note">Bando scaduto &mdash; attendere prossima finestra</span></td>
+                  <td class="stato"><span class="stato-badge stato-scad">Scaduto</span><span class="stato-note">Aperto 15/04/2026 &mdash; chiuso 29/05/2026</span></td>
+                <td class="compat">Finanziamento 0% + 9,375% spese tecniche; verificare cumulo con crediti nazionali.</td><td class="azioni">Bando <strong>scaduto 29/05/2026</strong>. Predisporre <strong>diagnosi energetica</strong> (obbligatoria) per la prossima finestra.</td></tr>
+                <tr>
+                  <td class="name">PR ER FESR 2021&ndash;2027 &mdash; prossime aperture</td>
+                  <td class="desc">Il programma regionale FESR dell&#39;Emilia-Romagna prevede misure per CER (Az. 2.2.1), efficientamento PMI e rinnovabili. Verificare il portale regionale per nuove aperture sportelli, in quanto i bandi vengono periodicamente rifinanziati con nuove dotazioni</td>
+                  <td class="beneficiari"><span class="ben-badge ben-cer">CER</span><span class="ben-badge ben-imprese">PMI ER</span></td>
+                  <td class="scadenza"><span class="scad-badge scad-att">Da verificare</span><span class="scad-note">Verificare portale Regione ER e SFINGE 2020</span></td>
+                  <td class="stato"><span class="stato-badge stato-att">Da verificare</span></td>
+                <td class="compat">Misure CER/PMI cumulabili con incentivi nazionali nei limiti.</td><td class="azioni">Monitorare <strong>portale Regione ER e SFINGE 2020</strong> per nuovi sportelli.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CAT 10: CALABRIA -->
+    <div class="category">
+      <div class="category-header" onclick="toggleCategory(this)">
+        <div class="category-num" style="font-size:13px">10</div>
+        <div class="category-title">Misure regionali &mdash; Regione Calabria</div>
+        <div class="category-count">2 voci</div>
+        <div class="category-arrow">&#9660;</div>
+      </div>
+      <div class="category-body">
+        <div class="category-body-inner">
+          <div class="intro" style="margin-bottom:18px">
+            Sezione dedicata al territorio <strong>Calabria</strong>. Il <strong>FEERI</strong> e&#768; lo strumento principale per le imprese, attivo fino a fine 2026. La Calabria beneficia anche delle misure MASE per le <strong>regioni meno sviluppate</strong>. Verificare <a href="https://calabriaeuropa.regione.calabria.it" target="_blank" rel="noopener" style="color:var(--r21-green-dark)">calabriaeuropa.regione.calabria.it</a> e Fincalabra.
+          </div>
+          <div class="table-wrap">
+            <table class="incentivi">
+              <thead><tr><th>Misura</th><th>Descrizione</th><th>Beneficiari</th><th>Scadenza</th><th>Stato</th><th>Compatibilit&agrave; / cumulo</th><th>Azioni &amp; tempi</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td class="name">FEERI &mdash; Fondo Eff. Energetica e Rinnovabili</td>
+                  <td class="desc">Strumento finanziario PR FESR Calabria 2021&ndash;2027. Dotazione totale <strong>45 M&#8364;</strong>: <strong>30 M&#8364;</strong> efficienza energetica (Az. 2.1.2) + <strong>15 M&#8364;</strong> FV e rinnovabili (Az. 2.2.1). Mix prestito agevolato + contributo in conto capitale. Investimento ammissibile <strong>80.000 &ndash; 3.000.000 &#8364;</strong>. Gestione Fincalabra. Procedura a sportello cronologico</td>
+                  <td class="beneficiari"><span class="ben-badge ben-imprese">Imprese (CA)</span></td>
+                  <td class="scadenza"><span class="scad-badge scad-breve">30/12/2026</span><span class="scad-note">Aperto 09/06/2025 &mdash; a sportello fino esaurimento</span></td>
+                  <td class="stato"><span class="stato-badge stato-attivo">Attivo</span><span class="stato-note">Fino al 30/12/2026 o esaurimento fondi</span></td>
+                <td class="compat">Prestito agevolato + contributo conto capitale; cumulabile con incentivi nazionali nei limiti UE.</td><td class="azioni"><strong>A sportello valutativo fino al 30/12/2026</strong> o esaurimento (45 M&euro;). Domanda online firmata digitalmente su Fincalabra.</td></tr>
+                <tr>
+                  <td class="name">Bando MASE &mdash; Autoproduzione FV Sud</td>
+                  <td class="desc">Bando MASE da <strong>262 M&#8364;</strong> per autoproduzione FV e termoFV riservato a imprese nelle <strong>regioni meno sviluppate</strong> (Calabria, Sicilia, Campania, Puglia, Basilicata, Molise, Sardegna). Contributo a fondo perduto <strong>fino al 63%</strong>. Si cumula con misure GSE nazionali per CER nei Comuni &lt; 50.000 ab. ⚠️ <strong>Scadenza 03/07/2026 — 18 giorni!</strong></td>
+                  <td class="beneficiari"><span class="ben-badge ben-imprese">Imprese Sud</span><span class="ben-badge ben-cer">CER</span></td>
+                  <td class="scadenza"><span class="scad-badge scad-urgente">03/07/2026</span><span class="scad-note">⚠ URGENTE — scade tra 18 giorni. Portale MASE</span></td>
+                  <td class="stato"><span class="stato-badge stato-attivo">Attivo</span><span class="stato-note">Contributo fino al 63%. 60% dotazione riservata PMI.</span></td>
+                <td class="compat">Si cumula con tariffa GSE CER (Comuni &lt;50.000 ab.) nei limiti. Fondo perduto fino al 63%.</td><td class="azioni">&#9888;&#9888; <strong>URGENTE: domande entro le ore 10:00 del 03/07/2026</strong> (~11 gg). Portale MASE; 60% riservato a PMI.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="notes-box">
+      <h3>▶ Note operative — cumulabilità</h3>
+      <ul>
+        <li><strong>Stessa spesa / stesso intervento:</strong> in generale gli incentivi non sono cumulabili oltre il costo effettivamente sostenuto. Va valutato caso per caso</li>
+        <li><strong>Detrazione FV + SSP/RID:</strong> in generale <strong>compatibili</strong>, salvo casi specifici (es. Superbonus 110%) — come chiarito dal GSE</li>
+        <li><strong>Conto Termico + detrazioni fiscali</strong> sullo <strong>stesso</strong> intervento: da evitare, salvo regole specifiche</li>
+        <li><strong>CER + PNRR:</strong> cumulabili, ma la tariffa incentivante viene <strong>rimodulata</strong> secondo le regole CACER. La <strong>stipula degli accordi GSE entro il 30/06/2026</strong> ammette una <strong>possibile proroga di 60 giorni</strong>; il vincolo di fine lavori è stato eliminato (esercizio entro 31/12/2027)</li>
+        <li><strong>Transizione 5.0:</strong> va trattata separatamente — il MIMIT ha previsto opzioni e incompatibilità operative con altri crediti d'imposta in casi specifici</li>
+        <li>Per il <strong>Conto Termico 3.0</strong> l'accesso avviene tramite portale GSE <strong>PortalTermico</strong>: il portale era stato sospeso dal 03/03/2026 ed è <strong>riaperto dal 13/04/2026</strong> (attualmente operativo)</li>
+        <li>Le detrazioni fiscali richiedono <strong>pagamento tracciabile</strong> con bonifico parlante (codice fiscale, P.IVA fornitore, causale normativa)</li>
+      </ul>
+    </div>
+
+    <div class="source-line">
+      Fonti puntuali: D.M. 07/08/2025 (D.M. 224/2025, CT 3.0, in vigore 25/12/2025) — D.Lgs. 190/2024 (Testo Unico FER) — Legge 4/2026 — L. 207/2024 (Legge di Bilancio, aliquote detrazioni 2026) — art. 16-bis TUIR — D.M. FER X / FER X transitorio — D.D. MASE n.44 del 20/04/2026 e n.64 del 11/11/2025 (FER 2, nuova finestra 08/06/2026–07/08/2026) — delibera ARERA 78/2025 (chiusura SSP) — D.M. MASE 2025 (PNRR CER &lt; 50.000 ab.) — DL PNRR 2026 (eliminato vincolo fine lavori CER 30/06/2026) — MIMIT tavolo 01/04/2026 (ripristino fondi T5.0 esodati, nuovo Iperammortamento 2026) — D.M. MIMIT 04/05/2026 (decreto attuativo Iperammortamento 2026) — piattaforma GSE prenotazione Iperammortamento operativa dal 12/06/2026 (~10 mld €, investimenti fino al 30/09/2028) — DL 38/2026 (eliminato vincolo Made-in-EU per Iperammortamento) — D.Lgs. 5/2026 (nuovi requisiti tecnici PDC CT 3.0 dal 03/06/2026) — DGR Veneto 557/2025 (max spesa Az. 2.1.2 elevato a 1.000.000 €, procedura valutativa) — Bando MASE 262 M€ autoproduzione FV Sud (proroga al 03/07/2026, contributo fino al 63%) — Decreto FER X definitivo MASE (37,15 GW; 10 GW riservati ≤1 MW; prezzi 2026 ~80-90 €/MWh; manifestazioni d'interesse fine estate 2026) — DL PNRR 2026 (accordi CER 30/06/2026 con possibile proroga +60 gg) — CCIAA Treviso-Belluno, Bando doppia transizione digitale ed ecologica 2026 (10/03–09/04/2026, 800.000 €, 50–60%) — portale GSE / Agenzia delle Entrate.<br><br>
+      <strong>Verifica aggiornata al 22 giugno 2026, salvo esaurimento fondi e aggiornamenti dei portali istituzionali (GSE, MIMIT, Agenzia delle Entrate, Regione Veneto, Regione Emilia-Romagna, Regione Calabria).</strong> I valori e le scadenze indicati hanno finalità informativa e non sostituiscono la consulenza tecnica e fiscale puntuale.
+    </div>
+  </div><!-- /view-tipologia -->
+
+
+  <!-- ======================================================
+       VISTA B: PER PERCORSO
+       ====================================================== -->
+  <div class="view-percorso" id="view-percorso">
+
+    <div class="percorso-selector visible">
+      <div class="percorso-intro">
+        <strong>Seleziona il tuo percorso</strong> per visualizzare solo gli incentivi applicabili alla tua situazione. Per il dettaglio completo su <strong>Comunità Energetiche</strong> e <strong>Gruppi di Autoconsumo</strong> usa le schede dedicate <em>CER</em> e <em>GAC</em> qui sopra.
+      </div>
+
+      <div class="percorso-grid">
+        <div class="percorso-card" data-percorso="privato" onclick="selectPercorso(this)">
+          <div class="percorso-icon">🏠</div>
+          <div class="percorso-label">Privato / Residenziale</div>
+          <div class="percorso-sublabel">Abitazione principale o seconda casa</div>
+        </div>
+        <div class="percorso-card" data-percorso="impresa" onclick="selectPercorso(this)">
+          <div class="percorso-icon">🏭</div>
+          <div class="percorso-label">Impresa / PMI</div>
+          <div class="percorso-sublabel">Artigiani, commercianti, industria</div>
+        </div>
+        <div class="percorso-card" data-percorso="pa" onclick="selectPercorso(this)">
+          <div class="percorso-icon">🏛️</div>
+          <div class="percorso-label">Pubblica Amministrazione</div>
+          <div class="percorso-sublabel">Comuni, scuole, enti pubblici</div>
+        </div>
+        <div class="percorso-card" data-percorso="produttore" onclick="selectPercorso(this)">
+          <div class="percorso-icon">⚡</div>
+          <div class="percorso-label">Produttore / Grandi impianti</div>
+          <div class="percorso-sublabel">Impianti FER, FV utility scale, RID</div>
+        </div>
+        <div class="percorso-card" data-percorso="agri" onclick="selectPercorso(this)">
+          <div class="percorso-icon">🌾</div>
+          <div class="percorso-label">Agrivoltaico / Agricoltura</div>
+          <div class="percorso-sublabel">Imprenditore agricolo, terreni</div>
+        </div>
+        <div class="percorso-card" data-percorso="cond" onclick="selectPercorso(this)">
+          <div class="percorso-icon">🏢</div>
+          <div class="percorso-label">Condominio</div>
+          <div class="percorso-sublabel">Autoconsumo collettivo, parti comuni</div>
+        </div>
+      </div>
+
+      <div class="percorso-result-title" id="percorso-result-title"></div>
+    </div>
+
+    <!-- CARDS PER PERCORSO -->
+    <!-- Ogni card ha data-percorsi con lista percorsi separata da virgola -->
+
+    <div class="empty-state" id="empty-state">
+      <p>👆 Seleziona un percorso per visualizzare gli incentivi disponibili.</p>
+    </div>
+
+    <!-- CARD 1 -->
+    <div class="incentivo-card" data-percorsi="privato,cond,agri,impresa,pa">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="card-name">Conto Termico 3.0 — Pompe di calore</div>
+          <div class="card-categoria">Conto Termico 3.0 · GSE</div>
+          <div class="card-badges">
+            <span class="ben-badge ben-tutti">Tutti i soggetti</span>
+            <span class="stato-badge stato-attivo">Attivo</span>
+          </div>
+        </div>
+        <div>
+          <span class="scad-badge scad-continuo">Continuo</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>Sostituisci il vecchio impianto di riscaldamento con una <strong>pompa di calore ad alta efficienza</strong> (COP ≥ 3,5) e ottieni un incentivo fino al <strong>65%</strong> della spesa ammissibile, erogato in rate annuali dal GSE per un massimo di 5 anni.</p>
+        <div class="card-meta">
+          <div class="card-meta-item"><div class="card-meta-label">Importo massimo</div><div class="card-meta-value">65% spesa ammissibile</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Come accedere</div><div class="card-meta-value">Portale GSE PortalTermico — entro 90 gg dalla fine lavori</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Scadenza</div><div class="card-meta-value">Continuo — fondi annuali € 900 M/anno</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Cumulo</div><div class="card-meta-value">Non cumulabile con Ecobonus per lo stesso intervento</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="incentivo-card" data-percorsi="privato,cond">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="card-name">Bonus FV — Bonus ristrutturazioni</div>
+          <div class="card-categoria">Art. 16-bis TUIR · Detrazione IRPEF</div>
+          <div class="card-badges">
+            <span class="ben-badge ben-privati">Privati</span>
+            <span class="stato-badge stato-conf">Confermata</span>
+          </div>
+        </div>
+        <div>
+          <span class="scad-badge scad-breve">31/12/2026</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>Installa un impianto fotovoltaico residenziale e detrailo in 10 anni. Per il 2026 l'aliquota è del <strong>50% solo per l'abitazione principale</strong> e del <strong>36% per gli altri immobili</strong>. Rientra nel bonus ristrutturazioni (art. 16-bis TUIR), <strong>non</strong> nell'Ecobonus. Spesa massima 96.000 €.</p>
+        <div class="card-meta">
+          <div class="card-meta-item"><div class="card-meta-label">Aliquota 2026</div><div class="card-meta-value">50% abitazione principale · 36% altri immobili</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Spesa max</div><div class="card-meta-value">€ 96.000/unità immobiliare</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Scadenza</div><div class="card-meta-value">31/12/2026 (dal 2027 aliquote ridotte)</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Cumulo</div><div class="card-meta-value">In generale compatibile con SSP/RID (salvo Superbonus)</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="incentivo-card" data-percorsi="privato,cond">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="card-name">Detrazione BESS residenziale</div>
+          <div class="card-categoria">Art. 16-bis TUIR · Sistemi di accumulo</div>
+          <div class="card-badges">
+            <span class="ben-badge ben-privati">Privati</span>
+            <span class="stato-badge stato-conf">Confermata</span>
+          </div>
+        </div>
+        <div>
+          <span class="scad-badge scad-breve">31/12/2026</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>Installa un sistema di accumulo (batterie) abbinato all'impianto FV. Per il 2026 la detrazione è del <strong>50% solo per l'abitazione principale</strong> e del <strong>36% per gli altri immobili</strong>, su spesa max 96.000 €, in 10 rate annuali.</p>
+        <div class="card-meta">
+          <div class="card-meta-item"><div class="card-meta-label">Aliquota 2026</div><div class="card-meta-value">50% abitazione principale · 36% altri immobili</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Spesa max</div><div class="card-meta-value">€ 96.000/unità immobiliare</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Scadenza</div><div class="card-meta-value">31/12/2026 (dal 2027 aliquote ridotte)</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Cumulo</div><div class="card-meta-value">Verificare con Bonus FV sullo stesso intervento</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 4 -->
+    <div class="incentivo-card" data-percorsi="privato">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="card-name">Ecobonus serramenti 50%</div>
+          <div class="card-categoria">Ecobonus · Detrazione fiscale IRPEF</div>
+          <div class="card-badges">
+            <span class="ben-badge ben-privati">Privati</span>
+            <span class="stato-badge stato-mod">Modificata</span>
+          </div>
+        </div>
+        <div>
+          <span class="scad-badge scad-breve">31/12/2026</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>Sostituisci finestre e porte esterne con prodotti ad alta prestazione termica (Uw ≤ 1,4 W/m²K). Per il 2026 la detrazione è del <strong>36%</strong>, elevata al <strong>50% solo per l'abitazione principale</strong>, su spesa max 96.000 €. Richiesta asseverazione termotecnica.</p>
+        <div class="card-meta">
+          <div class="card-meta-item"><div class="card-meta-label">Aliquota 2026</div><div class="card-meta-value">36% · 50% solo abitazione principale</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Spesa max</div><div class="card-meta-value">€ 96.000/unità immobiliare</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Scadenza</div><div class="card-meta-value">31 dicembre 2026</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Documenti</div><div class="card-meta-value">Asseverazione termotecnica + bonifico parlante</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 5 -->
+    <div class="incentivo-card" data-percorsi="privato,impresa">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="card-name">Ecobonus isolamento termico</div>
+          <div class="card-categoria">Ecobonus · Cappotto / Coibentazione</div>
+          <div class="card-badges">
+            <span class="ben-badge ben-privati">Privati</span>
+            <span class="ben-badge ben-imprese">Imprese</span>
+            <span class="stato-badge stato-mod">Modificata 2026</span>
+          </div>
+        </div>
+        <div>
+          <span class="scad-badge scad-breve">31/12/2026</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>Detrazione IRPEF/IRES per cappotto termico, coibentazione coperture, pavimenti verso esterno. Per il 2026 l'aliquota è del <strong>36%</strong>, elevata al <strong>50% solo per l'abitazione principale</strong>, su spesa max 96.000 €. Richiesta APE ante e post intervento.</p>
+        <div class="card-meta">
+          <div class="card-meta-item"><div class="card-meta-label">Aliquota 2026</div><div class="card-meta-value">36% · 50% solo abitazione principale</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Spesa max</div><div class="card-meta-value">€ 96.000/unità</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Scadenza</div><div class="card-meta-value">31 dicembre 2026</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Documenti</div><div class="card-meta-value">APE pre/post + bonifico parlante</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 6 -->
+    <div class="incentivo-card" data-percorsi="privato,cond,pa,impresa,agri,produttore">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="card-name">Tariffa incentivante CER — 110 €/MWh</div>
+          <div class="card-categoria">CER · Incentivo GSE · 20 anni</div>
+          <div class="card-badges">
+            <span class="ben-badge ben-cer">CER</span>
+            <span class="stato-badge stato-attivo">Attivo</span>
+          </div>
+        </div>
+        <div>
+          <span class="scad-badge scad-continuo">Continuo</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>Se fai parte di una Comunità Energetica Rinnovabile (o vuoi costituirne una), per ogni kWh di energia condivisa ricevi una tariffa incentivante dal GSE: <strong>110 €/MWh</strong> per impianti ≤ 200 kW e <strong>100 €/MWh</strong> per impianti più grandi, per <strong>20 anni</strong>.</p>
+        <div class="card-meta">
+          <div class="card-meta-item"><div class="card-meta-label">Tariffa</div><div class="card-meta-value">110 €/MWh (≤200 kW) · 100 €/MWh (&gt;200 kW)</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Durata</div><div class="card-meta-value">20 anni dalla data di messa in esercizio</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Come accedere</div><div class="card-meta-value">Portale GSE — CER costituita prima dell'impianto</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Cumulo</div><div class="card-meta-value">Cumulabile con PNRR (Comuni &lt; 50.000 ab.); tariffa rimodulata (regole CACER)</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 7 -->
+    <div class="incentivo-card" data-percorsi="privato,cond,impresa,pa">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="card-name">Contributo PNRR CER — 40% a fondo perduto</div>
+          <div class="card-categoria">CER · PNRR M2C2 · GSE</div>
+          <div class="card-badges">
+            <span class="ben-badge ben-cer">CER</span>
+            <span class="ben-badge ben-pa">PA locale</span>
+            <span class="stato-badge stato-scad">Domande chiuse</span>
+          </div>
+        </div>
+        <div>
+          <span class="scad-badge scad-urgente">30/06/2026</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>Contributo a <strong>fondo perduto fino al 40%</strong> dei costi di investimento per impianti FER ≤ 1 MW a servizio di CER, esteso ai Comuni con meno di <strong>50.000 abitanti</strong>. <strong>Lo sportello domande è chiuso dal 30 novembre 2025</strong>: la misura è ora in fase realizzativa e di rendicontazione. Si cumula con la tariffa GSE (tariffa rimodulata secondo le regole CACER).</p>
+        <div class="card-meta">
+          <div class="card-meta-item"><div class="card-meta-label">Contributo</div><div class="card-meta-value">Fino al 40% dei costi ammissibili</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Requisito</div><div class="card-meta-value">Comuni con meno di 50.000 abitanti</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Scadenze</div><div class="card-meta-value">Domande chiuse 30/11/2025 · <strong>stipula accordi GSE entro 30/06/2026</strong> · vincolo fine lavori ELIMINATO (DL PNRR 2026) · esercizio entro 31/12/2027</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Gestione</div><div class="card-meta-value">Portale GSE "SPC" (facility PNRR)</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 8 -->
+    <div class="incentivo-card" data-percorsi="impresa,agri,produttore">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="card-name">Piano Transizione 5.0</div>
+          <div class="card-categoria">Credito d'imposta · MIMIT</div>
+          <div class="card-badges">
+            <span class="ben-badge ben-imprese">Imprese</span>
+            <span class="stato-badge stato-attivo">Attivo</span>
+          </div>
+        </div>
+        <div>
+          <span class="scad-badge scad-breve">31/12/2026</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <p><strong>⚠ Il credito d'imposta Transizione 5.0 è scaduto il 31/12/2025</strong> e non è più applicabile a nuovi investimenti nel 2026. Per il 2026 MIMIT ha introdotto un nuovo <strong>Iperammortamento</strong> (maggiorazioni fino al 180% del costo per beni 4.0). <strong>Dal 12 giugno 2026 è operativa sul portale GSE la piattaforma di prenotazione</strong> delle agevolazioni, con circa 10 mld € di risorse nazionali per il triennio; sono agevolabili gli investimenti effettuati dal 01/01/2026 al 30/09/2028. Per le imprese con investimenti già effettuati nel 2025 non ancora liquidati ("esodati"), il tavolo MIMIT del 01/04/2026 ha stanziato 200 M€ aggiuntivi con credito ripristinato al 90% (100% per FV/rinnovabili).</p>
+        <div class="card-meta">
+          <div class="card-meta-item"><div class="card-meta-label">Stato 2026</div><div class="card-meta-value">Scaduto (nuovi investimenti) — attivo solo per "esodati" 2025</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Sostituto 2026</div><div class="card-meta-value">Iperammortamento fino al 180% (beni strumentali 4.0)</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Prenotazione GSE</div><div class="card-meta-value">Piattaforma operativa dal 12/06/2026 · ~10 mld € · investimenti fino al 30/09/2028</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Fondi esodati</div><div class="card-meta-value">200 M€ ripristinati (tavolo MIMIT 01/04/2026)</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Obbligo residuo T5.0</div><div class="card-meta-value">Certificazione EGE UNI CEI 11339 pre e post</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 9 -->
+    <div class="incentivo-card" data-percorsi="impresa">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="card-name">Credito d'imposta FV aziendale 30%</div>
+          <div class="card-categoria">Credito d'imposta · Impianti industriali</div>
+          <div class="card-badges">
+            <span class="ben-badge ben-imprese">PMI / Industria</span>
+            <span class="stato-badge stato-mod">Modificata</span>
+          </div>
+        </div>
+        <div>
+          <span class="scad-badge scad-breve">31/12/2026</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>Credito d'imposta del <strong>30%</strong> per impianti fotovoltaici ≥ 100 kW (soglia ridotta da 200 kW nel 2026) su edifici produttivi o tetti industriali. Cumulabile con Transizione 5.0 entro il limite del costo sostenuto.</p>
+        <div class="card-meta">
+          <div class="card-meta-item"><div class="card-meta-label">Aliquota</div><div class="card-meta-value">30% del costo dell'impianto</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Soglia</div><div class="card-meta-value">≥ 100 kW (ridotta da 200 kW nel 2026)</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Scadenza</div><div class="card-meta-value">31 dicembre 2026</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Cumulo</div><div class="card-meta-value">Cumulabile con Piano Transizione 5.0</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 10 -->
+    <div class="incentivo-card" data-percorsi="impresa">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="card-name">Certificati Bianchi (TEE)</div>
+          <div class="card-categoria">Titoli di Efficienza Energetica · GSE/GME</div>
+          <div class="card-badges">
+            <span class="ben-badge ben-imprese">Imprese / ESCO</span>
+            <span class="stato-badge stato-conf">Confermata</span>
+          </div>
+        </div>
+        <div>
+          <span class="scad-badge scad-ampia">Fino al 2030</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>Per ogni TEP (Tonnellata Equivalente di Petrolio) risparmiata con interventi di efficienza energetica, ricevi <strong>Titoli di Efficienza Energetica</strong> negoziabili sul mercato GME (valore attuale: 450–520 €/TEE). Obbligatori per i distributori di energia, volontari per imprese e ESCO.</p>
+        <div class="card-meta">
+          <div class="card-meta-item"><div class="card-meta-label">Valore di mercato</div><div class="card-meta-value">450–520 €/TEE (mercato GME)</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Come accedere</div><div class="card-meta-value">Richiesta GSE entro 12 mesi dall'intervento</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Durata meccanismo</div><div class="card-meta-value">Confermato fino al 2030</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Cumulo</div><div class="card-meta-value">Non cumulabile con Conto Termico per stesso intervento</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 11 -->
+    <div class="incentivo-card" data-percorsi="pa">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="card-name">Conto Termico PA — fino al 100%</div>
+          <div class="card-categoria">Conto Termico 3.0 · GSE</div>
+          <div class="card-badges">
+            <span class="ben-badge ben-pa">PA</span>
+            <span class="stato-badge stato-attivo">Attivo</span>
+          </div>
+        </div>
+        <div>
+          <span class="scad-badge scad-continuo">Continuo</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>Riqualificazione energetica di edifici pubblici: isolamento, rinnovabili termici, illuminazione LED, FV abbinato a PDC. La copertura per la PA può arrivare a quote elevate (maggiorata per i piccoli comuni); <strong>aliquote e massimali esatti vanno verificati sulle Regole Applicative GSE del CT 3.0</strong>. Accesso diretto senza aste.</p>
+        <div class="card-meta">
+          <div class="card-meta-item"><div class="card-meta-label">Rimborso</div><div class="card-meta-value">Quota elevata per PA — verificare Regole Applicative GSE</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Come accedere</div><div class="card-meta-value">Portale GSE PortalTermico — accesso diretto PA</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Scadenza</div><div class="card-meta-value">Continuo — fondi annuali dedicati PA</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Cumulabile con</div><div class="card-meta-value">Tariffa CER (per impianti FV condivisi)</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 12 -->
+    <div class="incentivo-card" data-percorsi="pa">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="card-name">PNRR — Edifici scolastici (M4C1)</div>
+          <div class="card-categoria">PNRR · Fondo perduto · MIM</div>
+          <div class="card-badges">
+            <span class="ben-badge ben-pa">Enti locali / MIM</span>
+            <span class="stato-badge stato-prorogato">Prorogato</span>
+          </div>
+        </div>
+        <div>
+          <span class="scad-badge scad-urgente">31/08/2026</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>Finanziamenti a <strong>fondo perduto</strong> per efficientamento energetico di scuole e istituti di istruzione. Interventi ammissibili: involucro, impianti termici, fotovoltaico e accumulo. La scadenza per la conclusione dei lavori è stata prorogata al <strong>31 agosto 2026</strong>.</p>
+        <div class="card-meta">
+          <div class="card-meta-item"><div class="card-meta-label">Tipologia</div><div class="card-meta-value">100% fondo perduto</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Gestione</div><div class="card-meta-value">Ministero dell'Istruzione (MIM)</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Scadenza lavori</div><div class="card-meta-value">31 agosto 2026 (prorogata)</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Nota</div><div class="card-meta-value">Verifica stato avanzamento con ente gestore</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 13 -->
+    <div class="incentivo-card" data-percorsi="agri">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="card-name">Incentivo agrivoltaico avanzato</div>
+          <div class="card-categoria">FER · Agrivoltaico · GSE</div>
+          <div class="card-badges">
+            <span class="ben-badge ben-agri">Imprese agricole</span>
+            <span class="stato-badge stato-nuovo">Nuovo 2026</span>
+          </div>
+        </div>
+        <div>
+          <span class="scad-badge scad-breve">31/12/2026</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>Tariffa incentivante dedicata agli impianti agrivoltaici avanzati che mantengono almeno l'<strong>80% della Produzione Lorda Vendibile (PLV)</strong>. La tariffa include un <strong>premio del +10%</strong> per integrazione con sistemi di monitoraggio agricolo certificati (D.Lgs. 190/2024, art. 4).</p>
+        <div class="card-meta">
+          <div class="card-meta-item"><div class="card-meta-label">Premio</div><div class="card-meta-value">Tariffa base FER + 10% per monitoraggio</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Requisito chiave</div><div class="card-meta-value">Mantenimento ≥ 80% della PLV agricola</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Scadenza</div><div class="card-meta-value">Prime domande entro dicembre 2026</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Normativa</div><div class="card-meta-value">Legge 4/2026 + D.Lgs. 190/2024 art. 4</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 14 -->
+    <div class="incentivo-card" data-percorsi="impresa,agri,produttore">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="card-name">Tariffa FER X — grandi impianti rinnovabili</div>
+          <div class="card-categoria">FER X / FER X transitorio · GSE</div>
+          <div class="card-badges">
+            <span class="ben-badge ben-imprese">Produttori / SPV</span>
+            <span class="stato-badge stato-att">Da verificare</span>
+          </div>
+        </div>
+        <div>
+          <span class="scad-badge scad-att">Da verificare</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>Per i grandi impianti rinnovabili "maturi" (fotovoltaico a terra, eolico onshore, idroelettrico) il meccanismo di riferimento è il <strong>FER X</strong> (non il FER 2, riservato agli impianti innovativi). Accesso diretto fino a 1 MW, aste competitive oltre 1 MW, tariffa per <strong>20 anni</strong>. Il <strong>FER X transitorio</strong> ha operato fino al 31/12/2025; verificare aperture e contingenti del FER X ordinario sul sito GSE.</p>
+        <div class="card-meta">
+          <div class="card-meta-item"><div class="card-meta-label">Tecnologie</div><div class="card-meta-value">FV, eolico onshore, idroelettrico (maturi)</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Durata</div><div class="card-meta-value">20 anni dalla messa in esercizio</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Stato</div><div class="card-meta-value">FER X transitorio scaduto 31/12/2025 — verificare ordinario</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Accesso</div><div class="card-meta-value">Diretto (≤ 1 MW) / Aste GSE (> 1 MW)</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 15 -->
+    <div class="incentivo-card" data-percorsi="cond,privato,impresa,produttore">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="card-name">Ritiro Dedicato (RID) — energia immessa</div>
+          <div class="card-categoria">GSE · Valorizzazione energia in rete</div>
+          <div class="card-badges">
+            <span class="ben-badge ben-privati">Privati</span>
+            <span class="ben-badge ben-imprese">Imprese</span>
+            <span class="stato-badge stato-attivo">Attivo</span>
+          </div>
+        </div>
+        <div>
+          <span class="scad-badge scad-continuo">Continuo</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>Per valorizzare l'energia immessa in rete dal tuo impianto FV, il meccanismo di riferimento per i nuovi impianti è il <strong>Ritiro Dedicato (RID)</strong>, gestito dal GSE a prezzi di mercato zonale. <strong>Nota importante:</strong> lo <strong>Scambio sul Posto (SSP) è chiuso a nuove richieste dal 26 settembre 2025</strong> (delibera ARERA 78/2025) e non è più attivabile; le convenzioni esistenti proseguono fino a scadenza. In alternativa al RID si può valutare l'autoconsumo con accumulo o l'adesione a una CER.</p>
+        <div class="card-meta">
+          <div class="card-meta-item"><div class="card-meta-label">Meccanismo attuale</div><div class="card-meta-value">Ritiro Dedicato (RID) — prezzi zonali GSE</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">SSP</div><div class="card-meta-value">Chiuso a nuove richieste dal 26/09/2025</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Alternative</div><div class="card-meta-value">Autoconsumo + accumulo, oppure adesione a CER</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Accesso</div><div class="card-meta-value">Convenzione GSE — nessuna asta</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 16 -->
+    <div class="incentivo-card" data-percorsi="privato,impresa">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="card-name">FV + BESS abbinati a PDC (CT 3.0)</div>
+          <div class="card-categoria">Conto Termico 3.0 · Novità 2026</div>
+          <div class="card-badges">
+            <span class="ben-badge ben-privati">Privati</span>
+            <span class="ben-badge ben-imprese">Imprese</span>
+            <span class="stato-badge stato-nuovo">Nuovo 2026</span>
+          </div>
+        </div>
+        <div>
+          <span class="scad-badge scad-continuo">Continuo</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>Novità del CT 3.0: installa insieme <strong>impianto FV + sistema di accumulo + PDC elettrica</strong> (e opzionalmente colonnina ricarica EV) e accedi all'incentivo GSE sull'intera spesa. L'abbinamento alla pompa di calore è <strong>obbligatorio</strong> per accedere all'incentivo FV tramite Conto Termico.</p>
+        <div class="card-meta">
+          <div class="card-meta-item"><div class="card-meta-label">Incentivo</div><div class="card-meta-value">% sull'intera spesa (FV + BESS + PDC)</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Condizione</div><div class="card-meta-value">FV/BESS/EV incentivabili solo abbinati a PDC</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Fondi imprese</div><div class="card-meta-value">€ 150 M/anno dedicati alle imprese</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Come accedere</div><div class="card-meta-value">Portale GSE PortalTermico — delega installatore</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 17 - VENETO -->
+    <div class="incentivo-card" data-percorsi="impresa,agri,pa,privato,cond,produttore">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="card-name">Misure regionali — Regione Veneto</div>
+          <div class="card-categoria">L.R. 16/2022 · L.R. 17/2022 · PR FESR 2021–2027</div>
+          <div class="card-badges">
+            <span class="ben-badge ben-cer">CER</span>
+            <span class="ben-badge ben-imprese">PMI venete</span>
+            <span class="stato-badge stato-att">Da verificare</span>
+          </div>
+        </div>
+        <div>
+          <span class="scad-badge scad-att">Regionale</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>Se operi in <strong>Veneto / Treviso</strong>, oltre alle misure nazionali esistono strumenti regionali: la <strong>L.R. 16/2022</strong> (promozione CER e autoconsumo collettivo), la <strong>L.R. 17/2022</strong> (FV a terra, in raccordo con D.Lgs. 190/2024), i bandi <strong>PR Veneto FESR 2021–2027</strong> per le CER (Az. 2.2.1) e il <strong>Fondo Veneto Energia</strong> per l'efficientamento delle PMI (Az. 2.1.2). Il secondo bando CER FESR risulta scaduto (termine 05/02/2026).</p>
+        <div class="card-meta">
+          <div class="card-meta-item"><div class="card-meta-label">Quadro CER</div><div class="card-meta-value">L.R. Veneto 16/2022</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">FV a terra</div><div class="card-meta-value">L.R. Veneto 17/2022 + D.Lgs. 190/2024</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Bando CER FESR</div><div class="card-meta-value">DGR 758/2025 — scaduto 05/02/2026</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Imprese</div><div class="card-meta-value">Fondo Veneto Energia (Az. 2.1.2) — max 1.000.000 € (aggiornato DGR 557/2025) — procedura valutativa</div></div>
+        </div>
+        <p style="font-size:12.5px;color:var(--r21-gray);margin-top:12px;margin-bottom:0"><em>Importi, dotazioni e finestre dei bandi regionali vanno verificati sul portale della Regione del Veneto.</em></p>
+      </div>
+    </div>
+
+
+    <!-- CARD 18 - EMILIA-ROMAGNA -->
+    <div class="incentivo-card" data-percorsi="impresa,agri,pa,privato,cond,produttore">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="card-name">Misure regionali &mdash; Regione Emilia-Romagna</div>
+          <div class="card-categoria">PR FESR 2021&ndash;2027 &middot; Fondo Energia &middot; Bando CER</div>
+          <div class="card-badges">
+            <span class="ben-badge ben-cer">CER</span>
+            <span class="ben-badge ben-imprese">PMI ER</span>
+            <span class="stato-badge stato-scad">Bandi scaduti</span>
+          </div>
+        </div>
+        <div>
+          <span class="scad-badge scad-att">Da verificare</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>Se operi in <strong>Emilia-Romagna</strong>, esistono strumenti regionali specifici: il <strong>Bando CER FESR 2026</strong> (contributo fondo perduto 35&ndash;40%, max 150.000 &euro;, dotazione 2,5 M&euro;) e il <strong>Fondo Energia Imprese 2026</strong> (finanziamento 0%, 20 M&euro;, invest. 25k&ndash;1M&euro; con diagnosi energetica). Entrambi i bandi sono attualmente <strong>scaduti</strong> (chiusi 07/05/2026 e 29/05/2026 rispettivamente); il PR FESR 2021&ndash;2027 prevede nuove aperture sportelli periodiche.</p>
+        <div class="card-meta">
+          <div class="card-meta-item"><div class="card-meta-label">Bando CER FESR</div><div class="card-meta-value">35&ndash;40% fondo perduto &middot; max 150.000 &euro; &middot; SCADUTO 07/05/2026</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Fondo Energia Imprese</div><div class="card-meta-value">Finanziamento 0% + 9,375% spese tecniche &middot; SCADUTO 29/05/2026</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Prossime aperture</div><div class="card-meta-value">Verificare portale Regione ER e SFINGE 2020</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Diagnosi energetica</div><div class="card-meta-value">Obbligatoria per accesso al Fondo Energia</div></div>
+        </div>
+        <p style="font-size:12.5px;color:var(--r21-gray);margin-top:12px;margin-bottom:0"><em>Dotazioni, condizioni e finestre dei bandi regionali vanno verificati sul portale della Regione Emilia-Romagna.</em></p>
+      </div>
+    </div>
+
+    <!-- CARD 19 - CALABRIA -->
+    <div class="incentivo-card" data-percorsi="impresa,agri,pa,privato,cond,produttore">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="card-name">Misure regionali &mdash; Regione Calabria</div>
+          <div class="card-categoria">FEERI &middot; PR FESR 2021&ndash;2027 &middot; Bando MASE Sud</div>
+          <div class="card-badges">
+            <span class="ben-badge ben-imprese">Imprese (CA)</span>
+            <span class="ben-badge ben-cer">CER</span>
+            <span class="stato-badge stato-attivo">Attivo</span>
+          </div>
+        </div>
+        <div>
+          <span class="scad-badge scad-breve">30/12/2026</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>Se operi in <strong>Calabria</strong>, il principale strumento regionale &egrave; il <strong>FEERI</strong> (Fondo Efficienza Energetica e Rinnovabili per le Imprese): 45 M&euro; totali (30 M&euro; efficienza + 15 M&euro; FV/rinnovabili), prestito agevolato + contributo in conto capitale, investimento min 80.000 &euro;. Attivo fino al 30/12/2026. In pi&ugrave;, le imprese del Sud accedono al <strong>bando MASE 262 M&euro;</strong> per autoproduzione FV (scadenza 03/07/2026).</p>
+        <div class="card-meta">
+          <div class="card-meta-item"><div class="card-meta-label">FEERI</div><div class="card-meta-value">45 M&euro; &middot; prestito agevolato + contrib. &middot; inv. 80k&ndash;3M&euro; &middot; attivo fino 30/12/2026</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Come accedere FEERI</div><div class="card-meta-value">Fincalabra / calabriaeuropa.regione.calabria.it</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Bando MASE Sud ⚠ URGENTE</div><div class="card-meta-value">262 M€ · FV autoproduzione · fino al <strong>63%</strong> fondo perduto · scad. <strong>03/07/2026</strong> (18 giorni)</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">CER in Calabria</div><div class="card-meta-value">Tariffa GSE 110 &euro;/MWh + PNRR 40% per comuni &lt; 50.000 ab.</div></div>
+        </div>
+        <p style="font-size:12.5px;color:var(--r21-gray);margin-top:12px;margin-bottom:0"><em>Verificare stato aggiornato su calabriaeuropa.regione.calabria.it e Fincalabra.</em></p>
+      </div>
+    </div>
+
+    <div class="notes-box">
+      <h3>▶ Note per il tuo percorso</h3>
+      <ul>
+        <li>Gli incentivi mostrati sono quelli <strong>tipicamente applicabili</strong> al percorso selezionato. La cumulabilità va sempre verificata caso per caso con un consulente abilitato</li>
+        <li><strong>Cumulabilità in sintesi:</strong> detrazione FV + RID in generale compatibili (salvo Superbonus); Conto Termico + detrazioni sullo stesso intervento da evitare; CER + PNRR cumulabili con tariffa rimodulata (regole CACER); Transizione 5.0 con incompatibilità operative specifiche</li>
+        <li>Le <strong>scadenze in rosso</strong> indicano termini ravvicinati, urgenti o già scaduti: verifica subito lo stato del plafond e delle finestre sul portale competente prima di procedere</li>
+        <li>Diverse misure 2026 sono <strong>in evoluzione o da verificare</strong> (FER X ordinario, colonnine EV, bandi regionali Veneto): contattaci per un quadro aggiornato sulla tua situazione</li>
+        <li>Rete 21 supporta l'accesso al GSE, la documentazione tecnica e la gestione delle pratiche incentivo per tutti i percorsi</li>
+      </ul>
+    </div>
+
+    <div class="source-line">
+      Fonti puntuali: D.M. 07/08/2025 (D.M. 224/2025, CT 3.0) — D.Lgs. 190/2024 — Legge 4/2026 — L. 207/2024 (aliquote detrazioni 2026) — art. 16-bis TUIR — FER X / FER 2 — delibera ARERA 78/2025 (SSP) — D.M. MASE 2025 (PNRR CER &lt; 50.000 ab.) — Transizione 5.0 (MIMIT) — L.R. Veneto 16/2022 e 17/2022 — PR Veneto FESR 2021–2027 — DGR Veneto 557/2025 (Az. 2.1.2 max 1.000.000 €, procedura valutativa) — Bando CER ER 2026 (SFINGE 2020) — Fondo Energia ER 2026 — FEERI Calabria (Fincalabra) — Bando MASE 262 M€ regioni meno sviluppate (proroga 03/07/2026, contributo 63%) — GSE / Agenzia delle Entrate / Regioni Veneto, Emilia-Romagna, Calabria.<br><br>
+      <strong>Verifica aggiornata al 22 giugno 2026, salvo esaurimento fondi e aggiornamenti dei portali istituzionali (GSE, MIMIT, Regione Veneto, Regione Emilia-Romagna, Regione Calabria).</strong> Le informazioni hanno finalità orientativa e non sostituiscono la consulenza tecnica e fiscale.
+    </div>
+  </div><!-- /view-percorso -->
+
+  <!-- ======================================================
+       VISTA C: CER — Comunità Energetiche Rinnovabili
+       ====================================================== -->
+  <div class="view-cer" id="view-cer">
+
+    <div class="detail-hero">
+      <h3>Comunità Energetica Rinnovabile <em>(CER)</em></h3>
+      <p>Soggetto giuridico autonomo che riunisce cittadini, imprese, enti e PA per produrre, condividere e consumare energia rinnovabile sotto la stessa <strong>cabina primaria</strong>. La condivisione è virtuale: il GSE riconosce un incentivo sull'energia condivisa per <strong>20 anni</strong>.</p>
+      <div class="dh-badges">
+        <span class="dh-badge">Art. 31 D.Lgs. 199/2021</span>
+        <span class="dh-badge">Decreto CACER 414/2023</span>
+        <span class="dh-badge">Tariffa 20 anni</span>
+        <span class="dh-badge">PNRR 40%</span>
+      </div>
+    </div>
+
+    <div class="norm-grid">
+      <div class="norm-block">
+        <h4>Cos'è e chi può aderire</h4>
+        <ul>
+          <li>Soggetto di diritto <strong>autonomo</strong> (associazione, cooperativa, consorzio, ente del Terzo Settore): richiede la <strong>costituzione di una persona giuridica</strong></li>
+          <li>Possono aderire <strong>persone fisiche, PMI, enti locali, PA, enti religiosi e del Terzo Settore</strong>; per le imprese la partecipazione non dev'essere l'attività principale</li>
+          <li>I membri devono insistere sulla <strong>stessa cabina primaria</strong> e avere un POD (punto di prelievo)</li>
+          <li>Configurazione minima: almeno un <em>prosumer</em> (produttore-consumatore) e un <em>consumer</em></li>
+        </ul>
+      </div>
+      <div class="norm-block">
+        <h4>Leggi e norme di riferimento</h4>
+        <ul>
+          <li><strong>D.Lgs. 199/2021</strong> art. 8 (incentivi) e art. 31 (CER) — recepimento RED II</li>
+          <li><strong>D.Lgs. 210/2021</strong> — mercato interno energia elettrica</li>
+          <li><strong>D.M. MASE 414/2023</strong> "Decreto CACER" (in vigore dal 24/01/2024)</li>
+          <li><strong>TIAD</strong> — Testo Integrato Autoconsumo Diffuso, delibera <strong>ARERA 727/2022/R/eel</strong></li>
+          <li><strong>Regole Operative GSE</strong> (portale SPC)</li>
+          <li><strong>D.M. 127/2025</strong> — estensione PNRR ai comuni &lt; 50.000 ab.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table class="incentivi">
+        <thead><tr><th>Beneficio</th><th>Descrizione</th><th>Importo / durata</th><th>Scadenza</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="name">Tariffa incentivante CACER</td>
+            <td class="desc">Tariffa sull'energia <strong>condivisa</strong>, erogata dal GSE in conto esercizio. Importo base orientativo <strong>~110 €/MWh</strong> per impianti ≤ 200 kW, con correzione geografica (+4 €/MWh Centro, +10 €/MWh Nord). Riconosciuta per <strong>20 anni</strong></td>
+            <td class="scadenza"><span class="scad-badge scad-ampia">20 anni</span></td>
+            <td class="scadenza"><span class="scad-badge scad-breve">Contingente 5 GW fino al 31/12/2027</span><span class="scad-note">Domanda entro 120 gg dall'entrata in esercizio</span></td>
+          </tr>
+          <tr>
+            <td class="name">Restituzione componenti ARERA</td>
+            <td class="desc">Quota di restituzione di alcune componenti tariffarie sull'energia condivisa, riconosciuta da ARERA in aggiunta alla tariffa incentivante</td>
+            <td class="scadenza"><span class="scad-badge scad-ampia">Strutturale</span></td>
+            <td class="scadenza"><span class="scad-badge scad-continuo">Per la durata della tariffa</span></td>
+          </tr>
+          <tr>
+            <td class="name">Contributo PNRR 40% (conto capitale)</td>
+            <td class="desc">Contributo a <strong>fondo perduto fino al 40%</strong> dei costi ammissibili per impianti FER ≤ 1 MW in CER, nei Comuni con meno di <strong>50.000 abitanti</strong> (Missione 2 Comp. 2 Inv. 1.2). Fondo 2,2 mld €. Cumulabile con la tariffa, che viene rimodulata (regole CACER)</td>
+            <td class="scadenza"><span class="scad-badge scad-urgente">Fino al 40%</span></td>
+            <td class="scadenza"><span class="scad-badge scad-urgente">Accordi entro 30/06/2026</span><span class="scad-note">Domande chiuse 30/11/2025 · vincolo fine lavori ELIMINATO (DL PNRR 2026) · esercizio entro 31/12/2027</span></td>
+          </tr>
+          <tr>
+            <td class="name">IVA agevolata 10%</td>
+            <td class="desc">Aliquota IVA agevolata su cessioni di energia rinnovabile da CER a soci/aderenti, ove applicabile (introdotta dalla Legge 4/2026). Verificare l'applicazione in fattura dal gestore CER</td>
+            <td class="scadenza"><span class="scad-badge scad-ampia">Strutturale</span></td>
+            <td class="scadenza"><span class="scad-badge scad-att">Da verificare</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="notes-box">
+      <h3>▶ Iter e note operative — CER</h3>
+      <ul>
+        <li>La CER deve essere <strong>costituita e riconosciuta dal GSE prima</strong> della messa in esercizio dell'impianto che genera energia condivisa</li>
+        <li>La <strong>tariffa incentivante</strong> e il <strong>contributo PNRR</strong> sono cumulabili, ma la tariffa è rimodulata in funzione del contributo ricevuto (regole CACER). <strong>DL PNRR 2026:</strong> il vincolo "fine lavori entro 30/06/2026" è stato eliminato; resta solo la scadenza di stipula accordi GSE entro 30/06/2026, con messa in esercizio entro 31/12/2027</li>
+        <li>La domanda di accesso alla tariffa va presentata <strong>entro 120 giorni</strong> dall'entrata in esercizio, sul portale GSE (SPC)</li>
+        <li>Il contingente nazionale della tariffa è di <strong>5 GW</strong>, valido fino al 31/12/2027 (o fino a esaurimento)</li>
+        <li>Il <strong>Referente</strong> della CER incassa dal GSE e ripartisce ai membri (mandato senza rappresentanza); può trattenere una quota per i costi di gestione</li>
+        <li><strong>Veneto:</strong> si applica anche la <strong>L.R. 16/2022</strong> sulla promozione regionale delle CER. Verificare bandi PR Veneto FESR 2021–2027 (Az. 2.2.1)</li>
+      </ul>
+    </div>
+
+    <div class="source-line">
+      Fonti: D.Lgs. 199/2021 (artt. 8, 31) — D.Lgs. 210/2021 — D.M. MASE 414/2023 (CACER) — TIAD/delibera ARERA 727/2022 — D.M. 127/2025 — Regole Operative GSE — L.R. Veneto 16/2022.<br><br>
+      <strong>Verifica aggiornata al 22 giugno 2026, salvo esaurimento contingenti/fondi e aggiornamenti dei portali GSE e Regione Veneto.</strong> Gli importi tariffari sono indicativi e dipendono da potenza, zona e modalità di calcolo dell'Allegato 1 del Decreto CACER.
+    </div>
+  </div><!-- /view-cer -->
+
+  <!-- ======================================================
+       VISTA D: GAC — Gruppi di Autoconsumo Collettivo
+       ====================================================== -->
+  <div class="view-gac" id="view-gac">
+
+    <div class="detail-hero">
+      <h3>Gruppo di Autoconsumo Collettivo <em>(GAC)</em></h3>
+      <p>Configurazione di autoconsumatori che agiscono collettivamente <strong>all'interno dello stesso edificio o condominio</strong>. A differenza della CER <strong>non richiede la costituzione di una nuova persona giuridica</strong>: basta una delibera assembleare e un referente verso il GSE.</p>
+      <div class="dh-badges">
+        <span class="dh-badge">Art. 30 D.Lgs. 199/2021</span>
+        <span class="dh-badge">Decreto CACER 414/2023</span>
+        <span class="dh-badge">Senza nuova persona giuridica</span>
+        <span class="dh-badge">Tariffa 20 anni</span>
+      </div>
+    </div>
+
+    <div class="norm-grid">
+      <div class="norm-block accent">
+        <h4>GAC vs CER — la differenza chiave</h4>
+        <ul>
+          <li>Il GAC riunisce autoconsumatori <strong>nello stesso edificio/condominio</strong> (dietro lo stesso punto di connessione/edificio); la CER opera su perimetro più ampio sotto la <strong>stessa cabina primaria</strong></li>
+          <li>Il GAC <strong>non richiede una nuova persona giuridica</strong>: è sufficiente una <strong>delibera assembleare</strong> e l'indicazione di un <strong>referente</strong> (es. l'amministratore) verso il GSE</li>
+          <li>Tempi e costi di avvio ridotti: ideale per condomìni e complessi che vogliono partire rapidamente</li>
+        </ul>
+      </div>
+      <div class="norm-block">
+        <h4>Leggi e norme di riferimento</h4>
+        <ul>
+          <li><strong>D.Lgs. 199/2021</strong> art. 8 (incentivi) e art. 30 (autoconsumatori che agiscono collettivamente)</li>
+          <li><strong>D.Lgs. 210/2021</strong> — mercato interno energia elettrica</li>
+          <li><strong>D.M. MASE 414/2023</strong> "Decreto CACER" — configurazione B (gruppo di autoconsumatori)</li>
+          <li><strong>TIAD</strong> — delibera <strong>ARERA 727/2022/R/eel</strong></li>
+          <li><strong>Regole Operative GSE</strong> (portale SPC)</li>
+          <li><strong>D.M. 127/2025</strong> — PNRR esteso ai comuni &lt; 50.000 ab.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table class="incentivi">
+        <thead><tr><th>Beneficio</th><th>Descrizione</th><th>Importo / durata</th><th>Scadenza</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="name">Tariffa incentivante CACER</td>
+            <td class="desc">Tariffa sull'energia <strong>condivisa</strong> all'interno del gruppo, erogata dal GSE per <strong>20 anni</strong>. Importo base orientativo <strong>~110 €/MWh</strong> per impianti ≤ 200 kW, con correzione geografica per zona</td>
+            <td class="scadenza"><span class="scad-badge scad-ampia">20 anni</span></td>
+            <td class="scadenza"><span class="scad-badge scad-breve">Contingente 5 GW fino al 31/12/2027</span><span class="scad-note">Domanda entro 120 gg dall'entrata in esercizio</span></td>
+          </tr>
+          <tr>
+            <td class="name">Contributo PNRR 40% (conto capitale)</td>
+            <td class="desc">Il gruppo di autoconsumatori (configurazione B) è ammesso al contributo a <strong>fondo perduto fino al 40%</strong> per impianti FER ≤ 1 MW nei Comuni con meno di <strong>50.000 abitanti</strong>. Fondi residui in via di esaurimento</td>
+            <td class="scadenza"><span class="scad-badge scad-urgente">Fino al 40%</span></td>
+            <td class="scadenza"><span class="scad-badge scad-urgente">Accordi entro 30/06/2026</span><span class="scad-note">Domande chiuse 30/11/2025 · vincolo fine lavori ELIMINATO (DL PNRR 2026) · esercizio entro 31/12/2027</span></td>
+          </tr>
+          <tr>
+            <td class="name">Detrazione fiscale parti comuni</td>
+            <td class="desc">Per gli interventi condominiali (FV su parti comuni, accumulo) restano applicabili le detrazioni edilizie (art. 16-bis TUIR): per il 2026 <strong>36%</strong>, <strong>50% per l'abitazione principale</strong>, su spesa max 96.000 €/unità</td>
+            <td class="scadenza"><span class="scad-badge scad-breve">31/12/2026</span></td>
+            <td class="scadenza"><span class="scad-badge scad-breve">Dal 2027 aliquote ridotte</span></td>
+          </tr>
+          <tr>
+            <td class="name">Conto Termico 3.0 (parti comuni)</td>
+            <td class="desc">Per gli impianti termici condominiali (pompe di calore, solare termico) è attivabile il Conto Termico 3.0 in alternativa alle detrazioni sullo stesso intervento</td>
+            <td class="scadenza"><span class="scad-badge scad-continuo">Continuo</span></td>
+            <td class="scadenza"><span class="scad-badge scad-continuo">Fondi annuali GSE</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="notes-box">
+      <h3>▶ Iter e note operative — GAC</h3>
+      <ul>
+        <li>Per avviare un GAC condominiale serve una <strong>delibera assembleare</strong> e la nomina di un <strong>referente</strong> (tipicamente l'amministratore) come controparte del GSE — <strong>senza costituire una nuova persona giuridica</strong></li>
+        <li>L'autoconsumo collettivo valorizza l'energia condivisa tra le unità dello stesso edificio: la quota condivisa riceve la tariffa incentivante per <strong>20 anni</strong></li>
+        <li>La domanda di accesso va presentata sul portale GSE (SPC) <strong>entro 120 giorni</strong> dall'entrata in esercizio</li>
+        <li>Il <strong>contributo PNRR 40%</strong> è cumulabile (con tariffa rimodulata) per i gruppi in Comuni &lt; 50.000 abitanti: il vincolo "fine lavori entro 30/06/2026" è stato <strong>eliminato</strong> dal DL PNRR 2026; resta solo la scadenza di <strong>stipula accordi GSE entro 30/06/2026</strong> e messa in esercizio entro 31/12/2027</li>
+        <li>Le <strong>detrazioni edilizie</strong> sulle parti comuni e il <strong>Conto Termico</strong> non sono cumulabili tra loro sullo stesso intervento</li>
+      </ul>
+    </div>
+
+    <div class="source-line">
+      Fonti: D.Lgs. 199/2021 (artt. 8, 30) — D.Lgs. 210/2021 — D.M. MASE 414/2023 (CACER, config. B) — TIAD/delibera ARERA 727/2022 — D.M. 127/2025 — Regole Operative GSE — art. 16-bis TUIR.<br><br>
+      <strong>Verifica aggiornata al 22 giugno 2026, salvo esaurimento contingenti/fondi e aggiornamenti dei portali istituzionali.</strong> Gli importi tariffari sono indicativi e dipendono da potenza, zona e regole di calcolo del Decreto CACER.
+    </div>
+  </div><!-- /view-gac -->
+
+</main>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+
+  <div class="side-card">
+    <div class="side-card-head">Richiedi una consulenza</div>
+    <div class="side-card-body">
+      <p>Vuoi capire quali incentivi combinare per la tua situazione specifica? I nostri esperti analizzano il tuo percorso e ti guidano nelle pratiche GSE.</p>
+      <a class="btn-primary" href="https://rete21.it/contatti/">Contattaci ora</a>
+      <a class="btn-secondary" href="tel:04221628998">☎ 0422 162 8998</a>
+    </div>
+  </div>
+
+  <div class="side-card">
+    <div class="side-card-head">Legenda scadenze</div>
+    <div class="side-card-body">
+      <ul class="scad-legend">
+        <li><span class="scad-badge scad-urgente">Urgente</span><span class="desc-small">Scadenza ravvicinata o termine imminente — agire subito</span></li>
+        <li><span class="scad-badge scad-breve">Breve</span><span class="desc-small">Scadenza entro fine 2026 — pianificare nei prossimi mesi</span></li>
+        <li><span class="scad-badge scad-ampia">Strutturale</span><span class="desc-small">Misura pluriennale o permanente fino al 2030+</span></li>
+        <li><span class="scad-badge scad-continuo">Continuo</span><span class="desc-small">Accesso continuativo fino ad esaurimento fondi annuali</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="side-card">
+    <div class="side-card-head">I 6 percorsi Rete 21</div>
+    <div class="side-card-body">
+      <ul class="legend-list">
+        <li><span style="font-size:18px">🏠</span><span class="desc-small"><strong>Privato/Residenziale</strong> — Abitazione principale o seconda casa</span></li>
+        <li><span style="font-size:18px">🏭</span><span class="desc-small"><strong>Impresa/PMI</strong> — Artigiani, commercianti, industria</span></li>
+        <li><span style="font-size:18px">🏛️</span><span class="desc-small"><strong>Pubblica Amministrazione</strong> — Comuni, scuole, enti</span></li>
+        <li><span style="font-size:18px">⚡</span><span class="desc-small"><strong>Produttore</strong> — Grandi impianti FER, FV utility scale, RID</span></li>
+        <li><span style="font-size:18px">🌾</span><span class="desc-small"><strong>Agrivoltaico</strong> — Imprenditori agricoli, terreni</span></li>
+        <li><span style="font-size:18px">🏢</span><span class="desc-small"><strong>Condominio</strong> — Parti comuni, autoconsumo condominiale</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="side-card">
+    <div class="side-card-head">Riferimenti normativi</div>
+    <div class="side-card-body">
+      <ul class="refs-list">
+        <li><strong>D.M. MASE 07/08/2025</strong>Conto Termico 3.0 — nuovi massimali e categorie</li>
+        <li><strong>D.Lgs. 190/2024</strong>Testo Unico FER — regimi autorizzativi e incentivi</li>
+        <li><strong>Legge 4/2026</strong>Aree idonee, CER, agrivoltaico, IVA agevolata</li>
+        <li><strong>D.M. Transizione 5.0</strong>Credito d'imposta efficienza energetica</li>
+        <li><strong>D.P.R. 917/1986 (TUIR)</strong>Detrazioni Ecobonus artt. 14 e 16-bis</li>
+        <li><strong>D.M. FER 2 (2025)</strong>Incentivi grandi impianti rinnovabili</li>
+        <li><strong>FEERI Calabria — Fincalabra</strong>Fondo 45 M€ eff. energetica e FV per imprese calabresi</li>
+        <li><strong>Bando CER / Fondo Energia — ER</strong>PR FESR Emilia-Romagna 2021–2027 — sportelli a riapertura</li>
+      </ul>
+    </div>
+  </div>
+
+</aside>
+</div><!-- /main-wrap -->
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <p><strong>RETE 21</strong> — P.Iva: 05429850265<br>
+      Fondata in Confartigianato Imprese Treviso il 17-07-2023</p>
+    </div>
+    <div class="footer-links">
+      <a href="https://rete21.it/cookie-policy/">Cookie Policy</a>
+      <a href="https://rete21.it/privacy-policy/">Privacy Policy</a>
+      <a href="https://rete21.it/contatti/">Contatti</a>
+      <a href="https://www.facebook.com/rete21" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.linkedin.com/company/rete21/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2026 Rete 21 · Tutti i diritti riservati · Configuratore ci05 — 22/06/2026
+  </div>
+</footer>
+
+<script>
+  /* ---- TOGGLE VISTE ---- */
+  function setView(view) {
+    const views = ['tipologia','percorso','cer','gac'];
+    views.forEach(v => {
+      document.getElementById('view-' + v).style.display = (v === view) ? 'block' : 'none';
+      document.getElementById('btn-' + v).classList.toggle('active', v === view);
+    });
+    if (view === 'percorso') showEmptyState();
+  }
+
+  /* ---- ACCORDION ---- */
+  function toggleCategory(header) {
+    header.parentElement.classList.toggle('open');
+  }
+  function toggleAll(open) {
+    document.querySelectorAll('.category').forEach(c => {
+      if (open) c.classList.add('open');
+      else c.classList.remove('open');
+    });
+  }
+
+  /* ---- SELETTORE PERCORSO ---- */
+  let currentPercorso = null;
+
+  function selectPercorso(card) {
+    // deselect all
+    document.querySelectorAll('.percorso-card').forEach(c => c.classList.remove('selected'));
+    card.classList.add('selected');
+    currentPercorso = card.dataset.percorso;
+    filterCards(currentPercorso);
+  }
+
+  function filterCards(percorso) {
+    const cards = document.querySelectorAll('.incentivo-card[data-percorsi]');
+    let count = 0;
+    cards.forEach(c => {
+      const percorsi = c.dataset.percorsi.split(',');
+      if (percorsi.includes(percorso)) {
+        c.classList.add('show');
+        count++;
+      } else {
+        c.classList.remove('show');
+      }
+    });
+
+    const labels = {
+      privato: '🏠 Percorso: Privato / Residenziale',
+      impresa: '🏭 Percorso: Impresa / PMI',
+      pa:      '🏛️ Percorso: Pubblica Amministrazione',
+      produttore: '⚡ Percorso: Produttore / Grandi impianti',
+      agri:    '🌾 Percorso: Agrivoltaico / Agricoltura',
+      cond:    '🏢 Percorso: Condominio'
+    };
+    const title = document.getElementById('percorso-result-title');
+    title.textContent =
