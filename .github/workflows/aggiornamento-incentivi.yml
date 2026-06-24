@@ -1,0 +1,77 @@
+name: Aggiornamento Incentivi — Verifica AI Giornaliera
+
+on:
+  schedule:
+    # Ogni giorno alle 06:00 UTC (08:00 ora italiana)
+    - cron: '0 6 * * *'
+  # Permette lancio manuale dalla tab Actions su GitHub
+  workflow_dispatch:
+
+jobs:
+  verifica-incentivi:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # necessario per il commit del JSON
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Chiama API Anthropic e genera update.json
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          OGGI=$(date -u +"%Y-%m-%d")
+          TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+
+          PAYLOAD=$(cat <<EOF
+          {
+            "model": "claude-sonnet-4-6",
+            "max_tokens": 1000,
+            "messages": [
+              {
+                "role": "user",
+                "content": "Sei un esperto di normativa energetica italiana. Analizza i seguenti incentivi presenti nel configuratore interno Rete 21 (ci03, aggiornato al 30/05/2026) e segnala eventuali variazioni normative, nuove scadenze, decreti attuativi o cambiamenti significativi rispetto ai dati riportati. Rispondi in italiano, in modo sintetico e strutturato (max 400 parole). Segnala solo variazioni concrete — non confermare dati già corretti. Se non ci sono variazioni significative, scrivi solo: 'Nessuna variazione normativa rilevante rilevata al $OGGI.' Incentivi monitorati: Conto Termico 3.0 (D.M. 224/2025), Ecobonus 2026 (art. 14 e 16-bis TUIR), Iperammortamento 2026 (L. 199/2025, D.A. 04/05/2026), CER/GAC (D.Lgs. 199/2021, D.M. CACER 414/2023), FER X / FER 2 (GSE), Reddito Energetico Nazionale, SSP (sospeso dal 26/09/2025). Data di oggi: $OGGI."
+              }
+            ]
+          }
+          EOF
+          )
+
+          RESPONSE=$(curl -s -X POST https://api.anthropic.com/v1/messages \
+            -H "Content-Type: application/json" \
+            -H "x-api-key: $ANTHROPIC_API_KEY" \
+            -H "anthropic-version: 2023-06-01" \
+            -d "$PAYLOAD")
+
+          # Estrai il testo dalla risposta
+          TESTO=$(echo "$RESPONSE" | python3 -c "
+          import json, sys
+          data = json.load(sys.stdin)
+          blocks = data.get('content', [])
+          text = '\n'.join(b['text'] for b in blocks if b.get('type') == 'text').strip()
+          print(text if text else 'Errore: risposta vuota dal modello')
+          " 2>/dev/null || echo "Errore nella chiamata API")
+
+          # Scrivi update.json
+          python3 -c "
+          import json
+          data = {
+            'timestamp': '$TIMESTAMP',
+            'data': '$OGGI',
+            'fonte': 'GitHub Actions — aggiornamento giornaliero automatico',
+            'testo': '''$TESTO'''
+          }
+          with open('update.json', 'w', encoding='utf-8') as f:
+              json.dump(data, f, ensure_ascii=False, indent=2)
+          print('update.json scritto correttamente')
+          "
+
+      - name: Commit e push update.json
+        run: |
+          git config user.name  "rete21-bot"
+          git config user.email "bot@rete21.it"
+          git add update.json
+          # Committa solo se ci sono modifiche effettive
+          git diff --staged --quiet || git commit -m "⚡ Aggiornamento incentivi $(date -u +'%Y-%m-%d %H:%M UTC')"
+          git push
