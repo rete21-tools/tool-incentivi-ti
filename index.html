@@ -2311,7 +2311,11 @@
   /* =========================================================
      EVIDENZA AGGIORNAMENTO AUTOMATICO (legge update.json)
      ========================================================= */
-  const NO_NEWS_RE = /nessuna variazione|nessun aggiornamento|non ci sono variazioni/i;
+  /* "Nessuna novità" solo se il report e' la frase secca prevista dal workflow,
+     non se contiene un paragrafo intitolato "nessuna variazione per..." */
+  function senzaNovita(t) {
+    return t.length < 220 && /nessun[ao] (variazione|aggiornamento)|non ci sono variazioni/i.test(t);
+  }
 
   function esc(s) {
     return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -2380,7 +2384,7 @@
           ? (d.data || '—')
           : quando.toLocaleString('it-IT', { day: '2-digit', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
 
-        const novita = testo && !NO_NEWS_RE.test(testo);
+        const novita = testo && !senzaNovita(testo);
 
         box.hidden = false;
         box.classList.toggle('has-news', !!novita);
