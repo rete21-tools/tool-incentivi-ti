@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tool Incentivi Percorsi — Rete 21 — v14 — 15/07/2026</title>
+<title>Tool Incentivi Percorsi — Rete 21 — v15 — 16/07/2026</title>
 <meta name="description" content="Trova gli incentivi per la transizione energetica adatti alla tua situazione: scegli il tuo percorso tra privato, impresa, PA, CER, agrivoltaico, condominio. A cura di Rete 21.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -94,6 +94,16 @@
   .update-head { display: flex; align-items: center; gap: 12px; padding: 14px 18px; }
   .update-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--r21-green); flex-shrink: 0; box-shadow: 0 0 0 3px rgba(181,187,0,0.22); }
   .update-box.has-news .update-dot { background: #e8a33d; box-shadow: 0 0 0 3px rgba(232,163,61,0.22); }
+
+  /* ---- RICERCA GLOBALE (lente) ---- */
+  .search-wrap { display: flex; align-items: center; gap: 8px; margin: 0 0 18px; padding: 10px 14px; border: 1px solid #d9dde2; border-radius: 8px; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+  .search-wrap:focus-within { border-color: var(--r21-green); box-shadow: 0 0 0 3px rgba(122,158,66,0.15); }
+  .search-icon { font-size: 17px; flex: 0 0 auto; }
+  #global-search { flex: 1 1 auto; border: none; outline: none; font: inherit; font-size: 15px; color: var(--r21-dark, #222); background: transparent; min-width: 0; }
+  #search-clear { flex: 0 0 auto; border: none; background: #eef0f2; color: #555; border-radius: 50%; width: 24px; height: 24px; line-height: 24px; text-align: center; cursor: pointer; font-size: 13px; display: none; }
+  #search-clear:hover { background: #dfe3e7; }
+  #search-count { flex: 0 0 auto; font-size: 13px; color: var(--r21-gray, #777); white-space: nowrap; }
+  #search-count.no-results { color: #9b1c1c; font-weight: 600; }
   .update-titles { display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0; }
   .update-titles strong { font-size: 14px; color: var(--r21-dark-2); font-weight: 700; }
   .update-sub { font-size: 12.5px; color: #6b7280; }
@@ -568,7 +578,7 @@
       <span class="hero-badge">Per tipologia</span>
       <span class="hero-badge">Per percorso</span>
       <span class="hero-badge">Con scadenze</span>
-      <span class="hero-badge">Aggiornato 15 luglio 2026</span><span class="hero-badge">Veneto · Emilia-Romagna · Calabria</span>
+      <span class="hero-badge">Aggiornato 16 luglio 2026</span><span class="hero-badge">Veneto · Emilia-Romagna · Calabria</span>
       <span class="hero-badge hero-badge-live" id="badge-verifica" hidden></span>
     </div>
   </div>
@@ -605,6 +615,14 @@
     <button class="view-btn" id="btn-cer" onclick="setView('cer')">⚡ CER</button>
     <button class="view-btn" id="btn-gac" onclick="setView('gac')">🏢 GAC</button>
     <button class="view-btn" id="btn-regioni" onclick="setView('regioni')">🗺️ Per regione</button>
+  </div>
+
+  <!-- RICERCA GLOBALE -->
+  <div class="search-wrap" role="search">
+    <span class="search-icon" aria-hidden="true">🔍</span>
+    <input type="search" id="global-search" placeholder="Cerca incentivi, scadenze, regioni, bandi… (parole intere o parziali)" autocomplete="off" oninput="globalSearch(this.value)">
+    <button id="search-clear" type="button" aria-label="Cancella ricerca" onclick="clearSearch()">✕</button>
+    <span id="search-count"></span>
   </div>
 
   <!-- ======================================================
@@ -780,7 +798,7 @@
       <div class="category-header" onclick="toggleCategory(this)">
         <div class="category-num">4</div>
         <div class="category-title">Comunità Energetiche Rinnovabili (CER)</div>
-        <div class="category-count">3 misure</div>
+        <div class="category-count">2 misure</div>
         <div class="category-arrow">▼</div>
       </div>
       <div class="category-body">
@@ -795,14 +813,7 @@
                   <td class="beneficiari"><span class="ben-badge ben-cer">CER</span></td>
                   <td class="scadenza"><span class="scad-badge scad-continuo">Continuo</span><span class="scad-note">Portale GSE aperto dal 24/02/2025</span></td>
                   <td class="stato"><span class="stato-badge stato-attivo">Attivo</span></td>
-                <td class="compat">Cumulabile con <strong>contributo PNRR 40%</strong> (tariffa rimodulata, regole CACER). Non cumulabile con FER/RID sulla stessa energia condivisa.</td><td class="azioni">Costituire la CER e ottenere riconoscimento GSE <strong>prima dell'esercizio</strong>; domanda tariffa entro 120 gg dall'allaccio. Contingente 5 GW fino al 31/12/2027.</td></tr>
-                <tr>
-                  <td class="name">Contributo PNRR CER (M2C2)</td>
-                  <td class="desc">Contributo in conto capitale fino al <strong>40%</strong> per impianti FER ≤ 1 MW in CER, esteso ai Comuni con meno di <strong>50.000 abitanti</strong> (D.M. MASE 2025). Fondo 2,2 mld €. <strong>Sportello domande chiuso al 30/11/2025</strong></td>
-                  <td class="beneficiari"><span class="ben-badge ben-cer">CER</span><span class="ben-badge ben-pa">PA locale</span></td>
-                  <td class="scadenza"><span class="scad-badge scad-urgente">Chiuso a nuove domande</span><span class="scad-note">Termine stipula accordi GSE scaduto; possibile proroga +60 gg (fine agosto 2026). <strong>Vincolo fine lavori ELIMINATO</strong>, esercizio entro 31/12/2027</span></td>
-                  <td class="stato"><span class="stato-badge stato-mod">Solo beneficiari già ammessi</span><span class="stato-note">DL PNRR 2026: eliminato vincolo fine lavori. Termine stipula accordi GSE (30/06/2026) scaduto; possibile proroga +60 gg per difficoltà procedurali. Chi ha l'accordo firmato completa l'esercizio entro 31/12/2027</span></td>
-                <td class="compat">Cumulabile con tariffa GSE (rimodulata) e con bando MASE Sud nei limiti. No altri fondi pubblici sulla stessa spesa.</td><td class="azioni"><strong>Termine accordi 30/06/2026 scaduto</strong>. Verificare su GSE eventuale proroga +60 gg. Chi ha l'accordo firmato: completare impianto ed esercizio entro 31/12/2027.</td></tr>
+                <td class="compat">Cumulabile con <strong>contributo PNRR 40%</strong> (tariffa rimodulata, regole CACER) solo per i beneficiari con accordo GSE già firmato — misura ora in <strong>Archivio</strong>. Non cumulabile con FER/RID sulla stessa energia condivisa.</td><td class="azioni">Costituire la CER e ottenere riconoscimento GSE <strong>prima dell'esercizio</strong>; domanda tariffa entro 120 gg dall'allaccio. Contingente 5 GW fino al 31/12/2027.</td></tr>
                 <tr>
                   <td class="name">IVA agevolata 10% CER</td>
                   <td class="desc">Aliquota IVA agevolata al <strong>10%</strong> (anziché 22%) per cessioni di energia da CER a soci/aderenti. Applicazione automatica in fattura dal gestore CER</td>
@@ -1221,7 +1232,7 @@
       <div class="category-header" onclick="toggleCategory(this)">
         <div class="category-num" style="background:#9b1c1c">✕</div>
         <div class="category-title">Archivio — Incentivi scaduti / chiusi <span style="font-weight:400;font-size:13px;color:var(--r21-gray)">(non proporre al cliente)</span></div>
-        <div class="category-count">6 voci</div>
+        <div class="category-count">7 voci</div>
         <div class="category-arrow">▼</div>
       </div>
       <div class="category-body">
@@ -1231,6 +1242,15 @@
             <table class="incentivi">
               <thead><tr><th>Incentivo</th><th>Descrizione</th><th>Beneficiari</th><th>Scadenza</th><th>Stato</th><th>Compatibilit&agrave; / cumulo</th><th>Azioni &amp; tempi</th></tr></thead>
               <tbody>
+                <tr>
+                  <td class="name"><span class="arch-amb">NAZIONALE · GSE / PNRR</span><br>Contributo PNRR 40% CER e GAC (M2C2 Inv. 1.2)</td>
+                  <td class="desc"><strong>CHIUSO — termine stipula accordi GSE 30/06/2026 SCADUTO.</strong> Contributo a fondo perduto fino al 40% per impianti FER ≤ 1 MW in CER/GAC nei Comuni &lt; 50.000 abitanti (fondo 2,2 mld €). Sportello domande chiuso il 30/11/2025. DL PNRR 2026: vincolo fine lavori eliminato; possibile proroga +60 gg degli accordi per difficoltà procedurali (da verificare su GSE). Chi ha l'accordo firmato completa la messa in esercizio entro il 31/12/2027</td>
+                  <td class="beneficiari"><span class="ben-badge ben-cer">CER</span><span class="ben-badge ben-pa">PA locale</span></td>
+                  <td class="scadenza"><span class="scad-badge scad-urgente">Accordi 30/06/2026 — SCADUTO</span><span class="scad-note">Domande chiuse 30/11/2025 · esercizio entro 31/12/2027 per gli ammessi</span></td>
+                  <td class="stato"><span class="stato-badge stato-scad">Chiuso</span><span class="stato-note">Solo beneficiari con accordo GSE firmato</span></td>
+                  <td class="compat">Per gli ammessi: cumulabile con tariffa GSE (rimodulata, regole CACER). No altri fondi pubblici sulla stessa spesa.</td>
+                  <td class="azioni"><strong>Non proporre a nuovi clienti.</strong> Solo pratiche ammesse: verificare su GSE eventuale proroga +60 gg; completare impianto ed esercizio entro 31/12/2027.</td>
+                </tr>
                 <tr>
                   <td class="name"><span class="arch-amb">NAZIONALE · MIMIT</span><br>Piano Transizione 5.0 (credito d'imposta)</td>
                   <td class="desc"><strong>SCADUTO il 31/12/2025.</strong> Il credito d'imposta Transizione 5.0 non &egrave; pi&ugrave; attivabile per nuovi investimenti. Dal 2026 &egrave; sostituito dall'<strong>Iperammortamento</strong> (vedi categoria 5 &mdash; misura attiva). Restano in lavorazione solo le pratiche gi&agrave; presentate e gli investimenti 2025 non liquidati (&laquo;esodati&raquo;): il tavolo MIMIT del 01/04/2026 ha ripristinato 200 M&euro; con credito al 90% (100% per FV/rinnovabili).</td>
@@ -1288,7 +1308,7 @@
         <li><strong>Stessa spesa / stesso intervento:</strong> in generale gli incentivi non sono cumulabili oltre il costo effettivamente sostenuto. Va valutato caso per caso</li>
         <li><strong>Detrazione FV + SSP/RID:</strong> in generale <strong>compatibili</strong>, salvo casi specifici (es. Superbonus 110%) — come chiarito dal GSE</li>
         <li><strong>Conto Termico + detrazioni fiscali</strong> sullo <strong>stesso</strong> intervento: da evitare, salvo regole specifiche</li>
-        <li><strong>CER + PNRR:</strong> cumulabili, ma la tariffa incentivante viene <strong>rimodulata</strong> secondo le regole CACER. La <strong>stipula degli accordi GSE entro il 30/06/2026</strong> ammette una <strong>possibile proroga di 60 giorni</strong>; il vincolo di fine lavori è stato eliminato (esercizio entro 31/12/2027)</li>
+        <li><strong>CER + PNRR:</strong> il <strong>termine di stipula degli accordi GSE (30/06/2026) è SCADUTO</strong> — misura in <strong>Archivio</strong>, non proporla come opportunità. Per i soli beneficiari con accordo firmato (possibile proroga +60 gg, da verificare su GSE): cumulo con tariffa <strong>rimodulata</strong> secondo le regole CACER, vincolo fine lavori eliminato, esercizio entro 31/12/2027</li>
         <li><strong>Transizione 5.0 / Iperammortamento:</strong> sono <strong>due misure distinte</strong>. La T5.0 è <strong>scaduta il 31/12/2025</strong> (archivio); per gli investimenti 2026&ndash;2028 la misura attiva è l'<strong>Iperammortamento</strong>, con prenotazione sulla piattaforma GSE «NPTR5» dal 12/06/2026. Non sono cumulabili sullo stesso bene</li>
         <li>Per il <strong>Conto Termico 3.0</strong> l'accesso avviene tramite portale GSE <strong>PortalTermico</strong>: il portale era stato sospeso dal 03/03/2026 ed è <strong>riaperto dal 13/04/2026</strong> (attualmente operativo)</li>
         <li>Le detrazioni fiscali richiedono <strong>pagamento tracciabile</strong> con bonifico parlante (codice fiscale, P.IVA fornitore, causale normativa)</li>
@@ -1296,8 +1316,8 @@
     </div>
 
     <div class="source-line">
-      Fonti puntuali: D.M. 07/08/2025 (D.M. 224/2025, CT 3.0, in vigore 25/12/2025) — D.Lgs. 190/2024 (Testo Unico FER) — Legge 4/2026 — L. 207/2024 (Legge di Bilancio, aliquote detrazioni 2026) — art. 16-bis TUIR — D.M. FER X / FER X transitorio — D.D. MASE n.44 del 20/04/2026 e n.64 del 11/11/2025 (FER 2, nuova finestra 08/06/2026–07/08/2026) — delibera ARERA 78/2025 (chiusura SSP) — D.M. MASE 2025 (PNRR CER &lt; 50.000 ab.) — DL PNRR 2026 (eliminato vincolo fine lavori CER 30/06/2026) — MIMIT tavolo 01/04/2026 (ripristino fondi T5.0 esodati, nuovo Iperammortamento 2026) — D.M. MIMIT 04/05/2026 (decreto attuativo Iperammortamento 2026) — piattaforma GSE prenotazione Iperammortamento operativa dal 12/06/2026 (~10 mld €, investimenti fino al 30/09/2028) — DL 38/2026 (eliminato vincolo Made-in-EU per Iperammortamento) — D.Lgs. 5/2026 (nuovi requisiti tecnici PDC CT 3.0 dal 03/06/2026) — DGR Veneto 557/2025 (max spesa Az. 2.1.2 elevato a 1.000.000 €, procedura valutativa) — Bando MASE 262 M€ autoproduzione FV Sud (proroga al 03/07/2026, contributo fino al 63%) — Decreto FER X definitivo MASE (37,15 GW; 10 GW riservati ≤1 MW; prezzi 2026 ~80-90 €/MWh; manifestazioni d'interesse fine estate 2026) — DL PNRR 2026 (accordi CER 30/06/2026 con possibile proroga +60 gg) — CCIAA Treviso-Belluno, Bando doppia transizione digitale ed ecologica 2026 (domande 08/07/2026 → 23/10/2026, fondo perduto 50%, max 40.000 €/impresa, piattaforma Restart) — CCIAA Ferrara-Ravenna, Bando doppia transizione 2026 (dotazione 400.000 €, domande dalle ore 10:00 del 21/07/2026 alle ore 12:00 del 25/09/2026, fondo perduto 50%, max 5.000 €/impresa; ammesse autoproduzione FER e partecipazione a CER) — CCIAA dell'Emilia, Bando Efficienza Energetica 2026 «BE26» (dotazione 1.500.000 €, domande ore 11:00 del 20/07/2026 → ore 16:00 del 30/07/2026, fondo perduto 50%, max 20.000 €/impresa, spese 01/03/2026–30/04/2027, piattaforma Restart) — CCIAA Reggio Calabria, Bando efficientamento energetico e/o idrico 2026 (dotazione 45.000 €, Restart 01–03/09/2026, PEC fino al 30/09/2026) — Terna/ARERA, asta MACSE anno di consegna 2029 fissata al 24/11/2026 (fabbisogno 16 GWh) — D.M. MASE n. 68 del 10/07/2026 (aggiornamento regole operative FER X Transitorio: garanzie, divieto cessione impianti ammessi pre-esercizio, criteri resilienza/NZIA filiera FV) — CCIAA Brindisi-Taranto, Bando Doppia Transizione 2026 (400.000 €, domande 09/07 → 07/08/2026, voucher max 8.000 €, ReStart) — CCIAA Marche, Voucher Doppia Transizione 2026 (1,5 M€, domande dal 30/09/2026, 70% micro/piccole max 8.000 €, ReStart) — CCIAA della Romagna (Forlì-Cesena e Rimini), Bando Doppia Transizione 2026 (dotazione 500.000 €, precompilazione dall'08/07/2026, domande ore 10:00 del 22/07/2026 → ore 13:00 dell'08/09/2026, fondo perduto 50%, max 10.000 €/impresa, ammesse spese progettuali CER, piattaforma ReStart) — CCIAA Genova, Bando PID Doppia Transizione 2026 (voucher fino al 70%, precompilazione dall'08/07/2026, invio 14/09 → 28/09/2026, ammessi studi per creazione CER, piattaforma ReStart) — portale GSE / Agenzia delle Entrate. <b>Verifica fonti: 15/07/2026.</b><br><br>
-      <strong>Verifica aggiornata al 15 luglio 2026 (agg. bandi camerali CCIAA Romagna e Genova), salvo esaurimento fondi e aggiornamenti dei portali istituzionali (GSE, MIMIT, Agenzia delle Entrate, Regione Veneto, Regione Emilia-Romagna, Regione Calabria).</strong> I valori e le scadenze indicati hanno finalità informativa e non sostituiscono la consulenza tecnica e fiscale puntuale.
+      Fonti puntuali: D.M. 07/08/2025 (D.M. 224/2025, CT 3.0, in vigore 25/12/2025) — D.Lgs. 190/2024 (Testo Unico FER) — Legge 4/2026 — L. 207/2024 (Legge di Bilancio, aliquote detrazioni 2026) — art. 16-bis TUIR — D.M. FER X / FER X transitorio — D.D. MASE n.44 del 20/04/2026 e n.64 del 11/11/2025 (FER 2, nuova finestra 08/06/2026–07/08/2026) — delibera ARERA 78/2025 (chiusura SSP) — D.M. MASE 2025 (PNRR CER &lt; 50.000 ab.) — DL PNRR 2026 (eliminato vincolo fine lavori CER 30/06/2026) — MIMIT tavolo 01/04/2026 (ripristino fondi T5.0 esodati, nuovo Iperammortamento 2026) — D.M. MIMIT 04/05/2026 (decreto attuativo Iperammortamento 2026) — piattaforma GSE prenotazione Iperammortamento operativa dal 12/06/2026 (~10 mld €, investimenti fino al 30/09/2028) — DL 38/2026 (eliminato vincolo Made-in-EU per Iperammortamento) — D.Lgs. 5/2026 (nuovi requisiti tecnici PDC CT 3.0 dal 03/06/2026) — DGR Veneto 557/2025 (max spesa Az. 2.1.2 elevato a 1.000.000 €, procedura valutativa) — Bando MASE 262 M€ autoproduzione FV Sud (proroga al 03/07/2026, contributo fino al 63%) — Decreto FER X definitivo MASE (37,15 GW; 10 GW riservati ≤1 MW; prezzi 2026 ~80-90 €/MWh; manifestazioni d'interesse fine estate 2026) — DL PNRR 2026 (accordi CER 30/06/2026 con possibile proroga +60 gg) — CCIAA Treviso-Belluno, Bando doppia transizione digitale ed ecologica 2026 (domande 08/07/2026 → 23/10/2026, fondo perduto 50%, max 40.000 €/impresa, piattaforma Restart) — CCIAA Ferrara-Ravenna, Bando doppia transizione 2026 (dotazione 400.000 €, domande dalle ore 10:00 del 21/07/2026 alle ore 12:00 del 25/09/2026, fondo perduto 50%, max 5.000 €/impresa; ammesse autoproduzione FER e partecipazione a CER) — CCIAA dell'Emilia, Bando Efficienza Energetica 2026 «BE26» (dotazione 1.500.000 €, domande ore 11:00 del 20/07/2026 → ore 16:00 del 30/07/2026, fondo perduto 50%, max 20.000 €/impresa, spese 01/03/2026–30/04/2027, piattaforma Restart) — CCIAA Reggio Calabria, Bando efficientamento energetico e/o idrico 2026 (dotazione 45.000 €, Restart 01–03/09/2026, PEC fino al 30/09/2026) — Terna/ARERA, asta MACSE anno di consegna 2029 fissata al 24/11/2026 (fabbisogno 16 GWh) — D.M. MASE n. 68 del 10/07/2026 (aggiornamento regole operative FER X Transitorio: garanzie, divieto cessione impianti ammessi pre-esercizio, criteri resilienza/NZIA filiera FV) — CCIAA Brindisi-Taranto, Bando Doppia Transizione 2026 (400.000 €, domande 09/07 → 07/08/2026, voucher max 8.000 €, ReStart) — CCIAA Marche, Voucher Doppia Transizione 2026 (1,5 M€, domande dal 30/09/2026, 70% micro/piccole max 8.000 €, ReStart) — CCIAA della Romagna (Forlì-Cesena e Rimini), Bando Doppia Transizione 2026 (dotazione 500.000 €, precompilazione dall'08/07/2026, domande ore 10:00 del 22/07/2026 → ore 13:00 dell'08/09/2026, fondo perduto 50%, max 10.000 €/impresa, ammesse spese progettuali CER, piattaforma ReStart) — CCIAA Genova, Bando PID Doppia Transizione 2026 (voucher fino al 70%, precompilazione dall'08/07/2026, invio 14/09 → 28/09/2026, ammessi studi per creazione CER, piattaforma ReStart) — CCIAA Milano Monza Brianza Lodi, Bando Impresa Sostenibile 2026 (dotazione 1.000.000 €, domande 03/06/2026 → 03/09/2026 su ReStart, Misura A investimenti energetici 50% max 50.000 €, Misura B ISO 50001 70% max 20.000 €) — portale GSE / Agenzia delle Entrate. <b>Verifica fonti: 16/07/2026.</b><br><br>
+      <strong>Verifica aggiornata al 16 luglio 2026 (agg. bando camerale CCIAA Milano Monza Brianza Lodi «Impresa Sostenibile 2026»), salvo esaurimento fondi e aggiornamenti dei portali istituzionali (GSE, MIMIT, Agenzia delle Entrate, Regione Veneto, Regione Emilia-Romagna, Regione Calabria).</strong> I valori e le scadenze indicati hanno finalità informativa e non sostituiscono la consulenza tecnica e fiscale puntuale.
     </div>
   </div><!-- /view-tipologia -->
 
@@ -1516,25 +1536,25 @@
     <div class="incentivo-card" data-percorsi="privato,cond,impresa,pa">
       <div class="card-head">
         <div class="card-head-left">
-          <div class="card-name">Contributo PNRR CER — 40% a fondo perduto</div>
-          <div class="card-categoria">CER · PNRR M2C2 · GSE</div>
+          <div class="card-name">⚠ Contributo PNRR CER — 40% a fondo perduto <span style="color:#9b1c1c">(CHIUSO — Archivio)</span></div>
+          <div class="card-categoria">CER · PNRR M2C2 · GSE · Archivio — Incentivi scaduti / chiusi</div>
           <div class="card-badges">
             <span class="ben-badge ben-cer">CER</span>
             <span class="ben-badge ben-pa">PA locale</span>
-            <span class="stato-badge stato-scad">Domande chiuse</span>
+            <span class="stato-badge stato-scad">Chiuso — accordi scaduti</span>
           </div>
         </div>
         <div>
-          <span class="scad-badge scad-urgente">30/06/2026</span>
+          <span class="scad-badge scad-urgente">Accordi 30/06/2026 — SCADUTO</span>
         </div>
       </div>
       <div class="card-body">
-        <p>Contributo a <strong>fondo perduto fino al 40%</strong> dei costi di investimento per impianti FER ≤ 1 MW a servizio di CER, esteso ai Comuni con meno di <strong>50.000 abitanti</strong>. <strong>Lo sportello domande è chiuso dal 30 novembre 2025</strong>: la misura è ora in fase realizzativa e di rendicontazione. Si cumula con la tariffa GSE (tariffa rimodulata secondo le regole CACER).</p>
+        <p><strong>Misura NON più attivabile: il termine di stipula degli accordi GSE (30/06/2026) è scaduto.</strong> Non proporla come opportunità disponibile. Contributo a <strong>fondo perduto fino al 40%</strong> per impianti FER ≤ 1 MW a servizio di CER nei Comuni con meno di <strong>50.000 abitanti</strong>; sportello domande chiuso dal 30/11/2025. Resta valida solo per i <strong>beneficiari con accordo GSE già firmato</strong> (possibile proroga +60 gg per difficoltà procedurali, da verificare su GSE), che completano la messa in esercizio entro il 31/12/2027 con tariffa GSE rimodulata (regole CACER).</p>
         <div class="card-meta">
-          <div class="card-meta-item"><div class="card-meta-label">Contributo</div><div class="card-meta-value">Fino al 40% dei costi ammissibili</div></div>
-          <div class="card-meta-item"><div class="card-meta-label">Requisito</div><div class="card-meta-value">Comuni con meno di 50.000 abitanti</div></div>
-          <div class="card-meta-item"><div class="card-meta-label">Scadenze</div><div class="card-meta-value">Domande chiuse 30/11/2025 · <strong>stipula accordi GSE entro 30/06/2026</strong> · vincolo fine lavori ELIMINATO (DL PNRR 2026) · esercizio entro 31/12/2027</div></div>
-          <div class="card-meta-item"><div class="card-meta-label">Gestione</div><div class="card-meta-value">Portale GSE "SPC" (facility PNRR)</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Stato</div><div class="card-meta-value"><strong>CHIUSO</strong> — vedi Archivio incentivi scaduti / chiusi</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Contributo</div><div class="card-meta-value">Fino al 40% (solo pratiche già ammesse)</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Scadenze</div><div class="card-meta-value">Domande chiuse 30/11/2025 · <strong>accordi GSE 30/06/2026 SCADUTI</strong> · vincolo fine lavori ELIMINATO (DL PNRR 2026) · esercizio entro 31/12/2027</div></div>
+          <div class="card-meta-item"><div class="card-meta-label">Gestione</div><div class="card-meta-value">Portale GSE "SPC" (facility PNRR) — solo rendicontazione</div></div>
         </div>
       </div>
     </div>
@@ -1873,8 +1893,8 @@
     </div>
 
     <div class="source-line">
-      Fonti puntuali: D.M. 07/08/2025 (D.M. 224/2025, CT 3.0) — D.Lgs. 190/2024 — Legge 4/2026 — L. 207/2024 (aliquote detrazioni 2026) — art. 16-bis TUIR — FER X / FER 2 — delibera ARERA 78/2025 (SSP) — D.M. MASE 2025 (PNRR CER &lt; 50.000 ab.) — Transizione 5.0 (MIMIT) — L.R. Veneto 16/2022 e 17/2022 — PR Veneto FESR 2021–2027 — DGR Veneto 557/2025 (Az. 2.1.2 max 1.000.000 €, procedura valutativa) — Bando CER ER 2026 (SFINGE 2020) — Fondo Energia ER 2026 — FEERI Calabria (Fincalabra) — Bando MASE 262 M€ regioni meno sviluppate (proroga 03/07/2026, contributo 63%) — CCIAA Treviso-Belluno, Bando doppia transizione 2026 (08/07 → 23/10/2026) — CCIAA Ferrara-Ravenna, Bando doppia transizione 2026 (21/07 → 25/09/2026) — CCIAA dell'Emilia, Bando Efficienza Energetica 2026 BE26 (20/07 → 30/07/2026) — CCIAA Reggio Calabria, Bando efficientamento energetico e/o idrico 2026 (PEC fino al 30/09/2026) — CCIAA Venezia Rovigo, Bando Voucher Doppia Transizione 2026 cod. 2601 (click day 27/07/2026, 476.000 €) — D.M. FER X definitivo firmato MASE 18/06/2026 (37,15 GW; regole operative GSE attese entro 60 gg) — D.M. MASE n. 68 del 10/07/2026 (regole operative FER X Transitorio aggiornate) — CCIAA Brindisi-Taranto, Bando Doppia Transizione 2026 (09/07 → 07/08/2026) — CCIAA Marche, Voucher Doppia Transizione 2026 (domande dal 30/09/2026) — CCIAA Romagna, Bando Doppia Transizione 2026 (22/07 → 08/09/2026) — CCIAA Genova, Bando PID Doppia Transizione 2026 (14/09 → 28/09/2026) — GSE / Agenzia delle Entrate / Regioni Veneto, Emilia-Romagna, Calabria. <b>Verifica fonti: 15/07/2026.</b><br><br>
-      <strong>Verifica aggiornata al 15 luglio 2026 (agg. bandi camerali CCIAA Romagna e Genova), salvo esaurimento fondi e aggiornamenti dei portali istituzionali (GSE, MIMIT, Regione Veneto, Regione Emilia-Romagna, Regione Calabria).</strong> Le informazioni hanno finalità orientativa e non sostituiscono la consulenza tecnica e fiscale.
+      Fonti puntuali: D.M. 07/08/2025 (D.M. 224/2025, CT 3.0) — D.Lgs. 190/2024 — Legge 4/2026 — L. 207/2024 (aliquote detrazioni 2026) — art. 16-bis TUIR — FER X / FER 2 — delibera ARERA 78/2025 (SSP) — D.M. MASE 2025 (PNRR CER &lt; 50.000 ab.) — Transizione 5.0 (MIMIT) — L.R. Veneto 16/2022 e 17/2022 — PR Veneto FESR 2021–2027 — DGR Veneto 557/2025 (Az. 2.1.2 max 1.000.000 €, procedura valutativa) — Bando CER ER 2026 (SFINGE 2020) — Fondo Energia ER 2026 — FEERI Calabria (Fincalabra) — Bando MASE 262 M€ regioni meno sviluppate (proroga 03/07/2026, contributo 63%) — CCIAA Treviso-Belluno, Bando doppia transizione 2026 (08/07 → 23/10/2026) — CCIAA Ferrara-Ravenna, Bando doppia transizione 2026 (21/07 → 25/09/2026) — CCIAA dell'Emilia, Bando Efficienza Energetica 2026 BE26 (20/07 → 30/07/2026) — CCIAA Reggio Calabria, Bando efficientamento energetico e/o idrico 2026 (PEC fino al 30/09/2026) — CCIAA Venezia Rovigo, Bando Voucher Doppia Transizione 2026 cod. 2601 (click day 27/07/2026, 476.000 €) — D.M. FER X definitivo firmato MASE 18/06/2026 (37,15 GW; regole operative GSE attese entro 60 gg) — D.M. MASE n. 68 del 10/07/2026 (regole operative FER X Transitorio aggiornate) — CCIAA Brindisi-Taranto, Bando Doppia Transizione 2026 (09/07 → 07/08/2026) — CCIAA Marche, Voucher Doppia Transizione 2026 (domande dal 30/09/2026) — CCIAA Romagna, Bando Doppia Transizione 2026 (22/07 → 08/09/2026) — CCIAA Genova, Bando PID Doppia Transizione 2026 (14/09 → 28/09/2026) — CCIAA Milano Monza Brianza Lodi, Bando Impresa Sostenibile 2026 (03/06 → 03/09/2026, ReStart) — GSE / Agenzia delle Entrate / Regioni Veneto, Emilia-Romagna, Calabria. <b>Verifica fonti: 16/07/2026.</b><br><br>
+      <strong>Verifica aggiornata al 16 luglio 2026 (agg. bando camerale CCIAA Milano Monza Brianza Lodi «Impresa Sostenibile 2026»), salvo esaurimento fondi e aggiornamenti dei portali istituzionali (GSE, MIMIT, Regione Veneto, Regione Emilia-Romagna, Regione Calabria).</strong> Le informazioni hanno finalità orientativa e non sostituiscono la consulenza tecnica e fiscale.
     </div>
   </div><!-- /view-percorso -->
 
@@ -1890,7 +1910,7 @@
         <span class="dh-badge">Art. 31 D.Lgs. 199/2021</span>
         <span class="dh-badge">Decreto CACER 414/2023</span>
         <span class="dh-badge">Tariffa 20 anni</span>
-        <span class="dh-badge">PNRR 40%</span>
+        <span class="dh-badge" style="background:#9b1c1c">PNRR 40% — CHIUSO (accordi 30/06/2026 scaduti)</span>
       </div>
     </div>
 
@@ -1934,12 +1954,6 @@
             <td class="scadenza"><span class="scad-badge scad-continuo">Per la durata della tariffa</span></td>
           </tr>
           <tr>
-            <td class="name">Contributo PNRR 40% (conto capitale)</td>
-            <td class="desc">Contributo a <strong>fondo perduto fino al 40%</strong> dei costi ammissibili per impianti FER ≤ 1 MW in CER, nei Comuni con meno di <strong>50.000 abitanti</strong> (Missione 2 Comp. 2 Inv. 1.2). Fondo 2,2 mld €. Cumulabile con la tariffa, che viene rimodulata (regole CACER)</td>
-            <td class="scadenza"><span class="scad-badge scad-urgente">Fino al 40%</span></td>
-            <td class="scadenza"><span class="scad-badge scad-urgente">Accordi entro 30/06/2026</span><span class="scad-note">Domande chiuse 30/11/2025 · vincolo fine lavori ELIMINATO (DL PNRR 2026) · esercizio entro 31/12/2027</span></td>
-          </tr>
-          <tr>
             <td class="name">IVA agevolata 10%</td>
             <td class="desc">Aliquota IVA agevolata su cessioni di energia rinnovabile da CER a soci/aderenti, ove applicabile (introdotta dalla Legge 4/2026). Verificare l'applicazione in fattura dal gestore CER</td>
             <td class="scadenza"><span class="scad-badge scad-ampia">Strutturale</span></td>
@@ -1949,11 +1963,26 @@
       </table>
     </div>
 
+    <div class="archivio-alert" style="margin-top:18px">⚠ <strong>Archivio — Incentivi scaduti / chiusi (non proporre al cliente)</strong></div>
+    <div class="table-wrap">
+      <table class="incentivi">
+        <thead><tr><th>Beneficio</th><th>Descrizione</th><th>Importo / durata</th><th>Scadenza</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="name"><span class="arch-amb">CHIUSO</span><br>Contributo PNRR 40% (conto capitale)</td>
+            <td class="desc"><strong>Termine stipula accordi GSE 30/06/2026 SCADUTO — misura non più attivabile.</strong> Contributo a <strong>fondo perduto fino al 40%</strong> per impianti FER ≤ 1 MW in CER nei Comuni &lt; <strong>50.000 abitanti</strong> (M2C2 Inv. 1.2, fondo 2,2 mld €). Resta valida solo per i beneficiari con accordo firmato (possibile proroga +60 gg, verificare su GSE): tariffa rimodulata (regole CACER) ed esercizio entro 31/12/2027</td>
+            <td class="scadenza"><span class="scad-badge scad-urgente">Fino al 40% — solo ammessi</span></td>
+            <td class="scadenza"><span class="scad-badge scad-urgente">Accordi 30/06/2026 — SCADUTO</span><span class="scad-note">Domande chiuse 30/11/2025 · vincolo fine lavori ELIMINATO (DL PNRR 2026) · esercizio entro 31/12/2027</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
     <div class="notes-box">
       <h3>▶ Iter e note operative — CER</h3>
       <ul>
         <li>La CER deve essere <strong>costituita e riconosciuta dal GSE prima</strong> della messa in esercizio dell'impianto che genera energia condivisa</li>
-        <li>La <strong>tariffa incentivante</strong> e il <strong>contributo PNRR</strong> sono cumulabili, ma la tariffa è rimodulata in funzione del contributo ricevuto (regole CACER). <strong>DL PNRR 2026:</strong> il vincolo "fine lavori entro 30/06/2026" è stato eliminato; resta solo la scadenza di stipula accordi GSE entro 30/06/2026, con messa in esercizio entro 31/12/2027</li>
+        <li><strong>Contributo PNRR: CHIUSO</strong> — il termine di stipula accordi GSE (30/06/2026) è <strong>scaduto</strong> (vedi Archivio). Solo per i beneficiari con accordo firmato la tariffa resta cumulabile ma rimodulata (regole CACER); vincolo fine lavori eliminato dal DL PNRR 2026, esercizio entro 31/12/2027</li>
         <li>La domanda di accesso alla tariffa va presentata <strong>entro 120 giorni</strong> dall'entrata in esercizio, sul portale GSE (SPC)</li>
         <li>Il contingente nazionale della tariffa è di <strong>5 GW</strong>, valido fino al 31/12/2027 (o fino a esaurimento)</li>
         <li>Il <strong>Referente</strong> della CER incassa dal GSE e ripartisce ai membri (mandato senza rappresentanza); può trattenere una quota per i costi di gestione</li>
@@ -1963,7 +1992,7 @@
 
     <div class="source-line">
       Fonti: D.Lgs. 199/2021 (artt. 8, 31) — D.Lgs. 210/2021 — D.M. MASE 414/2023 (CACER) — TIAD/delibera ARERA 727/2022 — D.M. 127/2025 — Regole Operative GSE — L.R. Veneto 16/2022.<br><br>
-      <strong>Verifica aggiornata al 15 luglio 2026 (agg. bandi camerali CCIAA Romagna e Genova), salvo esaurimento contingenti/fondi e aggiornamenti dei portali GSE e Regione Veneto.</strong> Gli importi tariffari sono indicativi e dipendono da potenza, zona e modalità di calcolo dell'Allegato 1 del Decreto CACER.
+      <strong>Verifica aggiornata al 16 luglio 2026 (agg. bando camerale CCIAA Milano Monza Brianza Lodi «Impresa Sostenibile 2026»), salvo esaurimento contingenti/fondi e aggiornamenti dei portali GSE e Regione Veneto.</strong> Gli importi tariffari sono indicativi e dipendono da potenza, zona e modalità di calcolo dell'Allegato 1 del Decreto CACER.
     </div>
   </div><!-- /view-cer -->
 
@@ -2016,12 +2045,6 @@
             <td class="scadenza"><span class="scad-badge scad-breve">Contingente 5 GW fino al 31/12/2027</span><span class="scad-note">Domanda entro 120 gg dall'entrata in esercizio</span></td>
           </tr>
           <tr>
-            <td class="name">Contributo PNRR 40% (conto capitale)</td>
-            <td class="desc">Il gruppo di autoconsumatori (configurazione B) è ammesso al contributo a <strong>fondo perduto fino al 40%</strong> per impianti FER ≤ 1 MW nei Comuni con meno di <strong>50.000 abitanti</strong>. Fondi residui in via di esaurimento</td>
-            <td class="scadenza"><span class="scad-badge scad-urgente">Fino al 40%</span></td>
-            <td class="scadenza"><span class="scad-badge scad-urgente">Accordi entro 30/06/2026</span><span class="scad-note">Domande chiuse 30/11/2025 · vincolo fine lavori ELIMINATO (DL PNRR 2026) · esercizio entro 31/12/2027</span></td>
-          </tr>
-          <tr>
             <td class="name">Detrazione fiscale parti comuni</td>
             <td class="desc">Per gli interventi condominiali (FV su parti comuni, accumulo) restano applicabili le detrazioni edilizie (art. 16-bis TUIR): per il 2026 <strong>36%</strong>, <strong>50% per l'abitazione principale</strong>, su spesa max 96.000 €/unità</td>
             <td class="scadenza"><span class="scad-badge scad-breve">31/12/2026</span></td>
@@ -2037,20 +2060,35 @@
       </table>
     </div>
 
+    <div class="archivio-alert" style="margin-top:18px">⚠ <strong>Archivio — Incentivi scaduti / chiusi (non proporre al cliente)</strong></div>
+    <div class="table-wrap">
+      <table class="incentivi">
+        <thead><tr><th>Beneficio</th><th>Descrizione</th><th>Importo / durata</th><th>Scadenza</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="name"><span class="arch-amb">CHIUSO</span><br>Contributo PNRR 40% (conto capitale)</td>
+            <td class="desc"><strong>Termine stipula accordi GSE 30/06/2026 SCADUTO — misura non più attivabile.</strong> Il gruppo di autoconsumatori (configurazione B) era ammesso al contributo a <strong>fondo perduto fino al 40%</strong> per impianti FER ≤ 1 MW nei Comuni &lt; <strong>50.000 abitanti</strong>. Resta valida solo per i beneficiari con accordo firmato (possibile proroga +60 gg, verificare su GSE): esercizio entro 31/12/2027</td>
+            <td class="scadenza"><span class="scad-badge scad-urgente">Fino al 40% — solo ammessi</span></td>
+            <td class="scadenza"><span class="scad-badge scad-urgente">Accordi 30/06/2026 — SCADUTO</span><span class="scad-note">Domande chiuse 30/11/2025 · vincolo fine lavori ELIMINATO (DL PNRR 2026) · esercizio entro 31/12/2027</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
     <div class="notes-box">
       <h3>▶ Iter e note operative — GAC</h3>
       <ul>
         <li>Per avviare un GAC condominiale serve una <strong>delibera assembleare</strong> e la nomina di un <strong>referente</strong> (tipicamente l'amministratore) come controparte del GSE — <strong>senza costituire una nuova persona giuridica</strong></li>
         <li>L'autoconsumo collettivo valorizza l'energia condivisa tra le unità dello stesso edificio: la quota condivisa riceve la tariffa incentivante per <strong>20 anni</strong></li>
         <li>La domanda di accesso va presentata sul portale GSE (SPC) <strong>entro 120 giorni</strong> dall'entrata in esercizio</li>
-        <li>Il <strong>contributo PNRR 40%</strong> è cumulabile (con tariffa rimodulata) per i gruppi in Comuni &lt; 50.000 abitanti: il vincolo "fine lavori entro 30/06/2026" è stato <strong>eliminato</strong> dal DL PNRR 2026; resta solo la scadenza di <strong>stipula accordi GSE entro 30/06/2026</strong> e messa in esercizio entro 31/12/2027</li>
+        <li>Il <strong>contributo PNRR 40% è CHIUSO</strong>: termine di stipula accordi GSE (30/06/2026) <strong>scaduto</strong> (vedi Archivio). Solo per i gruppi già ammessi con accordo firmato: cumulo con tariffa rimodulata, vincolo fine lavori eliminato (DL PNRR 2026), esercizio entro 31/12/2027</li>
         <li>Le <strong>detrazioni edilizie</strong> sulle parti comuni e il <strong>Conto Termico</strong> non sono cumulabili tra loro sullo stesso intervento</li>
       </ul>
     </div>
 
     <div class="source-line">
       Fonti: D.Lgs. 199/2021 (artt. 8, 30) — D.Lgs. 210/2021 — D.M. MASE 414/2023 (CACER, config. B) — TIAD/delibera ARERA 727/2022 — D.M. 127/2025 — Regole Operative GSE — art. 16-bis TUIR.<br><br>
-      <strong>Verifica aggiornata al 15 luglio 2026 (agg. bandi camerali CCIAA Romagna e Genova), salvo esaurimento contingenti/fondi e aggiornamenti dei portali istituzionali.</strong> Gli importi tariffari sono indicativi e dipendono da potenza, zona e regole di calcolo del Decreto CACER.
+      <strong>Verifica aggiornata al 16 luglio 2026 (agg. bando camerale CCIAA Milano Monza Brianza Lodi «Impresa Sostenibile 2026»), salvo esaurimento contingenti/fondi e aggiornamenti dei portali istituzionali.</strong> Gli importi tariffari sono indicativi e dipendono da potenza, zona e regole di calcolo del Decreto CACER.
     </div>
   </div><!-- /view-gac -->
 
@@ -2158,7 +2196,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    © 2026 Rete 21 · Tutti i diritti riservati · Tool Incentivi Percorsi v14 — 15/07/2026
+    © 2026 Rete 21 · Tutti i diritti riservati · Tool Incentivi Percorsi v15 — 16/07/2026
   </div>
 </footer>
 
@@ -2188,7 +2226,8 @@
     liguria:{n:"Liguria",portale:"FILSE — filse.it · regione.liguria.it · ge.camcom.gov.it",misure:[
       {t:"CCIAA Genova — Bando PID Doppia Transizione 2026",d:"Bando camerale MPMI: voucher a fondo perduto fino al <b>70%</b> per tecnologie digitali/green (incl. soluzioni intelligenti per la transizione energetica), <b>studi per la creazione di CER</b>, Energy Manager e formazione qualificata (+250 € rating legalità / parità di genere).",b:"MPMI GE",s:"Apre 14/09/2026 → 28/09/2026",cls:"scad-att",st:"Nuovo — in apertura",stc:"stato-nuovo",a:"Precompilazione su <b>ReStart</b> già attiva dall'08/07/2026; invio (ordine cronologico) dalle 14:00 del <b>14/09/2026</b> alle 21:00 del 28/09/2026. Portale: <b>ge.camcom.gov.it</b>."}
     ]},
-    lombardia:{n:"Lombardia",portale:"bandi.regione.lombardia.it",misure:[
+    lombardia:{n:"Lombardia",portale:"bandi.regione.lombardia.it · milomb.camcom.it",misure:[
+      {t:"CCIAA Milano Monza Brianza Lodi — Bando Impresa Sostenibile 2026",d:"Bando camerale da <b>1 M€</b> per la transizione energetica delle MPMI. <b>Misura A</b>: fondo perduto <b>50%</b> (max 50.000 €) per impianti FV e FER, sistemi di accumulo, pompe di calore, relamping LED, macchinari efficienti, domotica e monitoraggio consumi. <b>Misura B</b>: fondo perduto <b>70%</b> (max 20.000 €) per certificazione energetica <b>ISO 50001</b>. Richiesta compilazione ESGpass; esclusi i beneficiari dell\u2019edizione 2025.",b:"MPMI MI-MB-LO",s:"Chiude 03/09/2026",cls:"scad-breve",st:"Attivo",stc:"stato-attivo",a:"Domande su piattaforma <b>ReStart</b> (restart.infocamere.it) dal 03/06/2026 alle ore 12:00 del <b>03/09/2026</b>, salvo esaurimento anticipato fondi. Portale: <b>milomb.camcom.it</b>."},
       {t:"Bando ReLoad CER + Manifestazione d'interesse CER (Fase 2)",d:"Due bandi regionali per un valore complessivo di oltre <b>40 M€</b>. Il bando <b>ReLoad CER</b> ha dotazione <b>20 M€</b> (15 M€ 2025 + 5 M€ 2026) per impianti FER al servizio delle comunità energetiche.",b:"CER · Enti locali",s:"Da verificare",cls:"scad-att",st:"Da verificare",stc:"stato-att",a:"Verificare finestre e dotazione residua su <b>bandi.regione.lombardia.it</b>."},
       {t:"Hydrogen Valleys Lombardia — PNRR M2C2 3.1",d:"Contributi per impianti di produzione di <b>idrogeno rinnovabile in aree industriali dismesse</b>.",b:"Imprese",s:"Da verificare",cls:"scad-att",st:"Da verificare",stc:"stato-att",a:"Verificare riaperture dopo la riassegnazione fondi MASE 2026."}
     ]},
@@ -2273,6 +2312,78 @@
       if (open) c.classList.add('open');
       else c.classList.remove('open');
     });
+  }
+
+  /* ---- RICERCA GLOBALE (lente) — parole intere e/o parziali, senza accenti ---- */
+  function normTesto(s) {
+    return (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  }
+
+  function globalSearch(q) {
+    const terms = normTesto(q).split(/\s+/).filter(Boolean);
+    const active = terms.length > 0;
+    const clearBtn = document.getElementById('search-clear');
+    const countEl = document.getElementById('search-count');
+    if (clearBtn) clearBtn.style.display = active ? 'block' : 'none';
+    let count = 0;
+    const matches = function (el) {
+      const t = normTesto(el.textContent);
+      return terms.every(function (w) { return t.indexOf(w) !== -1; });
+    };
+
+    // Righe di tutte le tabelle incentivi (viste tipologia, CER, GAC, regioni, archivio)
+    document.querySelectorAll('table.incentivi tbody tr').forEach(function (tr) {
+      const ok = !active || matches(tr);
+      tr.style.display = ok ? '' : 'none';
+      if (active && ok) count++;
+    });
+
+    // Card della vista "Per il mio percorso"
+    document.querySelectorAll('.incentivo-card').forEach(function (c) {
+      if (active) {
+        const ok = matches(c);
+        c.classList.toggle('show', ok);
+        if (ok) count++;
+      }
+    });
+    if (!active) {
+      if (typeof currentPercorso !== 'undefined' && currentPercorso) filterCards(currentPercorso);
+      else if (typeof showEmptyState === 'function') showEmptyState();
+    }
+
+    // Categorie (vista tipologia): nascondi quelle senza risultati, apri quelle con risultati
+    document.querySelectorAll('.category').forEach(function (cat) {
+      if (!active) { cat.style.display = ''; return; }
+      const titleEl = cat.querySelector('.category-title');
+      const headerMatch = titleEl ? matches(titleEl) : false;
+      if (headerMatch) {
+        cat.querySelectorAll('tbody tr').forEach(function (tr) { tr.style.display = ''; });
+      }
+      const hasVisible = Array.prototype.some.call(cat.querySelectorAll('tbody tr'), function (tr) { return tr.style.display !== 'none'; });
+      if (hasVisible || headerMatch) {
+        cat.style.display = '';
+        cat.classList.add('open');
+      } else {
+        cat.style.display = 'none';
+      }
+    });
+
+    if (countEl) {
+      if (active) {
+        countEl.textContent = count + (count === 1 ? ' risultato' : ' risultati');
+        countEl.classList.toggle('no-results', count === 0);
+      } else {
+        countEl.textContent = '';
+        countEl.classList.remove('no-results');
+      }
+    }
+  }
+
+  function clearSearch() {
+    const inp = document.getElementById('global-search');
+    if (inp) inp.value = '';
+    globalSearch('');
+    if (inp) inp.focus();
   }
 
   /* ---- SELETTORE PERCORSO ---- */
