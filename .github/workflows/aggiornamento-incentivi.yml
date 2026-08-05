@@ -31,33 +31,63 @@ jobs:
 
           prompt = f"""Sei un esperto di normativa energetica italiana. Oggi e' il {oggi}.
 
-          Usa la ricerca web per verificare se, negli ultimi 7 giorni, ci sono state variazioni normative concrete sugli incentivi monitorati dal configuratore Rete 21 (Tool Incentivi Percorsi v11, dati aggiornati al 12/07/2026).
+          Hai DUE compiti distinti. Svolgili entrambi con la ricerca web.
+
+          ============================================================
+          COMPITO 1 — VARIAZIONI SU INCENTIVI GIA' MONITORATI
+          ============================================================
+          Verifica se, negli ultimi 7 giorni, ci sono state variazioni normative concrete sugli incentivi monitorati dal configuratore Rete 21 (Tool Incentivi Percorsi, dati aggiornati al 05/08/2026).
 
           Incentivi monitorati:
           - Conto Termico 3.0 (D.M. 224/2025)
           - Bonus Casa / Ecobonus (art. 14 e 16-bis TUIR)
           - Iperammortamento (L. 199/2025)
-          - CER e Gruppi di Autoconsumo (D.Lgs. 199/2021, D.M. CACER)
+          - CER e Gruppi di Autoconsumo — GAC (D.Lgs. 199/2021, D.M. CACER 414/2023)
           - FER X / FER 2 (GSE)
           - Reddito Energetico Nazionale
           - Scambio sul Posto
-          - Bandi regionali Veneto, Emilia-Romagna, Calabria
+          - Bandi camerali/regionali gia' catalogati: CCIAA Padova (pd.camcom.it), CCIAA Bologna (bo.camcom.gov.it), CCIAA Ferrara-Ravenna (fera.camcom.it), CCIAA Romagna (romagna.camcom.it), CCIAA dell'Emilia — Parma/Piacenza/Reggio Emilia (emilia.camcom.it), CCIAA Catanzaro-Crotone-Vibo Valentia (czkrvv.camcom.it)
 
-          Fonti da consultare: gse.it, mase.gov.it, gazzettaufficiale.it, normattiva.it, enea.it, arera.it, portali bandi delle tre Regioni.
+          Fonti da consultare: gse.it, mase.gov.it, gazzettaufficiale.it, normattiva.it, enea.it, arera.it, e i portali camerali sopra elencati.
 
-          REGOLE FERREE:
+          REGOLE COMPITO 1:
           1. Riporta SOLO variazioni che hai effettivamente trovato e verificato con la ricerca web. Cita sempre la fonte con il link.
           2. Non dedurre, non presumere, non inventare decreti, numeri o scadenze. Se un dato non lo trovi, non scriverlo.
           3. Non confermare dati gia' corretti: segnala solo cio' che cambia.
-          4. Se non trovi variazioni concrete, rispondi ESATTAMENTE con questa sola frase: "Nessuna variazione normativa rilevante rilevata al {oggi}."
+          4. Se non trovi variazioni concrete, scrivi in questa sezione ESATTAMENTE questa frase: "Nessuna variazione normativa rilevante rilevata al {oggi}."
 
-          Formato: italiano, markdown, max 400 parole. Per ogni variazione indica: incentivo interessato, cosa cambia, decorrenza, fonte (link)."""
+          ============================================================
+          COMPITO 2 — RICERCA DI NUOVI INCENTIVI NON ANCORA CATALOGATI
+          ============================================================
+          Rete 21 ha aziende socie in Veneto, Emilia-Romagna e Calabria. Cerca specificamente, per queste tre regioni, bandi o incentivi NUOVI (aperti o in apertura nei prossimi 30 giorni) su fotovoltaico, accumulo, CER/GAC, efficientamento energetico, pompe di calore, che NON siano gia' nell'elenco del Compito 1.
+
+          Cerca su:
+          - Veneto: portale bandi della Regione Veneto, e Camere di Commercio venete diverse da Padova (es. Verona, Venezia Rovigo Delta Lagunare, Treviso-Belluno, Vicenza) se emergono nuovi bandi
+          - Emilia-Romagna: portale bandi della Regione Emilia-Romagna, e Camere di Commercio diverse da quelle gia' catalogate
+          - Calabria: portale della Regione Calabria, e Camere di Commercio calabresi diverse da CZ-KR-VV (es. Cosenza)
+          - GSE (bandi FER X/FER 2 con finestre di apertura imminenti non ancora note al configuratore)
+
+          REGOLE COMPITO 2:
+          1. Riporta SOLO bandi/incentivi che hai trovato e verificato con la ricerca web, con fonte e link.
+          2. Per ciascuno indica: nome del bando/incentivo, ente erogatore, beneficiari, importo/percentuale, finestra di apertura o scadenza.
+          3. Se NON trovi nessun nuovo incentivo non catalogato, ometti del tutto questa sezione (non scrivere nulla al riguardo, non serve confermare l'assenza).
+
+          ============================================================
+          FORMATO OUTPUT
+          ============================================================
+          Italiano, markdown, max 600 parole totali. Struttura la risposta in due sezioni con questi titoli esatti (ometti la seconda se il Compito 2 non ha trovato nulla):
+
+          ### Variazioni normative
+          [risultato Compito 1]
+
+          ### 🆕 Nuovi incentivi non catalogati
+          [risultato Compito 2, solo se presente]"""
 
           payload = {
               "model": "claude-sonnet-4-6",
-              "max_tokens": 2000,
+              "max_tokens": 3000,
               "tools": [
-                  {"type": "web_search_20250305", "name": "web_search", "max_uses": 8}
+                  {"type": "web_search_20250305", "name": "web_search", "max_uses": 14}
               ],
               "messages": [{"role": "user", "content": prompt}],
           }
