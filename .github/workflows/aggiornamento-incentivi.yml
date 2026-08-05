@@ -59,17 +59,19 @@ jobs:
           ============================================================
           COMPITO 2 — RICERCA DI NUOVI INCENTIVI NON ANCORA CATALOGATI
           ============================================================
-          Rete 21 ha aziende socie in Veneto, Emilia-Romagna e Calabria. Cerca specificamente, per queste tre regioni, bandi o incentivi NUOVI (aperti o in apertura nei prossimi 30 giorni) su fotovoltaico, accumulo, CER/GAC, efficientamento energetico, pompe di calore, che NON siano gia' nell'elenco del Compito 1.
+          IMPORTANTE: Rete 21 ha aziende socie storiche in Veneto, Emilia-Romagna e Calabria, ma si sta aprendo a livello NAZIONALE. La ricerca di questo compito NON deve essere limitata a quelle tre regioni: cerca su TUTTO IL TERRITORIO ITALIANO, senza restrizioni geografiche, bandi o incentivi NUOVI (aperti o in apertura nei prossimi 30 giorni) su fotovoltaico, accumulo, CER/GAC, efficientamento energetico, pompe di calore, che NON siano gia' nell'elenco del Compito 1.
 
           Cerca su:
-          - Veneto: portale bandi della Regione Veneto, e Camere di Commercio venete diverse da Padova (es. Verona, Venezia Rovigo Delta Lagunare, Treviso-Belluno, Vicenza) se emergono nuovi bandi
-          - Emilia-Romagna: portale bandi della Regione Emilia-Romagna, e Camere di Commercio diverse da quelle gia' catalogate
-          - Calabria: portale della Regione Calabria, e Camere di Commercio calabresi diverse da CZ-KR-VV (es. Cosenza)
+          - Portali bandi di qualsiasi Regione italiana (non solo Veneto, Emilia-Romagna, Calabria: includi anche le altre 17 regioni/province autonome se emergono bandi rilevanti)
+          - Camere di Commercio di qualsiasi provincia italiana, non solo quelle gia' catalogate nel Compito 1
           - GSE (bandi FER X/FER 2 con finestre di apertura imminenti non ancora note al configuratore)
+          - Fondi/misure nazionali MIMIT, MASE non ancora catalogati
+
+          Se il tempo/budget di ricerca e' limitato, dai una leggera priorita' a Veneto, Emilia-Romagna e Calabria (le regioni socie), ma segnala SEMPRE qualunque bando rilevante trovato in qualsiasi altra regione italiana: non scartarlo per motivi geografici.
 
           REGOLE COMPITO 2:
           1. Riporta SOLO bandi/incentivi che hai trovato e verificato con la ricerca web, con fonte e link.
-          2. Per ciascuno indica: nome del bando/incentivo, ente erogatore, beneficiari, importo/percentuale, finestra di apertura o scadenza.
+          2. Per ciascuno indica: nome del bando/incentivo, ente erogatore, regione/provincia, beneficiari, importo/percentuale, finestra di apertura o scadenza.
           3. Se NON trovi nessun nuovo incentivo non catalogato, ometti del tutto questa sezione (non scrivere nulla al riguardo, non serve confermare l'assenza).
 
           ============================================================
@@ -85,9 +87,9 @@ jobs:
 
           payload = {
               "model": "claude-sonnet-4-6",
-              "max_tokens": 3000,
+              "max_tokens": 3500,
               "tools": [
-                  {"type": "web_search_20250305", "name": "web_search", "max_uses": 14}
+                  {"type": "web_search_20250305", "name": "web_search", "max_uses": 18}
               ],
               "messages": [{"role": "user", "content": prompt}],
           }
