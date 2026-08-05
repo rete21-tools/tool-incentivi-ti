@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tool Incentivi Percorsi — Rete 21 — v31 — 05/08/2026</title>
+<title>Tool Incentivi Percorsi — Rete 21 — v32 — 05/08/2026</title>
 <meta name="description" content="Trova gli incentivi per la transizione energetica adatti alla tua situazione: scegli il tuo percorso tra privato, impresa, PA, CER, agrivoltaico, condominio. A cura di Rete 21.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -2140,78 +2140,66 @@
       </div>
     </div>
 
-    <div class="norm-grid">
-      <div class="norm-block accent">
-        <h4>GAC vs CER — la differenza chiave</h4>
-        <ul>
-          <li>Il GAC riunisce autoconsumatori <strong>nello stesso edificio/condominio</strong> (dietro lo stesso punto di connessione/edificio); la CER opera su perimetro più ampio sotto la <strong>stessa cabina primaria</strong></li>
-          <li>Il GAC <strong>non richiede una nuova persona giuridica</strong>: è sufficiente una <strong>delibera assembleare</strong> e l'indicazione di un <strong>referente</strong> (es. l'amministratore) verso il GSE</li>
-          <li>Tempi e costi di avvio ridotti: ideale per condomìni e complessi che vogliono partire rapidamente</li>
-        </ul>
+    <!-- ======================================================
+         SIMULATORE — GAC CONDOMINIALE vs IMPIANTI SINGOLI
+         ====================================================== -->
+    <div class="sim-box" id="sim-gac">
+      <div class="sim-head">
+        <h3>🧩 Simula il tuo caso — GAC condominiale o impianti singoli?</h3>
+        <p>Caso tipico da sopralluogo: un edificio a più proprietari con superficie disponibile per un unico grande impianto. Inserisci i dati indicativi per confrontare in modo semplice le due strade: un <strong>GAC condominiale</strong> (impianto unico, energia condivisa incentivata) oppure <strong>un impianto separato per ciascun proprietario</strong>. Il confronto isola il valore degli <strong>incentivi</strong> (differenziale tra le due opzioni); il risparmio da <strong>autoconsumo diretto</strong> — che vale allo stesso modo in entrambi gli scenari — è mostrato a parte, per arrivare comunque a un quadro economico complessivo.</p>
       </div>
-      <div class="norm-block">
-        <h4>Leggi e norme di riferimento</h4>
-        <ul>
-          <li><strong>D.Lgs. 199/2021</strong> art. 8 (incentivi) e art. 30 (autoconsumatori che agiscono collettivamente)</li>
-          <li><strong>D.Lgs. 210/2021</strong> — mercato interno energia elettrica</li>
-          <li><strong>D.M. MASE 414/2023</strong> "Decreto CACER" — configurazione B (gruppo di autoconsumatori)</li>
-          <li><strong>TIAD</strong> — delibera <strong>ARERA 727/2022/R/eel</strong></li>
-          <li><strong>Regole Operative GSE</strong> (portale SPC)</li>
-          <li><strong>D.M. 127/2025</strong> — PNRR esteso ai comuni &lt; 50.000 ab.</li>
-        </ul>
+      <div class="sim-form">
+        <div class="sim-field">
+          <label for="sim-n-prop">N. proprietari / unità coinvolte</label>
+          <input type="number" id="sim-n-prop" value="6" min="2" step="1">
+        </div>
+        <div class="sim-field">
+          <label for="sim-kwp">Potenza FV complessiva stimata (kWp)</label>
+          <input type="number" id="sim-kwp" value="200" min="1" step="1">
+          <span class="sim-hint">Stima da sopralluogo/superficie disponibile (es. ~0,10–0,20 kWp/m² di tetto)</span>
+        </div>
+        <div class="sim-field">
+          <label for="sim-invest">Investimento complessivo stimato (€)</label>
+          <input type="number" id="sim-invest" value="220000" min="0" step="1000">
+          <span class="sim-hint">Indicativo ~1.100 €/kWp per impianti di grande taglia; modificabile</span>
+        </div>
+        <div class="sim-field">
+          <label for="sim-prod">Producibilità media (kWh/kWp/anno)</label>
+          <input type="number" id="sim-prod" value="1300" min="800" step="10">
+          <span class="sim-hint">Veneto/Emilia-Romagna ~1.250–1.350 · Calabria fino a ~1.500</span>
+        </div>
+        <div class="sim-field">
+          <label for="sim-quota">Quota energia condivisa tra unità (%)</label>
+          <input type="number" id="sim-quota" value="35" min="0" max="100" step="1">
+          <span class="sim-hint">% dell'energia prodotta consumata da altre unità nello stesso momento: è la quota che riceve la tariffa incentivante nel GAC</span>
+        </div>
+        <div class="sim-field">
+          <label for="sim-aliquota">Aliquota detrazione fiscale</label>
+          <select id="sim-aliquota">
+            <option value="50">50% — abitazione principale</option>
+            <option value="36">36% — altri casi</option>
+          </select>
+          <span class="sim-hint">Su spesa max 96.000 €/unità (art. 16-bis TUIR); dal 2027 aliquote ridotte</span>
+        </div>
+        <div class="sim-field">
+          <label for="sim-autocons">Quota autoconsumo diretto (%)</label>
+          <input type="number" id="sim-autocons" value="30" min="0" max="100" step="1">
+          <span class="sim-hint">Energia consumata istantaneamente da chi la produce (non condivisa con altri) — vale allo stesso modo in entrambi gli scenari, non è un incentivo</span>
+        </div>
+        <div class="sim-field">
+          <label for="sim-prezzo">Prezzo energia evitato (€/kWh)</label>
+          <input type="number" id="sim-prezzo" value="0.22" min="0" step="0.01">
+          <span class="sim-hint">Prezzo medio bolletta evitato con l'autoconsumo diretto</span>
+        </div>
+        <div class="sim-actions">
+          <button type="button" class="sim-btn" onclick="simulaGacVsSingoli(true)">Ricalcola</button>
+          <span class="sim-auto-note" style="font-size:12px;color:var(--r21-gray);">Il confronto si aggiorna automaticamente mentre modifichi i campi</span>
+        </div>
       </div>
-    </div>
 
-    <div class="table-wrap">
-      <table class="incentivi">
-        <thead><tr><th>Beneficio</th><th>Descrizione</th><th>Importo / durata</th><th>Scadenza</th></tr></thead>
-        <tbody>
-          <tr>
-            <td class="name">Tariffa incentivante CACER</td>
-            <td class="desc">Tariffa sull'energia <strong>condivisa</strong> all'interno del gruppo, erogata dal GSE per <strong>20 anni</strong>. Importo base orientativo <strong>~110 €/MWh</strong> per impianti ≤ 200 kW, con correzione geografica per zona</td>
-            <td class="scadenza"><span class="scad-badge scad-ampia">20 anni</span></td>
-            <td class="scadenza"><span class="scad-badge scad-breve">Contingente 5 GW fino al 31/12/2027</span><span class="scad-note">Domanda entro 120 gg dall'entrata in esercizio</span></td>
-          </tr>
-          <tr>
-            <td class="name">Detrazione fiscale parti comuni</td>
-            <td class="desc">Per gli interventi condominiali (FV su parti comuni, accumulo) restano applicabili le detrazioni edilizie (art. 16-bis TUIR): per il 2026 <strong>36%</strong>, <strong>50% per l'abitazione principale</strong>, su spesa max 96.000 €/unità</td>
-            <td class="scadenza"><span class="scad-badge scad-breve">31/12/2026</span></td>
-            <td class="scadenza"><span class="scad-badge scad-breve">Dal 2027 aliquote ridotte</span></td>
-          </tr>
-          <tr>
-            <td class="name">Conto Termico 3.0 (parti comuni)</td>
-            <td class="desc">Per gli impianti termici condominiali (pompe di calore, solare termico) è attivabile il Conto Termico 3.0 in alternativa alle detrazioni sullo stesso intervento</td>
-            <td class="scadenza"><span class="scad-badge scad-continuo">Continuo</span></td>
-            <td class="scadenza"><span class="scad-badge scad-continuo">Fondi annuali GSE</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+      <div class="sim-result" id="sim-result" hidden></div>
 
-    <div class="archivio-alert" style="margin-top:18px">⚠ <strong>Archivio — Incentivi scaduti / chiusi (non proporre al cliente)</strong></div>
-    <div class="table-wrap">
-      <table class="incentivi">
-        <thead><tr><th>Beneficio</th><th>Descrizione</th><th>Importo / durata</th><th>Scadenza</th></tr></thead>
-        <tbody>
-          <tr>
-            <td class="name"><span class="arch-amb">CHIUSO</span><br>Contributo PNRR 40% (conto capitale)</td>
-            <td class="desc"><strong>Termine stipula accordi GSE 30/06/2026 SCADUTO — misura non più attivabile.</strong> Il gruppo di autoconsumatori (configurazione B) era ammesso al contributo a <strong>fondo perduto fino al 40%</strong> per impianti FER ≤ 1 MW nei Comuni &lt; <strong>50.000 abitanti</strong>. Resta valida solo per i beneficiari con accordo firmato (possibile proroga +60 gg, verificare su GSE): esercizio entro 31/12/2027</td>
-            <td class="scadenza"><span class="scad-badge scad-urgente">Fino al 40% — solo ammessi</span></td>
-            <td class="scadenza"><span class="scad-badge scad-urgente">Accordi 30/06/2026 — SCADUTO</span><span class="scad-note">Domande chiuse 30/11/2025 · vincolo fine lavori ELIMINATO (DL PNRR 2026) · esercizio entro 31/12/2027</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="notes-box">
-      <h3>▶ Iter e note operative — GAC</h3>
-      <ul>
-        <li>Per avviare un GAC condominiale serve una <strong>delibera assembleare</strong> e la nomina di un <strong>referente</strong> (tipicamente l'amministratore) come controparte del GSE — <strong>senza costituire una nuova persona giuridica</strong></li>
-        <li>L'autoconsumo collettivo valorizza l'energia condivisa tra le unità dello stesso edificio: la quota condivisa riceve la tariffa incentivante per <strong>20 anni</strong></li>
-        <li>La domanda di accesso va presentata sul portale GSE (SPC) <strong>entro 120 giorni</strong> dall'entrata in esercizio</li>
-        <li>Il <strong>contributo PNRR 40% è CHIUSO</strong>: termine di stipula accordi GSE (30/06/2026) <strong>scaduto</strong> (vedi Archivio). Solo per i gruppi già ammessi con accordo firmato: cumulo con tariffa rimodulata, vincolo fine lavori eliminato (DL PNRR 2026), esercizio entro 31/12/2027</li>
-        <li>Le <strong>detrazioni edilizie</strong> sulle parti comuni e il <strong>Conto Termico</strong> non sono cumulabili tra loro sullo stesso intervento</li>
-      </ul>
+      <div class="sim-disclaimer">Stima indicativa a scopo di orientamento nella discussione col cliente, non sostituisce un business plan. La tariffa CACER varia per zona e taglia d'impianto; verificare sempre le regole GSE aggiornate. La ripartizione dei benefici economici tra i condomini nel GAC va definita in un accordo/regolamento interno.</div>
     </div>
 
     <!-- ======================================================
@@ -2349,65 +2337,78 @@
       <div class="faq-disclaimer" style="font-size:11.5px;color:var(--r21-gray);font-style:italic;margin-top:10px;line-height:1.5;">Risposte sintetiche a scopo di orientamento nella discussione col cliente. Per casi specifici (es. ripartizione dei benefici, clausole di recesso) farsi assistere da un consulente legale/notarile.</div>
     </div>
 
-    <!-- ======================================================
-         SIMULATORE — GAC CONDOMINIALE vs IMPIANTI SINGOLI
-         ====================================================== -->
-    <div class="sim-box" id="sim-gac">
-      <div class="sim-head">
-        <h3>🧩 Simula il tuo caso — GAC condominiale o impianti singoli?</h3>
-        <p>Caso tipico da sopralluogo: un edificio a più proprietari con superficie disponibile per un unico grande impianto. Inserisci i dati indicativi per confrontare in modo semplice le due strade: un <strong>GAC condominiale</strong> (impianto unico, energia condivisa incentivata) oppure <strong>un impianto separato per ciascun proprietario</strong>. Il confronto isola il valore degli <strong>incentivi</strong> (differenziale tra le due opzioni); il risparmio da <strong>autoconsumo diretto</strong> — che vale allo stesso modo in entrambi gli scenari — è mostrato a parte, per arrivare comunque a un quadro economico complessivo.</p>
+    <div class="norm-grid">
+      <div class="norm-block accent">
+        <h4>GAC vs CER — la differenza chiave</h4>
+        <ul>
+          <li>Il GAC riunisce autoconsumatori <strong>nello stesso edificio/condominio</strong> (dietro lo stesso punto di connessione/edificio); la CER opera su perimetro più ampio sotto la <strong>stessa cabina primaria</strong></li>
+          <li>Il GAC <strong>non richiede una nuova persona giuridica</strong>: è sufficiente una <strong>delibera assembleare</strong> e l'indicazione di un <strong>referente</strong> (es. l'amministratore) verso il GSE</li>
+          <li>Tempi e costi di avvio ridotti: ideale per condomìni e complessi che vogliono partire rapidamente</li>
+        </ul>
       </div>
-      <div class="sim-form">
-        <div class="sim-field">
-          <label for="sim-n-prop">N. proprietari / unità coinvolte</label>
-          <input type="number" id="sim-n-prop" value="6" min="2" step="1">
-        </div>
-        <div class="sim-field">
-          <label for="sim-kwp">Potenza FV complessiva stimata (kWp)</label>
-          <input type="number" id="sim-kwp" value="200" min="1" step="1">
-          <span class="sim-hint">Stima da sopralluogo/superficie disponibile (es. ~0,10–0,20 kWp/m² di tetto)</span>
-        </div>
-        <div class="sim-field">
-          <label for="sim-invest">Investimento complessivo stimato (€)</label>
-          <input type="number" id="sim-invest" value="220000" min="0" step="1000">
-          <span class="sim-hint">Indicativo ~1.100 €/kWp per impianti di grande taglia; modificabile</span>
-        </div>
-        <div class="sim-field">
-          <label for="sim-prod">Producibilità media (kWh/kWp/anno)</label>
-          <input type="number" id="sim-prod" value="1300" min="800" step="10">
-          <span class="sim-hint">Veneto/Emilia-Romagna ~1.250–1.350 · Calabria fino a ~1.500</span>
-        </div>
-        <div class="sim-field">
-          <label for="sim-quota">Quota energia condivisa tra unità (%)</label>
-          <input type="number" id="sim-quota" value="35" min="0" max="100" step="1">
-          <span class="sim-hint">% dell'energia prodotta consumata da altre unità nello stesso momento: è la quota che riceve la tariffa incentivante nel GAC</span>
-        </div>
-        <div class="sim-field">
-          <label for="sim-aliquota">Aliquota detrazione fiscale</label>
-          <select id="sim-aliquota">
-            <option value="50">50% — abitazione principale</option>
-            <option value="36">36% — altri casi</option>
-          </select>
-          <span class="sim-hint">Su spesa max 96.000 €/unità (art. 16-bis TUIR); dal 2027 aliquote ridotte</span>
-        </div>
-        <div class="sim-field">
-          <label for="sim-autocons">Quota autoconsumo diretto (%)</label>
-          <input type="number" id="sim-autocons" value="30" min="0" max="100" step="1">
-          <span class="sim-hint">Energia consumata istantaneamente da chi la produce (non condivisa con altri) — vale allo stesso modo in entrambi gli scenari, non è un incentivo</span>
-        </div>
-        <div class="sim-field">
-          <label for="sim-prezzo">Prezzo energia evitato (€/kWh)</label>
-          <input type="number" id="sim-prezzo" value="0.22" min="0" step="0.01">
-          <span class="sim-hint">Prezzo medio bolletta evitato con l'autoconsumo diretto</span>
-        </div>
-        <div class="sim-actions">
-          <button type="button" class="sim-btn" onclick="simulaGacVsSingoli()">Confronta le opzioni</button>
-        </div>
+      <div class="norm-block">
+        <h4>Leggi e norme di riferimento</h4>
+        <ul>
+          <li><strong>D.Lgs. 199/2021</strong> art. 8 (incentivi) e art. 30 (autoconsumatori che agiscono collettivamente)</li>
+          <li><strong>D.Lgs. 210/2021</strong> — mercato interno energia elettrica</li>
+          <li><strong>D.M. MASE 414/2023</strong> "Decreto CACER" — configurazione B (gruppo di autoconsumatori)</li>
+          <li><strong>TIAD</strong> — delibera <strong>ARERA 727/2022/R/eel</strong></li>
+          <li><strong>Regole Operative GSE</strong> (portale SPC)</li>
+          <li><strong>D.M. 127/2025</strong> — PNRR esteso ai comuni &lt; 50.000 ab.</li>
+        </ul>
       </div>
+    </div>
 
-      <div class="sim-result" id="sim-result" hidden></div>
+    <div class="table-wrap">
+      <table class="incentivi">
+        <thead><tr><th>Beneficio</th><th>Descrizione</th><th>Importo / durata</th><th>Scadenza</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="name">Tariffa incentivante CACER</td>
+            <td class="desc">Tariffa sull'energia <strong>condivisa</strong> all'interno del gruppo, erogata dal GSE per <strong>20 anni</strong>. Importo base orientativo <strong>~110 €/MWh</strong> per impianti ≤ 200 kW, con correzione geografica per zona</td>
+            <td class="scadenza"><span class="scad-badge scad-ampia">20 anni</span></td>
+            <td class="scadenza"><span class="scad-badge scad-breve">Contingente 5 GW fino al 31/12/2027</span><span class="scad-note">Domanda entro 120 gg dall'entrata in esercizio</span></td>
+          </tr>
+          <tr>
+            <td class="name">Detrazione fiscale parti comuni</td>
+            <td class="desc">Per gli interventi condominiali (FV su parti comuni, accumulo) restano applicabili le detrazioni edilizie (art. 16-bis TUIR): per il 2026 <strong>36%</strong>, <strong>50% per l'abitazione principale</strong>, su spesa max 96.000 €/unità</td>
+            <td class="scadenza"><span class="scad-badge scad-breve">31/12/2026</span></td>
+            <td class="scadenza"><span class="scad-badge scad-breve">Dal 2027 aliquote ridotte</span></td>
+          </tr>
+          <tr>
+            <td class="name">Conto Termico 3.0 (parti comuni)</td>
+            <td class="desc">Per gli impianti termici condominiali (pompe di calore, solare termico) è attivabile il Conto Termico 3.0 in alternativa alle detrazioni sullo stesso intervento</td>
+            <td class="scadenza"><span class="scad-badge scad-continuo">Continuo</span></td>
+            <td class="scadenza"><span class="scad-badge scad-continuo">Fondi annuali GSE</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-      <div class="sim-disclaimer">Stima indicativa a scopo di orientamento nella discussione col cliente, non sostituisce un business plan. La tariffa CACER varia per zona e taglia d'impianto; verificare sempre le regole GSE aggiornate. La ripartizione dei benefici economici tra i condomini nel GAC va definita in un accordo/regolamento interno.</div>
+    <div class="archivio-alert" style="margin-top:18px">⚠ <strong>Archivio — Incentivi scaduti / chiusi (non proporre al cliente)</strong></div>
+    <div class="table-wrap">
+      <table class="incentivi">
+        <thead><tr><th>Beneficio</th><th>Descrizione</th><th>Importo / durata</th><th>Scadenza</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="name"><span class="arch-amb">CHIUSO</span><br>Contributo PNRR 40% (conto capitale)</td>
+            <td class="desc"><strong>Termine stipula accordi GSE 30/06/2026 SCADUTO — misura non più attivabile.</strong> Il gruppo di autoconsumatori (configurazione B) era ammesso al contributo a <strong>fondo perduto fino al 40%</strong> per impianti FER ≤ 1 MW nei Comuni &lt; <strong>50.000 abitanti</strong>. Resta valida solo per i beneficiari con accordo firmato (possibile proroga +60 gg, verificare su GSE): esercizio entro 31/12/2027</td>
+            <td class="scadenza"><span class="scad-badge scad-urgente">Fino al 40% — solo ammessi</span></td>
+            <td class="scadenza"><span class="scad-badge scad-urgente">Accordi 30/06/2026 — SCADUTO</span><span class="scad-note">Domande chiuse 30/11/2025 · vincolo fine lavori ELIMINATO (DL PNRR 2026) · esercizio entro 31/12/2027</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="notes-box">
+      <h3>▶ Iter e note operative — GAC</h3>
+      <ul>
+        <li>Per avviare un GAC condominiale serve una <strong>delibera assembleare</strong> e la nomina di un <strong>referente</strong> (tipicamente l'amministratore) come controparte del GSE — <strong>senza costituire una nuova persona giuridica</strong></li>
+        <li>L'autoconsumo collettivo valorizza l'energia condivisa tra le unità dello stesso edificio: la quota condivisa riceve la tariffa incentivante per <strong>20 anni</strong></li>
+        <li>La domanda di accesso va presentata sul portale GSE (SPC) <strong>entro 120 giorni</strong> dall'entrata in esercizio</li>
+        <li>Il <strong>contributo PNRR 40% è CHIUSO</strong>: termine di stipula accordi GSE (30/06/2026) <strong>scaduto</strong> (vedi Archivio). Solo per i gruppi già ammessi con accordo firmato: cumulo con tariffa rimodulata, vincolo fine lavori eliminato (DL PNRR 2026), esercizio entro 31/12/2027</li>
+        <li>Le <strong>detrazioni edilizie</strong> sulle parti comuni e il <strong>Conto Termico</strong> non sono cumulabili tra loro sullo stesso intervento</li>
+      </ul>
     </div>
 
     <div class="source-line">
@@ -2521,7 +2522,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    © 2026 Rete 21 · Tutti i diritti riservati · Tool Incentivi Percorsi v31 — 05/08/2026
+    © 2026 Rete 21 · Tutti i diritti riservati · Tool Incentivi Percorsi v32 — 05/08/2026
   </div>
 </footer>
 
@@ -2903,7 +2904,7 @@
     return n.toLocaleString('it-IT', { maximumFractionDigits: 0 }) + ' €';
   }
 
-  function simulaGacVsSingoli() {
+  function simulaGacVsSingoli(scrollTo) {
     const nProp = Math.max(2, parseFloat(document.getElementById('sim-n-prop').value) || 6);
     const kwp = Math.max(0, parseFloat(document.getElementById('sim-kwp').value) || 0);
     const investimento = Math.max(0, parseFloat(document.getElementById('sim-invest').value) || 0);
@@ -3016,7 +3017,16 @@
     const result = document.getElementById('sim-result');
     result.innerHTML = html;
     result.hidden = false;
-    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    if (scrollTo) result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function initSimGacAutoUpdate() {
+    const box = document.getElementById('sim-gac');
+    if (!box) return;
+    box.querySelectorAll('input, select').forEach(function (el) {
+      const evt = el.tagName === 'SELECT' ? 'change' : 'input';
+      el.addEventListener(evt, function () { simulaGacVsSingoli(false); });
+    });
   }
 
   /* ---- INIT ---- */
@@ -3024,6 +3034,8 @@
     initRegioni();
     setView('tipologia');
     initUpdateBox();
+    initSimGacAutoUpdate();
+    simulaGacVsSingoli(false);
   });
 </script>
 </body>
