@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tool Incentivi Percorsi — Rete 21 — v33 — 05/08/2026</title>
+<title>Tool Incentivi Percorsi — Rete 21 — v34 — 05/08/2026</title>
 <meta name="description" content="Trova gli incentivi per la transizione energetica adatti alla tua situazione: scegli il tuo percorso tra privato, impresa, PA, CER, agrivoltaico, condominio. A cura di Rete 21.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -453,6 +453,18 @@
   .notes-box li::before { content: "▸"; position: absolute; left: 6px; top: 8px; color: var(--r21-green-dark); font-weight: 700; }
   .notes-box strong { color: var(--r21-dark-2); }
 
+  /* =========================================================
+     SERVIZIO RETE 21 — box commerciale (es. sconto in fattura)
+     ========================================================= */
+  .r21-offer-box { background: var(--r21-green-bg); border: 1px solid var(--r21-green-soft); border-left: 4px solid var(--r21-green); border-radius: 4px; padding: 22px 26px; margin: 20px 0 0; }
+  .r21-offer-badge { display: inline-block; background: var(--r21-green); color: #fff; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px; padding: 4px 10px; border-radius: 12px; margin-bottom: 12px; }
+  .r21-offer-box h4 { font-size: 15.5px; color: var(--r21-dark-2); font-weight: 700; margin: 0 0 10px; }
+  .r21-offer-box p { font-size: 14.5px; line-height: 1.55; color: var(--r21-dark); margin: 0 0 12px; }
+  .r21-offer-box ul { list-style: none; padding: 0; margin: 0; }
+  .r21-offer-box li { padding: 6px 0 6px 22px; position: relative; color: var(--r21-dark); font-size: 14px; line-height: 1.5; }
+  .r21-offer-box li::before { content: "▸"; position: absolute; left: 2px; top: 6px; color: var(--r21-green-dark); font-weight: 700; }
+  .r21-offer-box strong { color: var(--r21-dark-2); }
+
   .source-line { margin-top: 24px; font-size: 12px; color: var(--r21-gray); font-style: italic; padding-top: 18px; border-top: 1px solid var(--r21-border); }
 
   /* =========================================================
@@ -767,6 +779,18 @@
                 <td class="compat">Incentivabile <strong>solo se abbinato a PDC</strong>. Non cumulabile con detrazione FV sullo stesso impianto. Compatibile con CER.</td><td class="azioni">Progettare FV+BESS+PDC come unico intervento; domanda GSE con delega installatore. Fondi imprese 150 M&euro;/anno.</td></tr>
               </tbody>
             </table>
+          </div>
+
+          <div class="r21-offer-box">
+            <div class="r21-offer-badge">Servizio Rete 21</div>
+            <h4>Sconto in fattura sul Conto Termico 3.0</h4>
+            <p>Per gli interventi finanziabili col Conto Termico 3.0 (PDC, biomassa, solare termico, FV+accumulo abbinato a PDC), Rete 21 applica lo <strong>sconto in fattura</strong>: il cliente versa solo la quota a proprio carico, l'azienda anticipa l'incentivo e lo recupera direttamente dal GSE tramite <strong>mandato all'incasso irrevocabile</strong>.</p>
+            <ul>
+              <li><strong>Vantaggio per il cliente:</strong> non anticipa l'intero importo e non attende i tempi di erogazione GSE (fino a 5 anni in rate)</li>
+              <li><strong>Meccanismo:</strong> mandato all'incasso irrevocabile al GSE, con modulo standard e firma autenticata</li>
+              <li><strong>Condizione:</strong> importo in fattura corrispondente esattamente alla spesa ammissibile; lavori conclusi prima della domanda</li>
+              <li>Disponibilità e condizioni da verificare caso per caso con l'ufficio commerciale Rete 21 in base alla tipologia di intervento</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -2522,7 +2546,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    © 2026 Rete 21 · Tutti i diritti riservati · Tool Incentivi Percorsi v33 — 05/08/2026
+    © 2026 Rete 21 · Tutti i diritti riservati · Tool Incentivi Percorsi v34 — 05/08/2026
   </div>
 </footer>
 
