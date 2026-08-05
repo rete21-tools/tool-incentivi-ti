@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tool Incentivi Percorsi — Rete 21 — v28 — 05/08/2026</title>
+<title>Tool Incentivi Percorsi — Rete 21 — v31 — 05/08/2026</title>
 <meta name="description" content="Trova gli incentivi per la transizione energetica adatti alla tua situazione: scegli il tuo percorso tra privato, impresa, PA, CER, agrivoltaico, condominio. A cura di Rete 21.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -454,6 +454,90 @@
   .notes-box strong { color: var(--r21-dark-2); }
 
   .source-line { margin-top: 24px; font-size: 12px; color: var(--r21-gray); font-style: italic; padding-top: 18px; border-top: 1px solid var(--r21-border); }
+
+  /* =========================================================
+     FAQ — domande operative frequenti (accordion, stile categorie)
+     ========================================================= */
+  .faq-box { margin-top: 36px; }
+  .faq-intro {
+    background: var(--r21-green-bg); border-left: 4px solid var(--r21-green);
+    padding: 20px 24px; border-radius: 4px; margin-bottom: 20px; font-size: 15px; color: var(--r21-dark);
+  }
+  .faq-intro strong { color: var(--r21-dark-2); font-weight: 700; }
+  .faq-expand-controls { display: flex; gap: 10px; margin-bottom: 18px; flex-wrap: wrap; }
+  .faq-item { border: 1px solid var(--r21-border); border-radius: 6px; margin-bottom: 12px; overflow: hidden; background: #fff; transition: box-shadow .2s ease; }
+  .faq-item:hover { box-shadow: var(--r21-shadow); }
+  .faq-header { display: flex; align-items: center; gap: 14px; padding: 16px 20px; cursor: pointer; user-select: none; background: #fff; transition: background .2s ease; }
+  .faq-header:hover { background: var(--r21-bg-alt); }
+  .faq-item.open .faq-header { background: var(--r21-bg-alt); border-bottom: 1px solid var(--r21-border); }
+  .faq-num { flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: var(--r21-green); color: #fff; font-weight: 700; font-size: 13.5px; display: flex; align-items: center; justify-content: center; }
+  .faq-question { flex: 1; font-size: 15.5px; font-weight: 700; color: var(--r21-dark-2); }
+  .faq-arrow { color: var(--r21-green-dark); font-size: 13px; transition: transform .25s ease; }
+  .faq-item.open .faq-arrow { transform: rotate(180deg); }
+  .faq-body { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+  .faq-item.open .faq-body { max-height: 600px; }
+  .faq-body-inner { padding: 4px 20px 18px 66px; }
+  .faq-answer { list-style: none; padding: 0; margin: 0; }
+  .faq-answer li { padding: 4px 0 4px 18px; position: relative; color: var(--r21-dark); font-size: 13.5px; line-height: 1.5; }
+  .faq-answer li::before { content: "▸"; position: absolute; left: 0; top: 4px; color: var(--r21-green-dark); font-weight: 700; }
+  .faq-answer strong { color: var(--r21-dark-2); }
+
+  /* =========================================================
+     SIMULATORE — CONFRONTA IL TUO CASO (GAC vs impianti singoli)
+     ========================================================= */
+  .sim-box { background: var(--r21-bg-alt); border: 1px solid var(--r21-border); border-radius: 8px; padding: 28px; margin-top: 36px; }
+  .sim-head h3 { font-size: 19px; color: var(--r21-dark-2); font-weight: 800; margin-bottom: 8px; }
+  .sim-head p { font-size: 14px; color: var(--r21-dark); line-height: 1.6; max-width: 900px; margin-bottom: 20px; }
+  .sim-form { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px 20px; background: #fff; border: 1px solid var(--r21-border); border-radius: 6px; padding: 20px; }
+  @media (max-width: 900px) { .sim-form { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .sim-form { grid-template-columns: 1fr; } }
+  .sim-field label { display: block; font-size: 12px; font-weight: 700; color: var(--r21-dark-2); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.3px; }
+  .sim-field .sim-hint { display: block; font-size: 11px; color: var(--r21-gray); margin-top: 4px; line-height: 1.4; font-weight: 500; }
+  .sim-field input[type="number"], .sim-field select {
+    width: 100%; padding: 9px 10px; border: 1px solid var(--r21-border); border-radius: 4px;
+    font-family: var(--font-main); font-size: 14px; color: var(--r21-dark-2); background: #fff;
+  }
+  .sim-field input[type="number"]:focus, .sim-field select:focus { outline: none; border-color: var(--r21-green); box-shadow: 0 0 0 3px rgba(181,187,0,0.18); }
+  .sim-actions { grid-column: 1 / -1; display: flex; align-items: center; gap: 14px; margin-top: 4px; }
+  .sim-btn {
+    background: var(--r21-green); color: #fff; border: none; padding: 12px 26px; border-radius: 4px;
+    font-family: var(--font-main); font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;
+    cursor: pointer; transition: background .2s ease;
+  }
+  .sim-btn:hover { background: var(--r21-green-dark); }
+  .sim-result { margin-top: 24px; }
+  .sim-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width: 760px) { .sim-cards { grid-template-columns: 1fr; } }
+  .sim-card { background: #fff; border: 1px solid var(--r21-border); border-radius: 6px; padding: 20px 22px; border-top: 4px solid var(--r21-gray); }
+  .sim-card.opt-a { border-top-color: var(--r21-green); }
+  .sim-card.opt-b { border-top-color: #8a8f8d; }
+  .sim-card h4 { font-size: 15.5px; font-weight: 800; color: var(--r21-dark-2); margin-bottom: 4px; }
+  .sim-card .sim-sub { font-size: 12px; color: var(--r21-gray); margin-bottom: 14px; }
+  .sim-metrics { list-style: none; padding: 0; margin: 0 0 14px; }
+  .sim-metrics li { display: flex; justify-content: space-between; gap: 10px; font-size: 13.5px; padding: 6px 0; border-bottom: 1px dashed var(--r21-border); color: var(--r21-dark); }
+  .sim-metrics li:last-child { border-bottom: none; }
+  .sim-metrics li strong { color: var(--r21-dark-2); white-space: nowrap; }
+  .sim-total { background: var(--r21-green-bg); border-radius: 4px; padding: 10px 14px; font-size: 14px; font-weight: 700; color: var(--r21-dark-2); margin-bottom: 14px; }
+  .sim-total span { display: block; font-size: 11px; font-weight: 600; color: var(--r21-green-dark); text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 2px; }
+  .sim-card ul.sim-list { list-style: none; padding: 0; margin: 0; }
+  .sim-card ul.sim-list li { font-size: 13px; padding: 5px 0 5px 20px; position: relative; line-height: 1.5; color: var(--r21-dark); }
+  .sim-card ul.sim-list.pro li::before { content: "✓"; position: absolute; left: 0; top: 5px; color: var(--r21-green-dark); font-weight: 700; }
+  .sim-card ul.sim-list.contro li::before { content: "–"; position: absolute; left: 2px; top: 5px; color: #a04b3a; font-weight: 700; }
+  .sim-delta { background: var(--r21-dark-2); color: #fff; border-radius: 6px; padding: 16px 22px; margin-top: 18px; font-size: 14.5px; line-height: 1.6; }
+  .sim-delta strong { color: var(--r21-green); }
+  .sim-autocons { background: #fff; border: 1px solid var(--r21-border); border-left: 4px solid var(--r21-gray); border-radius: 6px; padding: 16px 22px; margin-top: 18px; }
+  .sim-autocons .sim-autocons-tag { display: inline-block; font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px; color: var(--r21-gray); background: var(--r21-gray-light); padding: 3px 9px; border-radius: 12px; margin-bottom: 8px; }
+  .sim-autocons h5 { font-size: 14.5px; font-weight: 800; color: var(--r21-dark-2); margin-bottom: 8px; }
+  .sim-autocons ul { list-style: none; padding: 0; margin: 0 0 10px; display: flex; flex-wrap: wrap; gap: 6px 24px; }
+  .sim-autocons ul li { font-size: 13.5px; color: var(--r21-dark); }
+  .sim-autocons ul li strong { color: var(--r21-dark-2); }
+  .sim-autocons .sim-autocons-note { font-size: 12px; color: var(--r21-gray); line-height: 1.5; }
+  .sim-quadro { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 16px; }
+  @media (max-width: 760px) { .sim-quadro { grid-template-columns: 1fr; } }
+  .sim-quadro-card { background: var(--r21-green-bg); border-radius: 6px; padding: 12px 16px; }
+  .sim-quadro-card span { display: block; font-size: 11px; font-weight: 600; color: var(--r21-green-dark); text-transform: uppercase; letter-spacing: 0.3px; margin-bottom: 3px; }
+  .sim-quadro-card strong { font-size: 17px; color: var(--r21-dark-2); }
+  .sim-disclaimer { font-size: 11.5px; color: var(--r21-gray); font-style: italic; margin-top: 14px; line-height: 1.5; }
 
   /* =========================================================
      SIDEBAR
@@ -2130,6 +2214,202 @@
       </ul>
     </div>
 
+    <!-- ======================================================
+         FAQ — DOMANDE OPERATIVE FREQUENTI (GAC)
+         ====================================================== -->
+    <div class="faq-box" id="faq-gac">
+      <div class="faq-intro">
+        <strong>Domande operative frequenti</strong> — i dubbi più comuni nella trattativa con il cliente su un GAC condominiale: collegamento tecnico, pagamento, proprietà dell'impianto, ingresso/uscita dei partecipanti.
+      </div>
+      <div class="faq-expand-controls">
+        <button class="expand-btn" onclick="toggleAllFaq(true)">▼ Espandi tutto</button>
+        <button class="expand-btn" onclick="toggleAllFaq(false)">▲ Comprimi tutto</button>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-header" onclick="toggleFaq(this)">
+          <div class="faq-num">1</div>
+          <div class="faq-question">Il gruppo deve essere collegato a un unico contatore condominiale?</div>
+          <div class="faq-arrow">▼</div>
+        </div>
+        <div class="faq-body"><div class="faq-body-inner"><ul class="faq-answer">
+          <li>No: ogni unità mantiene il proprio POD di consumo, come oggi</li>
+          <li>L'impianto ha un proprio punto di connessione dedicato alla produzione (contatore M2)</li>
+          <li>La condivisione è <strong>virtuale</strong>: il GSE la calcola sui dati quarto-orari dei diversi POD</li>
+          <li>Basta che tutti i POD siano nello stesso edificio/cabina primaria</li>
+          <li>Nessun intervento fisico sui contatori individuali</li>
+        </ul></div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-header" onclick="toggleFaq(this)">
+          <div class="faq-num">2</div>
+          <div class="faq-question">Chi paga l'impianto all'azienda installatrice?</div>
+          <div class="faq-arrow">▼</div>
+        </div>
+        <div class="faq-body"><div class="faq-body-inner"><ul class="faq-answer">
+          <li>Il condominio, come spesa comune ripartita per millesimi (delibera qualificata)</li>
+          <li>Oppure solo i condomini aderenti al gruppo, pro-quota da regolamento privato</li>
+          <li>Oppure un <strong>terzo investitore</strong> (es. la nostra azienda) che finanzia e resta proprietaria</li>
+          <li>La delibera per l'uso del tetto serve comunque, a prescindere da chi paga</li>
+          <li>Il modello scelto va scritto nel regolamento del gruppo</li>
+        </ul></div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-header" onclick="toggleFaq(this)">
+          <div class="faq-num">3</div>
+          <div class="faq-question">Chi è il proprietario dell'impianto?</div>
+          <div class="faq-arrow">▼</div>
+        </div>
+        <div class="faq-body"><div class="faq-body-inner"><ul class="faq-answer">
+          <li>Se paga il condominio: bene condominiale comune</li>
+          <li>Se pagano solo gli aderenti: comproprietà tra loro, per le quote nel regolamento</li>
+          <li>Se c'è un terzo investitore: proprietà dell'azienda, tipo contratto PPA</li>
+          <li>Il "Produttore" GSE coincide col proprietario; il "Referente" può essere un'altra figura</li>
+          <li>Va sempre indicato esplicitamente nel regolamento del gruppo</li>
+        </ul></div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-header" onclick="toggleFaq(this)">
+          <div class="faq-num">4</div>
+          <div class="faq-question">Cosa succede se un proprietario esce dal gruppo e un altro subentra?</div>
+          <div class="faq-arrow">▼</div>
+        </div>
+        <div class="faq-body"><div class="faq-body-inner"><ul class="faq-answer">
+          <li>Il contratto di gruppo deve consentire il recesso in ogni momento (obbligo di legge)</li>
+          <li>Eventuali penali di uscita devono essere eque e proporzionate all'investimento condiviso</li>
+          <li>Se previsto dal regolamento, la partecipazione "segue" l'immobile: subentro automatico</li>
+          <li>Basta comunicare la variazione al GSE per aggiornare l'anagrafica del gruppo</li>
+          <li>La quota di comproprietà dell'impianto va trasferita esplicitamente nell'atto di vendita</li>
+        </ul></div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-header" onclick="toggleFaq(this)">
+          <div class="faq-num">5</div>
+          <div class="faq-question">Serve costituire una società o un nuovo soggetto giuridico?</div>
+          <div class="faq-arrow">▼</div>
+        </div>
+        <div class="faq-body"><div class="faq-body-inner"><ul class="faq-answer">
+          <li>No — a differenza della CER, il GAC non richiede una nuova persona giuridica</li>
+          <li>Basta una delibera assembleare e la nomina di un referente verso il GSE</li>
+          <li>Il referente può essere l'amministratore, un aderente o una ESCo con mandato</li>
+          <li>Il gruppo opera tramite un contratto/regolamento privato tra i partecipanti</li>
+          <li>Fonte: art. 30 D.Lgs. 199/2021, Decreto CACER 414/2023</li>
+        </ul></div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-header" onclick="toggleFaq(this)">
+          <div class="faq-num">6</div>
+          <div class="faq-question">L'assemblea può impedire l'installazione sul tetto comune?</div>
+          <div class="faq-arrow">▼</div>
+        </div>
+        <div class="faq-body"><div class="faq-body-inner"><ul class="faq-answer">
+          <li>No, per un impianto individuale su parte comune non serve un'autorizzazione discrezionale</li>
+          <li>Basta comunicare il progetto all'amministratore (art. 1122-bis c.c.)</li>
+          <li>L'assemblea può solo prescrivere modalità alternative per stabilità/sicurezza/decoro</li>
+          <li>Per un impianto comune (a beneficio di tutti) serve invece una delibera qualificata</li>
+          <li>La delibera deve indicare proprietario dell'impianto e intestatario della connessione</li>
+        </ul></div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-header" onclick="toggleFaq(this)">
+          <div class="faq-num">7</div>
+          <div class="faq-question">Qual è la differenza pratica tra GAC e CER?</div>
+          <div class="faq-arrow">▼</div>
+        </div>
+        <div class="faq-body"><div class="faq-body-inner"><ul class="faq-answer">
+          <li>Il GAC riunisce autoconsumatori nello stesso edificio/condominio</li>
+          <li>La CER opera su un perimetro più ampio, sotto la stessa cabina primaria</li>
+          <li>Il GAC non richiede una nuova persona giuridica, la CER sì</li>
+          <li>Tempi e costi di avvio del GAC sono più contenuti</li>
+          <li>Entrambi ricevono la tariffa incentivante GSE sull'energia condivisa (20 anni)</li>
+        </ul></div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-header" onclick="toggleFaq(this)">
+          <div class="faq-num">8</div>
+          <div class="faq-question">Come si ripartiscono i benefici economici tra i condomini?</div>
+          <div class="faq-arrow">▼</div>
+        </div>
+        <div class="faq-body"><div class="faq-body-inner"><ul class="faq-answer">
+          <li>Nessun criterio imposto dalla legge: si stabilisce nel regolamento del gruppo</li>
+          <li>Criteri comuni: quota di investimento, consumo contemporaneo, quote millesimali/fisse</li>
+          <li>Il contratto va firmato da tutti i partecipanti al gruppo</li>
+          <li>Deve includere le clausole obbligatorie previste dalla normativa CACER</li>
+          <li>Consigliato farsi assistere da un consulente per evitare contenziosi futuri</li>
+        </ul></div></div>
+      </div>
+
+      <div class="faq-disclaimer" style="font-size:11.5px;color:var(--r21-gray);font-style:italic;margin-top:10px;line-height:1.5;">Risposte sintetiche a scopo di orientamento nella discussione col cliente. Per casi specifici (es. ripartizione dei benefici, clausole di recesso) farsi assistere da un consulente legale/notarile.</div>
+    </div>
+
+    <!-- ======================================================
+         SIMULATORE — GAC CONDOMINIALE vs IMPIANTI SINGOLI
+         ====================================================== -->
+    <div class="sim-box" id="sim-gac">
+      <div class="sim-head">
+        <h3>🧩 Simula il tuo caso — GAC condominiale o impianti singoli?</h3>
+        <p>Caso tipico da sopralluogo: un edificio a più proprietari con superficie disponibile per un unico grande impianto. Inserisci i dati indicativi per confrontare in modo semplice le due strade: un <strong>GAC condominiale</strong> (impianto unico, energia condivisa incentivata) oppure <strong>un impianto separato per ciascun proprietario</strong>. Il confronto isola il valore degli <strong>incentivi</strong> (differenziale tra le due opzioni); il risparmio da <strong>autoconsumo diretto</strong> — che vale allo stesso modo in entrambi gli scenari — è mostrato a parte, per arrivare comunque a un quadro economico complessivo.</p>
+      </div>
+      <div class="sim-form">
+        <div class="sim-field">
+          <label for="sim-n-prop">N. proprietari / unità coinvolte</label>
+          <input type="number" id="sim-n-prop" value="6" min="2" step="1">
+        </div>
+        <div class="sim-field">
+          <label for="sim-kwp">Potenza FV complessiva stimata (kWp)</label>
+          <input type="number" id="sim-kwp" value="200" min="1" step="1">
+          <span class="sim-hint">Stima da sopralluogo/superficie disponibile (es. ~0,10–0,20 kWp/m² di tetto)</span>
+        </div>
+        <div class="sim-field">
+          <label for="sim-invest">Investimento complessivo stimato (€)</label>
+          <input type="number" id="sim-invest" value="220000" min="0" step="1000">
+          <span class="sim-hint">Indicativo ~1.100 €/kWp per impianti di grande taglia; modificabile</span>
+        </div>
+        <div class="sim-field">
+          <label for="sim-prod">Producibilità media (kWh/kWp/anno)</label>
+          <input type="number" id="sim-prod" value="1300" min="800" step="10">
+          <span class="sim-hint">Veneto/Emilia-Romagna ~1.250–1.350 · Calabria fino a ~1.500</span>
+        </div>
+        <div class="sim-field">
+          <label for="sim-quota">Quota energia condivisa tra unità (%)</label>
+          <input type="number" id="sim-quota" value="35" min="0" max="100" step="1">
+          <span class="sim-hint">% dell'energia prodotta consumata da altre unità nello stesso momento: è la quota che riceve la tariffa incentivante nel GAC</span>
+        </div>
+        <div class="sim-field">
+          <label for="sim-aliquota">Aliquota detrazione fiscale</label>
+          <select id="sim-aliquota">
+            <option value="50">50% — abitazione principale</option>
+            <option value="36">36% — altri casi</option>
+          </select>
+          <span class="sim-hint">Su spesa max 96.000 €/unità (art. 16-bis TUIR); dal 2027 aliquote ridotte</span>
+        </div>
+        <div class="sim-field">
+          <label for="sim-autocons">Quota autoconsumo diretto (%)</label>
+          <input type="number" id="sim-autocons" value="30" min="0" max="100" step="1">
+          <span class="sim-hint">Energia consumata istantaneamente da chi la produce (non condivisa con altri) — vale allo stesso modo in entrambi gli scenari, non è un incentivo</span>
+        </div>
+        <div class="sim-field">
+          <label for="sim-prezzo">Prezzo energia evitato (€/kWh)</label>
+          <input type="number" id="sim-prezzo" value="0.22" min="0" step="0.01">
+          <span class="sim-hint">Prezzo medio bolletta evitato con l'autoconsumo diretto</span>
+        </div>
+        <div class="sim-actions">
+          <button type="button" class="sim-btn" onclick="simulaGacVsSingoli()">Confronta le opzioni</button>
+        </div>
+      </div>
+
+      <div class="sim-result" id="sim-result" hidden></div>
+
+      <div class="sim-disclaimer">Stima indicativa a scopo di orientamento nella discussione col cliente, non sostituisce un business plan. La tariffa CACER varia per zona e taglia d'impianto; verificare sempre le regole GSE aggiornate. La ripartizione dei benefici economici tra i condomini nel GAC va definita in un accordo/regolamento interno.</div>
+    </div>
+
     <div class="source-line">
       Fonti: D.Lgs. 199/2021 (artt. 8, 30) — D.Lgs. 210/2021 — D.M. MASE 414/2023 (CACER, config. B) — TIAD/delibera ARERA 727/2022 — D.M. 127/2025 — Regole Operative GSE — art. 16-bis TUIR.<br><br>
       <strong>Verifica aggiornata al 3 agosto 2026, salvo esaurimento contingenti/fondi e aggiornamenti dei portali istituzionali.</strong> Gli importi tariffari sono indicativi e dipendono da potenza, zona e regole di calcolo del Decreto CACER.
@@ -2241,7 +2521,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    © 2026 Rete 21 · Tutti i diritti riservati · Tool Incentivi Percorsi v28 — 05/08/2026
+    © 2026 Rete 21 · Tutti i diritti riservati · Tool Incentivi Percorsi v31 — 05/08/2026
   </div>
 </footer>
 
@@ -2372,6 +2652,17 @@
   }
   function toggleAll(open) {
     document.querySelectorAll('.category').forEach(c => {
+      if (open) c.classList.add('open');
+      else c.classList.remove('open');
+    });
+  }
+
+  /* ---- ACCORDION FAQ (namespace separato: non interferisce con "espandi tutto" di Per tipologia) ---- */
+  function toggleFaq(header) {
+    header.parentElement.classList.toggle('open');
+  }
+  function toggleAllFaq(open) {
+    document.querySelectorAll('.faq-item').forEach(c => {
       if (open) c.classList.add('open');
       else c.classList.remove('open');
     });
@@ -2603,6 +2894,129 @@
         if (novita) toggle.click(); // se ci sono novità, apri subito
       })
       .catch(() => { /* update.json assente o non leggibile: nessun banner */ });
+  }
+
+  /* =========================================================
+     SIMULATORE — GAC CONDOMINIALE vs IMPIANTI SINGOLI
+     ========================================================= */
+  function euro(n) {
+    return n.toLocaleString('it-IT', { maximumFractionDigits: 0 }) + ' €';
+  }
+
+  function simulaGacVsSingoli() {
+    const nProp = Math.max(2, parseFloat(document.getElementById('sim-n-prop').value) || 6);
+    const kwp = Math.max(0, parseFloat(document.getElementById('sim-kwp').value) || 0);
+    const investimento = Math.max(0, parseFloat(document.getElementById('sim-invest').value) || 0);
+    const producibilita = Math.max(0, parseFloat(document.getElementById('sim-prod').value) || 0);
+    const quotaCondivisaPct = Math.min(100, Math.max(0, parseFloat(document.getElementById('sim-quota').value) || 0));
+    const aliquotaPct = parseFloat(document.getElementById('sim-aliquota').value) || 50;
+    const quotaAutoconsumoPct = Math.min(100, Math.max(0, parseFloat(document.getElementById('sim-autocons').value) || 0));
+    const prezzoEnergia = Math.max(0, parseFloat(document.getElementById('sim-prezzo').value) || 0);
+
+    const TARIFFA_CACER_EUR_MWH = 110; // valore base indicativo ≤200 kW, corretto per zona nel Decreto CACER
+    const DURATA_TARIFFA_ANNI = 20;
+    const CAP_DETRAZIONE_PER_UNITA = 96000;
+
+    const quotaCondivisa = quotaCondivisaPct / 100;
+    const aliquota = aliquotaPct / 100;
+    const quotaAutoconsumo = quotaAutoconsumoPct / 100;
+
+    const energiaProdottaAnnuaKwh = kwp * producibilita;
+    const energiaCondivisaAnnuaMwh = (energiaProdottaAnnuaKwh * quotaCondivisa) / 1000;
+    const valoreTariffaAnnua = energiaCondivisaAnnuaMwh * TARIFFA_CACER_EUR_MWH;
+    const valoreTariffa20anni = valoreTariffaAnnua * DURATA_TARIFFA_ANNI;
+
+    const capDetraibileTotale = CAP_DETRAZIONE_PER_UNITA * nProp;
+    const investimentoDetraibile = Math.min(investimento, capDetraibileTotale);
+    const detrazioneTotale = investimentoDetraibile * aliquota;
+    const capRaggiunto = investimento > capDetraibileTotale;
+
+    const totaleGac = valoreTariffa20anni + detrazioneTotale;
+    const totaleSingoli = detrazioneTotale; // nessuna tariffa incentivante: impianti non condivisi formalmente
+    const delta = totaleGac - totaleSingoli;
+
+    // Autoconsumo diretto: NON è un incentivo, vale allo stesso modo in entrambi gli scenari
+    // (dipende dai kWp installati e dai consumi, non dalla configurazione GAC/impianti singoli)
+    const quoteAssegnate = quotaCondivisaPct + quotaAutoconsumoPct;
+    const quoteOltreCento = quoteAssegnate > 100;
+    const energiaAutoconsumoAnnuaKwh = energiaProdottaAnnuaKwh * quotaAutoconsumo;
+    const risparmioBollettaAnnuo = energiaAutoconsumoAnnuaKwh * prezzoEnergia;
+    const risparmioBolletta20anni = risparmioBollettaAnnuo * DURATA_TARIFFA_ANNI;
+
+    const quadroGac = totaleGac + risparmioBolletta20anni;
+    const quadroSingoli = totaleSingoli + risparmioBolletta20anni;
+
+    const html = `
+      <div class="sim-cards">
+        <div class="sim-card opt-a">
+          <h4>Opzione A — GAC condominiale</h4>
+          <div class="sim-sub">Impianto unico, energia condivisa incentivata dal GSE</div>
+          <ul class="sim-metrics">
+            <li><span>Energia condivisa stimata/anno</span><strong>${energiaCondivisaAnnuaMwh.toLocaleString('it-IT', {maximumFractionDigits: 1})} MWh</strong></li>
+            <li><span>Valore tariffa incentivante (20 anni)</span><strong>${euro(valoreTariffa20anni)}</strong></li>
+            <li><span>Detrazione fiscale (parti comuni)</span><strong>${euro(detrazioneTotale)}</strong></li>
+          </ul>
+          <div class="sim-total"><span>Beneficio economico stimato (20 anni)</span>${euro(totaleGac)}</div>
+          <ul class="sim-list pro">
+            <li>Impianto unico: economie di scala su progettazione e installazione</li>
+            <li>Un solo iter GSE (SPC) invece di ${nProp} pratiche separate</li>
+            <li>Valorizza l'energia scambiata tra le unità con tariffa garantita 20 anni</li>
+            <li>Non serve costituire una nuova persona giuridica: basta delibera + referente</li>
+          </ul>
+          <ul class="sim-list contro">
+            <li>Richiede delibera assembleare e nomina di un referente verso il GSE</li>
+            <li>Ripartizione dei benefici tra i condomini da regolamentare (accordo interno)</li>
+            <li>Gestione tecnico-amministrativa comune nel tempo</li>
+          </ul>
+        </div>
+        <div class="sim-card opt-b">
+          <h4>Opzione B — ${nProp} impianti singoli</h4>
+          <div class="sim-sub">Ogni proprietario installa e gestisce il proprio impianto</div>
+          <ul class="sim-metrics">
+            <li><span>Energia condivisa incentivata</span><strong>0 MWh</strong></li>
+            <li><span>Valore tariffa incentivante (20 anni)</span><strong>0 €</strong></li>
+            <li><span>Detrazione fiscale (per singola unità)</span><strong>${euro(detrazioneTotale)}</strong></li>
+          </ul>
+          <div class="sim-total"><span>Beneficio economico stimato (20 anni)</span>${euro(totaleSingoli)}</div>
+          <ul class="sim-list pro">
+            <li>Piena autonomia gestionale per ciascun proprietario</li>
+            <li>Nessuna delibera collettiva né referente da nominare</li>
+            <li>Ognuno decide taglia, tempi e installatore in autonomia</li>
+          </ul>
+          <ul class="sim-list contro">
+            <li>Nessuna valorizzazione dell'energia scambiata tra le unità (nessuna tariffa CACER)</li>
+            <li>Impianti più piccoli: minori economie di scala su €/kWp</li>
+            <li>${nProp} iter GSE separati invece di uno solo</li>
+          </ul>
+        </div>
+      </div>
+      <div class="sim-delta">
+        Passando da ${nProp} impianti singoli a un <strong>GAC condominiale</strong>, il beneficio economico aggiuntivo stimato sui 20 anni di incentivo è di circa <strong>${euro(delta)}</strong>, dato dalla tariffa sull'energia condivisa — a fronte di una gestione collettiva (delibera + referente verso il GSE) che gli impianti singoli non richiedono.
+        ${capRaggiunto ? `<br><br>Nota: l'investimento indicato supera il tetto detraibile complessivo di ${euro(capDetraibileTotale)} (96.000 €/unità × ${nProp}); la detrazione fiscale è calcolata sul tetto massimo.` : ''}
+      </div>
+
+      <div class="sim-autocons">
+        <span class="sim-autocons-tag">Non è un incentivo — uguale in entrambi gli scenari</span>
+        <h5>☀ Autoconsumo diretto stimato</h5>
+        <ul>
+          <li>Energia autoconsumata diretta/anno: <strong>${(energiaAutoconsumoAnnuaKwh/1000).toLocaleString('it-IT', {maximumFractionDigits: 1})} MWh</strong></li>
+          <li>Risparmio in bolletta stimato/anno: <strong>${euro(risparmioBollettaAnnuo)}</strong></li>
+          <li>Risparmio in bolletta stimato (20 anni): <strong>${euro(risparmioBolletta20anni)}</strong></li>
+        </ul>
+        <div class="sim-autocons-note">Il risparmio da autoconsumo diretto dipende dai kWp installati e dai consumi, non dalla scelta GAC/impianti singoli: per questo non entra nel confronto tra incentivi qui sopra, ma va sempre incluso nel quadro economico complessivo mostrato di seguito.
+          ${quoteOltreCento ? `<br><br>Attenzione: la somma di quota condivisa (${quotaCondivisaPct}%) e quota autoconsumo diretto (${quotaAutoconsumoPct}%) supera il 100% dell'energia prodotta — rivedere le stime.` : ''}
+        </div>
+        <div class="sim-quadro">
+          <div class="sim-quadro-card"><span>Quadro economico complessivo — Opzione A (GAC)</span><strong>${euro(quadroGac)}</strong></div>
+          <div class="sim-quadro-card"><span>Quadro economico complessivo — Opzione B (impianti singoli)</span><strong>${euro(quadroSingoli)}</strong></div>
+        </div>
+      </div>
+    `;
+
+    const result = document.getElementById('sim-result');
+    result.innerHTML = html;
+    result.hidden = false;
+    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
 
   /* ---- INIT ---- */
