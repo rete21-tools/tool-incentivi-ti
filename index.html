@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tool Incentivi Percorsi — Rete 21 — v34 — 05/08/2026</title>
+<title>Tool Incentivi Percorsi — Rete 21 — v35 — 05/08/2026</title>
 <meta name="description" content="Trova gli incentivi per la transizione energetica adatti alla tua situazione: scegli il tuo percorso tra privato, impresa, PA, CER, agrivoltaico, condominio. A cura di Rete 21.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -316,13 +316,11 @@
   .category-archivio .category-title { color: #9b1c1c; }
   .archivio-alert { background:#fdeaea; border:1px solid #f0c9c9; color:#7a1616; border-radius:8px; padding:10px 14px; font-size:13px; margin-bottom:14px; }
   .arch-amb { display:inline-block; font-size:10px; font-weight:700; letter-spacing:.5px; color:#9b1c1c; background:#fdeaea; padding:2px 6px; border-radius:4px; margin-bottom:4px; }
-  .reg-select-wrap { display:flex; align-items:center; gap:12px; flex-wrap:wrap; background:#fff; border:1px solid var(--r21-border); border-radius:10px; padding:16px 18px; margin-bottom:20px; box-shadow: var(--r21-shadow); }
-  .reg-select-wrap label { font-weight:700; font-size:14px; color:var(--r21-dark-2); }
-  #reg-select { font-size:15px; padding:9px 14px; border:1px solid var(--r21-border); border-radius:8px; background:#fff; min-width:260px; font-family:inherit; }
   .reg-socie { font-size:11px; font-weight:700; letter-spacing:.5px; color:#fff; background:var(--r21-green); padding:3px 8px; border-radius:4px; }
+  .reg-socie-star { color: var(--r21-green-dark); font-size: 14px; }
   .reg-head { background:#fff; border:1px solid var(--r21-border); border-left:4px solid var(--r21-green); border-radius:10px; padding:16px 20px; margin-bottom:16px; }
   .reg-head h3 { margin:0 0 6px; font-size:20px; color:var(--r21-dark-2); }
-  .reg-head .reg-portale { font-size:13px; color:var(--r21-gray); }
+  .reg-head .reg-portale, .reg-portale { font-size:13px; color:var(--r21-gray); }
   .reg-empty { background:#f7f7f5; border:1px dashed var(--r21-border); border-radius:10px; padding:24px; text-align:center; color:var(--r21-gray); font-size:14px; }
   .category-count { font-size: 12px; font-weight: 600; color: var(--r21-gray); background: var(--r21-gray-light); padding: 4px 10px; border-radius: 12px; letter-spacing: 0.3px; }
   .category-arrow { color: var(--r21-green-dark); font-size: 14px; transition: transform .25s ease; }
@@ -674,7 +672,7 @@
       <span class="hero-badge">Per tipologia</span>
       <span class="hero-badge">Per percorso</span>
       <span class="hero-badge">Con scadenze</span>
-      <span class="hero-badge">Aggiornato 5 agosto 2026</span><span class="hero-badge">Veneto · Emilia-Romagna · Calabria</span>
+      <span class="hero-badge">Aggiornato 5 agosto 2026</span><span class="hero-badge">Copertura nazionale — tutte le regioni</span>
       <span class="hero-badge hero-badge-live" id="badge-verifica" hidden></span>
     </div>
   </div>
@@ -710,6 +708,7 @@
     <button class="view-btn" id="btn-percorso" onclick="setView('percorso')">🧭 Per il mio percorso</button>
     <button class="view-btn" id="btn-cer" onclick="setView('cer')">⚡ CER</button>
     <button class="view-btn" id="btn-gac" onclick="setView('gac')">🏢 GAC</button>
+    <button class="view-btn" id="btn-bandi" onclick="setView('bandi')">🏷️ Per bando</button>
     <button class="view-btn" id="btn-regioni" onclick="setView('regioni')">🗺️ Per regione</button>
   </div>
 
@@ -1027,91 +1026,10 @@
       </div>
     </div>
 
-    <!-- CAT 7: VENETO REGIONALE -->
+    <!-- CAT 7: BESS -->
     <div class="category">
       <div class="category-header" onclick="toggleCategory(this)">
         <div class="category-num">7</div>
-        <div class="category-title">Misure regionali — Regione Veneto</div>
-        <div class="category-count">7 voci</div>
-        <div class="category-arrow">▼</div>
-      </div>
-      <div class="category-body">
-        <div class="category-body-inner">
-          <div class="intro" style="margin-bottom:18px">
-            Sezione dedicata al territorio <strong>Veneto / Treviso</strong>. I riferimenti normativi sono indicati per orientamento: <strong>importi, dotazioni e scadenze dei bandi regionali vanno sempre verificati sul portale della Regione del Veneto</strong>, perché soggetti a riaperture e rifinanziamenti.
-          </div>
-          <div class="table-wrap">
-            <table class="incentivi">
-              <thead><tr><th>Misura</th><th>Descrizione</th><th>Beneficiari</th><th>Scadenza</th><th>Stato</th><th>Compatibilit&agrave; / cumulo</th><th>Azioni &amp; tempi</th></tr></thead>
-              <tbody>
-                <tr>
-                  <td class="name">L.R. Veneto 16/2022 — CER</td>
-                  <td class="desc">Legge regionale di promozione delle Comunità Energetiche Rinnovabili e degli autoconsumatori collettivi in Veneto. Quadro di riferimento per le configurazioni sul territorio regionale</td>
-                  <td class="beneficiari"><span class="ben-badge ben-cer">CER</span><span class="ben-badge ben-pa">Enti locali</span></td>
-                  <td class="scadenza"><span class="scad-badge scad-ampia">Quadro normativo</span></td>
-                  <td class="stato"><span class="stato-badge stato-conf">Vigente</span></td>
-                <td class="compat">Quadro normativo regionale; si integra con tariffa GSE e PNRR.</td><td class="azioni">Riferimento per le configurazioni CER in Veneto; nessuna scadenza.</td></tr>
-                <tr>
-                  <td class="name">L.R. Veneto 17/2022 — FV a terra</td>
-                  <td class="desc">Disciplina regionale per gli impianti fotovoltaici con moduli a terra e raccordo con il D.Lgs. 190/2024 e l'agrivoltaico. Da leggere insieme alla normativa nazionale sulle aree idonee</td>
-                  <td class="beneficiari"><span class="ben-badge ben-imprese">Imprese</span><span class="ben-badge ben-agri">Agricoltura</span></td>
-                  <td class="scadenza"><span class="scad-badge scad-ampia">Quadro normativo</span></td>
-                  <td class="stato"><span class="stato-badge stato-conf">Vigente</span></td>
-                <td class="compat">Da leggere con D.Lgs. 190/2024 (aree idonee).</td><td class="azioni">Verificare compatibilit&agrave; urbanistica e aree idonee prima del progetto.</td></tr>
-                <tr>
-                  <td class="name">Fondo Veneto Energia — Imprese (Az. 2.1.2)</td>
-                  <td class="desc">Misura del PR Veneto FESR 2021–2027 per l'efficientamento energetico delle PMI venete (DGR 1418/2024). Fondo perduto <strong>fino al 20%</strong> + finanziamento <strong>50% tasso zero</strong>. Investimento ammissibile: min 100.000 € / max <strong>1.000.000 €</strong> (DGR 557/2025: massimale elevato da 600.000 €). Riduzione consumi ≥ 30% obbligatoria. Procedura <strong>valutativa</strong> (aggiornata da sportello)</td>
-                  <td class="beneficiari"><span class="ben-badge ben-imprese">PMI venete</span></td>
-                  <td class="scadenza"><span class="scad-badge scad-continuo">Valutativa</span><span class="scad-note">Dotazione 31 M€ — verificare disponibilità residua</span></td>
-                  <td class="stato"><span class="stato-badge stato-mod">Aggiornata</span><span class="stato-note">DGR 557/2025: max spesa elevato a 1.000.000 €. Procedura ora valutativa. Verificare portale Veneto Innovazione</span></td>
-                <td class="compat">Fondo perduto 20% + finanziamento tasso zero 50%; verificare cumulo con crediti nazionali.</td><td class="azioni"><strong>Procedura valutativa</strong> (DGR 557/2025): invest. 100k&ndash;1M&euro;, &minus;30% consumi. Verificare dotazione residua su Veneto Innovazione.</td></tr>
-                <tr>
-                  <td class="name">CCIAA Treviso-Belluno — Bando doppia transizione</td>
-                  <td class="desc">Bando camerale a sostegno della <strong>doppia transizione digitale ed ecologica</strong> delle MPMI (digitalizzazione + efficienza energetica, monitoraggio consumi, riduzione emissioni). Contributo a fondo perduto <strong>50%</strong>, max <strong>40.000 € per impresa</strong> (fino a 30.000 € beni/software + 5.000 € consulenze 4.0 + 5.000 € consulenze/formazione efficienza energetica). Ammesse anche spese dal 01/01/2026. Sede o unità operativa nella circoscrizione Treviso-Belluno</td>
-                  <td class="beneficiari"><span class="ben-badge ben-imprese">MPMI TV-BL</span></td>
-                  <td class="scadenza"><span class="scad-badge scad-breve">23/10/2026</span><span class="scad-note">Sportello <strong>APERTO</strong> dal 08/07/2026; domande fino al 23/10/2026 (ore 23:59), salvo chiusura anticipata per esaurimento fondi</span></td>
-                  <td class="stato"><span class="stato-badge stato-attivo">Aperto</span><span class="stato-note">Bando 2026 <strong>aperto dalle 09:00 dell'08/07/2026</strong>: domande fino al 23/10/2026, ordine cronologico. Dotazione 1.400.000 €</span></td>
-                  <td class="compat">Contributo camerale cumulabile con incentivi nazionali su spese distinte, nei limiti del de minimis.</td>
-                  <td class="azioni"><strong>SPORTELLO APERTO</strong> — presentare al più presto (ordine cronologico, dotazione 1,4 M€). Piattaforma <strong>Restart</strong> / <strong>tb.camcom.gov.it</strong>; ammesse spese dal 01/01/2026. Chiusura 23/10/2026.</td>
-                </tr>
-                <tr>
-                  <td class="name">CCIAA Venezia Rovigo — Voucher doppia transizione</td>
-                  <td class="desc"><strong>Voucher Doppia Transizione 2026</strong> (cod. bando 2601) della CCIAA Venezia Rovigo: tecnologie digitali e soluzioni per la <strong>sostenibilità energetica</strong> (monitoraggio consumi, LCA, rating ESG), consulenze <strong>Energy Manager</strong> e <strong>studi di fattibilità per CER</strong>, formazione. Fondo perduto <strong>70%</strong> delle spese, max <strong>6.000 €</strong> per impresa (investimento minimo 5.000 €; premialità +250 € per rating di legalità o certificazione parità di genere). Dotazione <strong>476.000 €</strong>. De minimis. Sede o unità operativa nella circoscrizione Venezia-Rovigo</td>
-                  <td class="beneficiari"><span class="ben-badge ben-imprese">MPMI VE-RO</span></td>
-                  <td class="scadenza"><span class="scad-badge scad-breve">07/09/2026</span><span class="scad-note">Sportello <strong>APERTO</strong> dal click day del 27/07/2026 (ore 10:00): domande fino al 07/09/2026, ordine cronologico, salvo chiusura anticipata per esaurimento fondi</span></td>
-                  <td class="stato"><span class="stato-badge stato-attivo">Aperto</span><span class="stato-note">Click day del <strong>27/07/2026 già avvenuto</strong>: sportello ora attivo, dotazione 476.000 €, voucher 70% fino a 6.000 €</span></td>
-                  <td class="compat">Contributo camerale cumulabile con incentivi nazionali su spese distinte, nei limiti del de minimis.</td>
-                  <td class="azioni"><strong>SPORTELLO APERTO</strong> — presentare al più presto se non già fatto (ordine cronologico dal click day del 27/07, dotazione contenuta). Preparare preventivi, profilo digitale/green e — se pertinente — lo studio di fattibilità CER. Portale: <strong>dl.camcom.it</strong>.</td>
-                </tr>
-                <tr>
-                  <td class="name">CCIAA Padova — Bando Doppia Transizione 2026 <span style="color:#9b1c1c">(CHIUSO)</span></td>
-                  <td class="desc"><strong>CHIUSO — finestra terminata il 31/07/2026 ore 19:00.</strong> Bando camerale per la <strong>doppia transizione digitale ed ecologica</strong> delle MPMI padovane: digitalizzazione, IA, e <strong>efficientamento energetico</strong> (audit energetici, studi di fattibilità CER, piani di miglioramento energetico). Contributo a fondo perduto <strong>50%</strong> delle spese ammissibili, min <strong>3.000 €</strong> investimento, contributo min <strong>1.500 €</strong> e max <strong>7.000 €</strong> (per il massimo serve investimento ≥ 14.000 €). Dotazione <strong>510.000 €</strong>, de minimis. Non proporre a nuovi clienti — misura spostata in Archivio.</td>
-                  <td class="beneficiari"><span class="ben-badge ben-imprese">MPMI Padova</span></td>
-                  <td class="scadenza"><span class="scad-badge scad-urgente">Chiuso 31/07/2026</span><span class="scad-note">Finestra 30/07 ore 11:00 → 31/07/2026 ore 19:00 (32 ore), ordine cronologico</span></td>
-                  <td class="stato"><span class="stato-badge stato-scad">Chiuso</span><span class="stato-note">Sportello chiuso il 31/07/2026 ore 19:00</span></td>
-                  <td class="compat">Contributo camerale in de minimis; per chi ha già presentato domanda, cumulabile con incentivi nazionali su spese distinte.</td>
-                  <td class="azioni"><strong>Non proporre a nuovi clienti.</strong> Per chi ha già presentato domanda: verificare esito su <strong>pd.camcom.it</strong>. Monitorare eventuale rifinanziamento per una prossima finestra.</td>
-                </tr>
-                <tr>
-                  <td class="name">CCIAA Verona — Voucher Doppia Transizione 2026</td>
-                  <td class="desc">Bando camerale per la <strong>doppia transizione digitale ed ecologica</strong> delle MPMI veronesi. Tra le spese ammesse: <strong>studi di fattibilità tecnico-economica per la costituzione di una CER</strong> e relativa documentazione tecnica e giuridica (statuto, contratti). Contributo a fondo perduto <strong>50%</strong>, max <strong>10.000 €</strong> per impresa (voucher 2.000–10.000 €). Dotazione <strong>600.000 €</strong>, premialità +250 € per rating di legalità o parità di genere. Sede o unità operativa in provincia di Verona</td>
-                  <td class="beneficiari"><span class="ben-badge ben-imprese">MPMI Verona</span></td>
-                  <td class="scadenza"><span class="scad-badge scad-att">Apre 15/09/2026</span><span class="scad-note">Sportello dal 15/09/2026 al 22/09/2026, ordine cronologico salvo esaurimento fondi</span></td>
-                  <td class="stato"><span class="stato-badge stato-nuovo">Nuovo — non ancora aperto</span><span class="stato-note">Bando pubblicato dalla CCIAA Verona (testo confermato luglio 2026); sportello non ancora attivo</span></td>
-                  <td class="compat">Contributo camerale cumulabile con incentivi nazionali su spese distinte, nei limiti del de minimis.</td>
-                  <td class="azioni">Predisporre già ora <strong>lo studio di fattibilità CER</strong> e la documentazione societaria per essere pronti al click day. Presentare dal 15/09 al 22/09/2026 via piattaforma camerale (Restart/webtelemaco). Verificare testo definitivo su <strong>vr.camcom.it</strong>.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CAT 8: BESS -->
-    <div class="category">
-      <div class="category-header" onclick="toggleCategory(this)">
-        <div class="category-num">8</div>
         <div class="category-title">Sistemi di accumulo (BESS)</div>
         <div class="category-count">3 misure</div>
         <div class="category-arrow">▼</div>
@@ -1152,113 +1070,10 @@
     </div>
 
 
-    <!-- CAT 9: EMILIA-ROMAGNA -->
+    <!-- CAT 8: COGENERAZIONE -->
     <div class="category">
       <div class="category-header" onclick="toggleCategory(this)">
-        <div class="category-num">9</div>
-        <div class="category-title">Misure regionali — Regione Emilia-Romagna</div>
-        <div class="category-count">4 voci</div>
-        <div class="category-arrow">&#9660;</div>
-      </div>
-      <div class="category-body">
-        <div class="category-body-inner">
-          <div class="intro" style="margin-bottom:18px">
-            Sezione dedicata al territorio <strong>Emilia-Romagna</strong>. I bandi regionali vanno verificati sul portale della Regione Emilia-Romagna e su <strong>SFINGE 2020</strong>, perché soggetti a riaperture e rifinanziamenti. I due bandi regionali principali del 2026 (Bando CER FESR e Fondo Energia) sono scaduti e archiviati; è scaduto anche il bando camerale «Efficienza Energetica 2026 — BE26» della CCIAA dell'Emilia (finestra chiusa il 30/07/2026, ora in Archivio). Restano <strong>aperti o in apertura tre bandi camerali: «Doppia transizione» CCIAA Ferrara-Ravenna (aperto dal 21/07/2026 fino al 25/09/2026), «Doppia Transizione 2026» della CCIAA della Romagna (Forlì-Cesena e Rimini, dal 22/07/2026 fino all'08/09/2026), e «Voucher Doppia Transizione 2026» della CCIAA di Bologna (600.000 €, domande 10 → 17/09/2026)</strong>.
-          </div>
-          <div class="table-wrap">
-            <table class="incentivi">
-              <thead><tr><th>Misura</th><th>Descrizione</th><th>Beneficiari</th><th>Scadenza</th><th>Stato</th><th>Compatibilit&agrave; / cumulo</th><th>Azioni &amp; tempi</th></tr></thead>
-              <tbody>
-                <tr>
-                  <td class="name">PR ER FESR 2021&ndash;2027 &mdash; prossime aperture</td>
-                  <td class="desc">Il programma regionale FESR dell&#39;Emilia-Romagna prevede misure per CER (Az. 2.2.1), efficientamento PMI e rinnovabili. Verificare il portale regionale per nuove aperture sportelli, in quanto i bandi vengono periodicamente rifinanziati con nuove dotazioni</td>
-                  <td class="beneficiari"><span class="ben-badge ben-cer">CER</span><span class="ben-badge ben-imprese">PMI ER</span></td>
-                  <td class="scadenza"><span class="scad-badge scad-att">Da verificare</span><span class="scad-note">Verificare portale Regione ER e SFINGE 2020</span></td>
-                  <td class="stato"><span class="stato-badge stato-att">Da verificare</span></td>
-                <td class="compat">Misure CER/PMI cumulabili con incentivi nazionali nei limiti.</td><td class="azioni">Monitorare <strong>portale Regione ER e SFINGE 2020</strong> per nuovi sportelli.</td></tr>
-                <tr>
-                  <td class="name">CCIAA Ferrara-Ravenna &mdash; Bando doppia transizione 2026</td>
-                  <td class="desc">Bando camerale a sostegno della <strong>doppia transizione digitale ed ecologica</strong> delle MPMI. Ammesse soluzioni ecologiche quali <strong>autoproduzione da fonti rinnovabili, partecipazione a Comunit&agrave; Energetiche Rinnovabili (CER)</strong>, ESG, efficienza energetica, oltre a consulenze e tecnologie 5.0. Dotazione <strong>400.000 &euro;</strong>. Contributo a fondo perduto <strong>50%</strong> delle spese, max <strong>5.000 &euro; per impresa</strong>. Premialit&agrave; per imprese femminili, giovanili, rating di legalit&agrave; e certificazione parit&agrave; di genere. Sede o unit&agrave; operativa nelle province di Ferrara o Ravenna</td>
-                  <td class="beneficiari"><span class="ben-badge ben-imprese">MPMI FE-RA</span><span class="ben-badge ben-cer">CER</span></td>
-                  <td class="scadenza"><span class="scad-badge scad-att">Aperto &rarr; 25/09/2026</span><span class="scad-note">Domande dalle ore 10:00 del 21/07/2026 alle ore 12:00 del 25/09/2026 — precaricamento gi&agrave; possibile dall&#39;08/07/2026 su piattaforma Restart</span></td>
-                  <td class="stato"><span class="stato-badge stato-attivo">Aperto</span><span class="stato-note">Sportello aperto dal 21/07/2026 &mdash; chiusura ore 12:00 del 25/09/2026</span></td>
-                  <td class="compat">Contributo camerale in <strong>de minimis</strong>, cumulabile con incentivi nazionali su spese distinte.</td>
-                  <td class="azioni"><strong>Precaricare subito la domanda su Restart</strong> (gi&agrave; aperto); invio dalle 10:00 del <strong>21/07/2026</strong>. Procedura a sportello: preparare preventivi e documentazione in anticipo. Portale: <strong>fera.camcom.it</strong>.</td></tr>
-                <tr>
-                  <td class="name">CCIAA Romagna (Forl&igrave;-Cesena e Rimini) &mdash; Bando Doppia Transizione 2026</td>
-                  <td class="desc">Bando camerale a sostegno della <strong>doppia transizione digitale ed ecologica</strong> delle MPMI, in coerenza con il Piano Transizione 5.0. Ammesse tecnologie digitali per l&#39;energia (gestione e monitoraggio dei consumi energetici), <strong>spese progettuali per la creazione di CER</strong> (studi di fattibilit&agrave;, business plan, spese legali), consulenze Energy Manager / ISO 50001 e formazione green. Dotazione <strong>500.000 &euro;</strong>. Contributo a fondo perduto <strong>50%</strong>, max <strong>10.000 &euro; per impresa</strong> (+250 &euro; per rating di legalit&agrave; o certificazione parit&agrave; di genere); investimento minimo 10.000 &euro;. Sede o unit&agrave; operativa nelle province di <strong>Forl&igrave;-Cesena o Rimini</strong></td>
-                  <td class="beneficiari"><span class="ben-badge ben-imprese">MPMI FC-RN</span><span class="ben-badge ben-cer">CER</span></td>
-                  <td class="scadenza"><span class="scad-badge scad-breve">Aperto &rarr; 08/09/2026</span><span class="scad-note">Domande dalle ore 10:00 del 22/07/2026 alle ore 13:00 dell&#39;08/09/2026 &mdash; precompilazione gi&agrave; attiva dall&#39;08/07/2026 su piattaforma ReStart</span></td>
-                  <td class="stato"><span class="stato-badge stato-attivo">Aperto</span><span class="stato-note">Sportello aperto dal 22/07/2026 &mdash; chiusura ore 13:00 dell&#39;08/09/2026</span></td>
-                  <td class="compat">Contributo camerale in <strong>de minimis</strong>, cumulabile con altri aiuti de minimis nei massimali pertinenti e con misure fiscali generali nel limite del 100% delle spese.</td>
-                  <td class="azioni"><strong>Precaricare subito la domanda su ReStart</strong> (attivo dall&#39;08/07); invio dalle 10:00 del <strong>22/07/2026</strong>. Procedura valutativa a sportello in ordine cronologico: presentare il primo giorno. Portale: <strong>romagna.camcom.it</strong>.</td></tr>
-                <tr>
-                  <td class="name">CCIAA Bologna &mdash; Voucher Doppia Transizione 2026</td>
-                  <td class="desc">Bando camerale a sostegno della <strong>doppia transizione digitale ed ecologica</strong> delle MPMI: digitalizzazione anche <strong>green oriented</strong> per la transizione ecologica (tecnologie digitali per l&#39;energia, sostenibilit&agrave; aziendale). Dotazione <strong>600.000 &euro;</strong>, contributo a fondo perduto in <strong>de minimis</strong> (massimali da regolamento su bo.camcom.gov.it). Priorit&agrave; a imprese femminili, giovanili, rating di legalit&agrave; e certificazione parit&agrave; di genere, poi ordine cronologico. Spese ammissibili dall&#39;<strong>08/07/2026</strong> al <strong>31/05/2027</strong>. Sede legale nella circoscrizione CCIAA Bologna / unit&agrave; locali nell&#39;area metropolitana di Bologna</td>
-                  <td class="beneficiari"><span class="ben-badge ben-imprese">MPMI BO</span></td>
-                  <td class="scadenza"><span class="scad-badge scad-att">Apre 10/09/2026 &rarr; 17/09/2026</span><span class="scad-note">Domande dal <strong>10 al 17/09/2026</strong> su piattaforma ReStart &mdash; bando pubblicato l&#39;08/07/2026; compilazione preparabile in anticipo (raPIDo, SELFI4.0, SUSTAINability)</span></td>
-                  <td class="stato"><span class="stato-badge stato-nuovo">Nuovo</span><span class="stato-note">Bando pubblicato l&#39;08/07/2026 &mdash; sportello 10 &rarr; 17/09/2026</span></td>
-                  <td class="compat">Contributo camerale in <strong>de minimis</strong>, cumulabile con incentivi nazionali su spese distinte.</td>
-                  <td class="azioni"><strong>Predisporre in anticipo</strong> domanda su ReStart, modulo raPIDo e self-assessment SELFI4.0 (digitale) o SUSTAINability (ecologico) aggiornati al 2026. Priorit&agrave; a imprese femminili/giovanili/rating: se in possesso dei requisiti, inviare subito il 10/09. Portale: <strong>bo.camcom.gov.it</strong>.</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CAT 10: CALABRIA -->
-    <div class="category">
-      <div class="category-header" onclick="toggleCategory(this)">
-        <div class="category-num" style="font-size:13px">10</div>
-        <div class="category-title">Misure regionali &mdash; Regione Calabria</div>
-        <div class="category-count">3 voci</div>
-        <div class="category-arrow">&#9660;</div>
-      </div>
-      <div class="category-body">
-        <div class="category-body-inner">
-          <div class="intro" style="margin-bottom:18px">
-            Sezione dedicata al territorio <strong>Calabria</strong>. Il <strong>FEERI</strong> e&#768; lo strumento principale per le imprese, attivo fino a fine 2026. La Calabria beneficia anche delle misure MASE per le <strong>regioni meno sviluppate</strong>. &Egrave; inoltre aperto il <strong>bando camerale CCIAA Reggio Calabria per l&#39;efficientamento energetico e/o idrico</strong> (domande fino al 30/09/2026) ed &egrave; in apertura il <strong>Voucher Doppia Transizione 2026 della CCIAA Catanzaro-Crotone-Vibo Valentia</strong> (sportello 08 &rarr; 30/09/2026). Verificare <a href="https://calabriaeuropa.regione.calabria.it" target="_blank" rel="noopener" style="color:var(--r21-green-dark)">calabriaeuropa.regione.calabria.it</a> e Fincalabra.
-          </div>
-          <div class="table-wrap">
-            <table class="incentivi">
-              <thead><tr><th>Misura</th><th>Descrizione</th><th>Beneficiari</th><th>Scadenza</th><th>Stato</th><th>Compatibilit&agrave; / cumulo</th><th>Azioni &amp; tempi</th></tr></thead>
-              <tbody>
-                <tr>
-                  <td class="name">FEERI &mdash; Fondo Eff. Energetica e Rinnovabili</td>
-                  <td class="desc">Strumento finanziario PR FESR Calabria 2021&ndash;2027. Dotazione totale <strong>45 M&#8364;</strong>: <strong>30 M&#8364;</strong> efficienza energetica (Az. 2.1.2) + <strong>15 M&#8364;</strong> FV e rinnovabili (Az. 2.2.1). Mix prestito agevolato + contributo in conto capitale. Investimento ammissibile <strong>80.000 &ndash; 3.000.000 &#8364;</strong>. Gestione Fincalabra. Procedura a sportello cronologico</td>
-                  <td class="beneficiari"><span class="ben-badge ben-imprese">Imprese (CA)</span></td>
-                  <td class="scadenza"><span class="scad-badge scad-breve">30/12/2026</span><span class="scad-note">Aperto 09/06/2025 &mdash; a sportello fino esaurimento</span></td>
-                  <td class="stato"><span class="stato-badge stato-attivo">Attivo</span><span class="stato-note">Fino al 30/12/2026 o esaurimento fondi</span></td>
-                <td class="compat">Prestito agevolato + contributo conto capitale; cumulabile con incentivi nazionali nei limiti UE.</td><td class="azioni"><strong>A sportello valutativo fino al 30/12/2026</strong> o esaurimento (45 M&euro;). Domanda online firmata digitalmente su Fincalabra.</td></tr>
-                <tr>
-                  <td class="name">CCIAA Reggio Calabria &mdash; Efficientamento energetico e/o idrico 2026</td>
-                  <td class="desc">Bando camerale (parte di un pacchetto da <strong>260.000 &euro;</strong> su 4 bandi: digitale, ambiente, innovazione, internazionalizzazione). Contributi a fondo perduto in regime <strong>de minimis</strong> per <strong>interventi strutturali di riduzione dei consumi energetici</strong> e ottimizzazione delle risorse idriche. Dotazione <strong>45.000 &euro;</strong>. Premialit&agrave; aggiuntiva di <strong>200 &euro;</strong> per imprese con rating di legalit&agrave; e/o certificazione parit&agrave; di genere. Sede o unit&agrave; locale nella circoscrizione di <strong>Reggio Calabria</strong></td>
-                  <td class="beneficiari"><span class="ben-badge ben-imprese">MPMI (RC)</span></td>
-                  <td class="scadenza"><span class="scad-badge scad-breve">30/09/2026</span><span class="scad-note">Invio telematico su Restart dalle ore 10:00 dell&#39;<strong>01/09/2026</strong> alle ore 19:00 del <strong>03/09/2026</strong>; in alternativa via <strong>PEC fino al 30/09/2026</strong></span></td>
-                  <td class="stato"><span class="stato-badge stato-nuovo">Nuovo</span><span class="stato-note">Bandi pubblicati l&#39;08/07/2026 dalla CCIAA di Reggio Calabria</span></td>
-                  <td class="compat">Contributo camerale in <strong>de minimis</strong>, cumulabile con incentivi nazionali su spese distinte.</td>
-                  <td class="azioni">Dotazione contenuta: <strong>presentare appena apre lo sportello telematico (01/09/2026)</strong>. Verificare bando e modulistica su <strong>rc.camcom.gov.it</strong> / piattaforma Restart.</td></tr>
-                <tr>
-                  <td class="name">CCIAA Catanzaro-Crotone-Vibo Valentia &mdash; Voucher Doppia Transizione 2026</td>
-                  <td class="desc">Bando camerale a sostegno della <strong>doppia transizione digitale ed ecologica</strong> delle MPMI di tutti i settori delle province di <strong>Catanzaro, Crotone e Vibo Valentia</strong>. Voucher a fondo perduto <strong>50%</strong>, da <strong>4.000 &euro;</strong> a <strong>10.250 &euro;</strong> per impresa. Dotazione <strong>89.536 &euro;</strong> &mdash; molto contenuta, esaurimento rapido probabile</td>
-                  <td class="beneficiari"><span class="ben-badge ben-imprese">MPMI CZ-KR-VV</span></td>
-                  <td class="scadenza"><span class="scad-badge scad-att">Apre 08/09/2026 &rarr; 30/09/2026</span><span class="scad-note">Sportello dall&#39;<strong>08/09/2026</strong> al <strong>30/09/2026</strong> (o esaurimento fondi)</span></td>
-                  <td class="stato"><span class="stato-badge stato-nuovo">Nuovo</span><span class="stato-note">Bando approvato dalla CCIAA accorpata CZ-KR-VV &mdash; sportello 08 &rarr; 30/09/2026</span></td>
-                  <td class="compat">Contributo camerale in <strong>de minimis</strong>, cumulabile con incentivi nazionali su spese distinte.</td>
-                  <td class="azioni"><strong>Dotazione minima (89.536 &euro;): preparare la domanda in anticipo e inviarla all&#39;apertura dello sportello (08/09/2026)</strong>. Verificare bando e modulistica su <strong>czkrvv.camcom.it</strong>.</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <!-- CAT 11: COGENERAZIONE -->
-    <div class="category">
-      <div class="category-header" onclick="toggleCategory(this)">
-        <div class="category-num" style="font-size:13px">11</div>
+        <div class="category-num">8</div>
         <div class="category-title">Cogenerazione ad alto rendimento (CAR)</div>
         <div class="category-count">4 voci</div>
         <div class="category-arrow">▼</div>
@@ -1312,10 +1127,10 @@
       </div>
     </div>
 
-    <!-- CAT 12: IDROGENO -->
+    <!-- CAT 9: IDROGENO -->
     <div class="category">
       <div class="category-header" onclick="toggleCategory(this)">
-        <div class="category-num" style="font-size:13px">12</div>
+        <div class="category-num">9</div>
         <div class="category-title">Idrogeno</div>
         <div class="category-count">3 voci</div>
         <div class="category-arrow">▼</div>
@@ -1361,7 +1176,7 @@
       </div>
     </div>
 
-    <!-- CAT 13: ARCHIVIO SCADUTI -->
+    <!-- CAT 10: ARCHIVIO SCADUTI -->
     <div class="category category-archivio">
       <div class="category-header" onclick="toggleCategory(this)">
         <div class="category-num" style="background:#9b1c1c">✕</div>
@@ -2442,23 +2257,58 @@
   </div><!-- /view-gac -->
 
   <!-- ======================================================
-       VISTA E: PER REGIONE
+       VISTA E: PER BANDO (tutti i bandi regionali/camerali,
+       raggruppati per tipologia, ordine alfabetico)
+       ====================================================== -->
+  <div class="view-bandi" id="view-bandi" style="display:none">
+
+    <div class="intro" style="margin-bottom:18px">
+      Tutti i bandi e le misure <strong>regionali e camerali</strong> mappati dal tool, raggruppati per tipologia di bando e in <strong>ordine alfabetico</strong> — indipendentemente dalla regione. Le tre regioni con aziende socie storiche di Rete 21 (Veneto, Emilia-Romagna, Calabria) non hanno più una sezione dedicata: sono integrate qui insieme a tutte le altre, con lo stesso livello di evidenza.
+    </div>
+
+    <div class="expand-controls">
+      <button class="expand-btn" onclick="toggleAllBandi(true)">▼ Espandi tutto</button>
+      <button class="expand-btn" onclick="toggleAllBandi(false)">▲ Comprimi tutto</button>
+    </div>
+
+    <div id="bandi-accordion"></div>
+
+    <div class="notes-box" style="margin-top:24px">
+      <h3>▶ Come leggere questa vista</h3>
+      <ul>
+        <li>Ogni gruppo raccoglie bandi <strong>dello stesso tipo</strong> (es. voucher camerali «Doppia transizione», bandi CER, fondi/finanziamenti regionali, idrogeno, fotovoltaico/accumulo/efficientamento) provenienti da <strong>tutte le regioni e Camere di Commercio mappate</strong>, in ordine alfabetico di titolo.</li>
+        <li>La colonna <strong>Regione</strong> indica il territorio di riferimento del singolo bando; il simbolo ★ segnala le regioni con aziende socie storiche di Rete 21 (Veneto, Emilia-Romagna, Calabria) — solo indicativo, non cambia l'ordine o la evidenza del bando.</li>
+        <li>Il raggruppamento per tipologia è automatico e può contenere imprecisioni: <strong>verificare sempre il testo integrale del bando</strong> prima di proporlo al cliente.</li>
+      </ul>
+    </div>
+
+    <div class="source-line">
+      Vista per bando — generata dagli stessi dati della vista «Per regione». Aggiornamento automatico giornaliero alle 06:00.
+    </div>
+  </div><!-- /view-bandi -->
+
+  <!-- ======================================================
+       VISTA F: PER REGIONE (tutte le regioni, accordion,
+       ordine alfabetico)
        ====================================================== -->
   <div class="view-regioni" id="view-regioni" style="display:none">
 
-    <div class="reg-select-wrap">
-      <label for="reg-select">Seleziona la regione:</label>
-      <select id="reg-select" onchange="renderRegione(this.value)"></select>
-      <span id="reg-socie-badge"></span>
+    <div class="intro" style="margin-bottom:18px">
+      Le misure <strong>regionali e camerali</strong> di tutte le regioni italiane, in <strong>ordine alfabetico</strong>. Le misure <strong>nazionali</strong> (Conto Termico, Iperammortamento, CER, detrazioni, FER) valgono ovunque e sono nella vista «Per tipologia».
     </div>
 
-    <div id="reg-content"></div>
+    <div class="expand-controls">
+      <button class="expand-btn" onclick="toggleAllRegioni(true)">▼ Espandi tutto</button>
+      <button class="expand-btn" onclick="toggleAllRegioni(false)">▲ Comprimi tutto</button>
+    </div>
+
+    <div id="regioni-accordion"></div>
 
     <div class="notes-box" style="margin-top:24px">
       <h3>▶ Come leggere questa vista</h3>
       <ul>
         <li>Le misure <strong>nazionali</strong> (Conto Termico, Iperammortamento, CER, detrazioni, FER) valgono in <strong>tutte</strong> le regioni: qui trovi solo le misure <strong>regionali e camerali</strong> che si aggiungono a quelle.</li>
-        <li><strong>Veneto, Emilia-Romagna e Calabria</strong> — dove Rete 21 ha storicamente aziende socie — sono mappate con il maggior dettaglio, ma la ricerca e il <strong>monitoraggio automatico giornaliero coprono tutte le regioni italiane senza restrizioni</strong>, in linea con l'apertura di Rete 21 a livello nazionale: le altre regioni vengono arricchite non appena emergono nuove misure.</li>
+        <li>Il simbolo <strong>★</strong> accanto al nome della regione indica le regioni con aziende socie storiche di Rete 21 (Veneto, Emilia-Romagna, Calabria) — è un'indicazione informativa: tutte le regioni sono elencate insieme, in ordine alfabetico, con lo stesso livello di evidenza. La ricerca e il <strong>monitoraggio automatico giornaliero coprono tutte le regioni italiane senza restrizioni</strong>, in linea con l'apertura di Rete 21 a livello nazionale.</li>
         <li>Le misure regionali sono in genere <strong>cumulabili</strong> con quelle nazionali su spese distinte e nei limiti di intensità di aiuto UE. Verificare sempre il singolo bando.</li>
         <li>La colonna <strong>Compatibile</strong> indica in via generale gli incentivi nazionali (Iperammortamento, Transizione 5.0, Conto Termico 3.0, tariffa CER, Certificati Bianchi) normalmente cumulabili con la misura regionale, su spese o componenti distinte. È un orientamento preliminare per la discussione col cliente: <strong>verificare sempre il testo integrale del bando</strong> prima di escludere o confermare un cumulo.</li>
       </ul>
@@ -2546,7 +2396,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    © 2026 Rete 21 · Tutti i diritti riservati · Tool Incentivi Percorsi v34 — 05/08/2026
+    © 2026 Rete 21 · Tutti i diritti riservati · Tool Incentivi Percorsi v35 — 05/08/2026
   </div>
 </footer>
 
@@ -2628,42 +2478,112 @@
     ]}
   };
 
-  function renderRegione(key) {
-    const r = REGIONI[key];
-    const box = document.getElementById('reg-content');
-    const badge = document.getElementById('reg-socie-badge');
-    if (!r) { box.innerHTML = ''; badge.innerHTML = ''; return; }
-    badge.innerHTML = r.socie ? '<span class="reg-socie">AZIENDE SOCIE RETE 21</span>' : '';
-    let h = '<div class="reg-head"><h3>' + r.n + '</h3><div class="reg-portale">Portale di riferimento: <strong>' + r.portale + '</strong></div></div>';
-    if (!r.misure.length) {
-      h += '<div class="reg-empty">Nessuna misura <strong>regionale</strong> specifica attualmente mappata per ' + r.n + '.<br>Restano attivabili tutte le misure <strong>nazionali</strong> (Conto Termico 3.0, Iperammortamento 2026, tariffa CER, detrazioni, FER, certificati bianchi).<br><br>Il monitoraggio automatico giornaliero verifica il portale regionale e le Camere di Commercio: eventuali nuovi bandi compariranno qui.</div>';
-    } else {
-      h += '<div class="table-wrap"><table class="incentivi"><thead><tr><th>Misura</th><th>Descrizione</th><th>Beneficiari</th><th>Scadenza</th><th>Stato</th><th>Compatibile</th><th>Azioni &amp; tempi</th></tr></thead><tbody>';
+  /* Tabella HTML delle misure di una regione (riusata dall'accordion "Per regione") */
+  function misureTableHtml(misure) {
+    let h = '<div class="table-wrap"><table class="incentivi"><thead><tr><th>Misura</th><th>Descrizione</th><th>Beneficiari</th><th>Scadenza</th><th>Stato</th><th>Compatibile</th><th>Azioni &amp; tempi</th></tr></thead><tbody>';
+    misure.forEach(function(m){
+      h += '<tr><td class="name">' + m.t + '</td><td class="desc">' + m.d + '</td>' +
+           '<td class="beneficiari"><span class="ben-badge ben-imprese">' + m.b + '</span></td>' +
+           '<td class="scadenza"><span class="scad-badge ' + m.cls + '">' + m.s + '</span></td>' +
+           '<td class="stato"><span class="stato-badge ' + m.stc + '">' + m.st + '</span></td>' +
+           '<td class="compat">' + (m.k || 'Da verificare nel bando') + '</td>' +
+           '<td class="azioni">' + m.a + '</td></tr>';
+    });
+    h += '</tbody></table></div>';
+    return h;
+  }
+
+  /* ---- VISTA "PER REGIONE" — accordion, ordine alfabetico, tutte le regioni con pari evidenza ---- */
+  function initRegioni() {
+    const box = document.getElementById('regioni-accordion');
+    if (!box) return;
+    const keys = Object.keys(REGIONI).sort(function(a,b){ return REGIONI[a].n.localeCompare(REGIONI[b].n); });
+    let h = '';
+    keys.forEach(function(k, i){
+      const r = REGIONI[k];
+      const star = r.socie ? ' <span class="reg-socie-star" title="Regione con aziende socie storiche Rete 21">★</span>' : '';
+      const count = r.misure.length ? (r.misure.length + (r.misure.length === 1 ? ' misura' : ' misure')) : 'nessuna misura mappata';
+      const body = r.misure.length
+        ? misureTableHtml(r.misure)
+        : '<div class="reg-empty">Nessuna misura <strong>regionale</strong> specifica attualmente mappata per ' + r.n + '.<br>Restano attivabili tutte le misure <strong>nazionali</strong> (Conto Termico 3.0, Iperammortamento 2026, tariffa CER, detrazioni, FER, certificati bianchi).<br><br>Il monitoraggio automatico giornaliero verifica il portale regionale e le Camere di Commercio: eventuali nuovi bandi compariranno qui.</div>';
+      h += '<div class="category">' +
+             '<div class="category-header" onclick="toggleCategory(this)">' +
+               '<div class="category-num" style="font-size:12px">' + (i + 1) + '</div>' +
+               '<div class="category-title">' + r.n + star + '</div>' +
+               '<div class="category-count">' + count + '</div>' +
+               '<div class="category-arrow">▼</div>' +
+             '</div>' +
+             '<div class="category-body"><div class="category-body-inner">' +
+               '<div class="reg-portale" style="margin-bottom:14px">Portale di riferimento: <strong>' + r.portale + '</strong></div>' +
+               body +
+             '</div></div>' +
+           '</div>';
+    });
+    box.innerHTML = h;
+  }
+  function toggleAllRegioni(open) {
+    document.querySelectorAll('#view-regioni .category').forEach(c => {
+      if (open) c.classList.add('open'); else c.classList.remove('open');
+    });
+  }
+
+  /* ---- VISTA "PER BANDO" — tutti i bandi regionali/camerali raggruppati per tipologia, ordine alfabetico ---- */
+  function famigliaBando(titolo) {
+    const t = titolo.toLowerCase();
+    if (/voucher|doppia transizione/.test(t)) return 'Bandi camerali — Voucher / Doppia transizione';
+    if (/\bcer\b|autoconsumo|l\.r\.|legge regionale/.test(t)) return 'CER, GAC e quadri normativi regionali';
+    if (/idrogeno|hydrogen/.test(t)) return 'Idrogeno — PNRR e Hydrogen Valley';
+    if (/fondo|finanziamento|feeri|prestito/.test(t)) return 'Fondi e finanziamenti agevolati regionali';
+    if (/fotovoltaico|\bfv\b|accumul|efficient|energia solare|rinnovabil/.test(t)) return 'Fotovoltaico, accumulo ed efficientamento energetico';
+    return 'Altre misure regionali';
+  }
+  function initBandi() {
+    const box = document.getElementById('bandi-accordion');
+    if (!box) return;
+    const gruppi = {};
+    Object.keys(REGIONI).forEach(function(k){
+      const r = REGIONI[k];
       r.misure.forEach(function(m){
-        h += '<tr><td class="name">' + m.t + '</td><td class="desc">' + m.d + '</td>' +
+        const fam = famigliaBando(m.t);
+        if (!gruppi[fam]) gruppi[fam] = [];
+        gruppi[fam].push(Object.assign({}, m, { regioneNome: r.n, regioneSocie: !!r.socie }));
+      });
+    });
+    const famiglie = Object.keys(gruppi).sort(function(a,b){ return a.localeCompare(b); });
+    let h = '';
+    famiglie.forEach(function(fam, i){
+      const voci = gruppi[fam].sort(function(a,b){ return a.t.localeCompare(b.t); });
+      let body = '<div class="table-wrap"><table class="incentivi"><thead><tr><th>Regione</th><th>Misura</th><th>Descrizione</th><th>Beneficiari</th><th>Scadenza</th><th>Stato</th><th>Compatibile</th><th>Azioni &amp; tempi</th></tr></thead><tbody>';
+      voci.forEach(function(m){
+        const star = m.regioneSocie ? ' ★' : '';
+        body += '<tr><td class="name">' + m.regioneNome + star + '</td><td class="name">' + m.t + '</td><td class="desc">' + m.d + '</td>' +
              '<td class="beneficiari"><span class="ben-badge ben-imprese">' + m.b + '</span></td>' +
              '<td class="scadenza"><span class="scad-badge ' + m.cls + '">' + m.s + '</span></td>' +
              '<td class="stato"><span class="stato-badge ' + m.stc + '">' + m.st + '</span></td>' +
              '<td class="compat">' + (m.k || 'Da verificare nel bando') + '</td>' +
              '<td class="azioni">' + m.a + '</td></tr>';
       });
-      h += '</tbody></table></div>';
-    }
+      body += '</tbody></table></div>';
+      h += '<div class="category">' +
+             '<div class="category-header" onclick="toggleCategory(this)">' +
+               '<div class="category-num" style="font-size:12px">' + (i + 1) + '</div>' +
+               '<div class="category-title">' + fam + '</div>' +
+               '<div class="category-count">' + voci.length + (voci.length === 1 ? ' bando' : ' bandi') + '</div>' +
+               '<div class="category-arrow">▼</div>' +
+             '</div>' +
+             '<div class="category-body"><div class="category-body-inner">' + body + '</div></div>' +
+           '</div>';
+    });
     box.innerHTML = h;
   }
-
-  function initRegioni() {
-    const sel = document.getElementById('reg-select');
-    if (!sel) return;
-    const keys = Object.keys(REGIONI).sort(function(a,b){ return REGIONI[a].n.localeCompare(REGIONI[b].n); });
-    sel.innerHTML = keys.map(function(k){
-      return '<option value="' + k + '"' + (k === 'veneto' ? ' selected' : '') + '>' + REGIONI[k].n + (REGIONI[k].socie ? ' ★' : '') + '</option>';
-    }).join('');
-    renderRegione('veneto');
+  function toggleAllBandi(open) {
+    document.querySelectorAll('#view-bandi .category').forEach(c => {
+      if (open) c.classList.add('open'); else c.classList.remove('open');
+    });
   }
 
   function setView(view) {
-    const views = ['tipologia','percorso','cer','gac','regioni'];
+    const views = ['tipologia','percorso','cer','gac','bandi','regioni'];
     views.forEach(v => {
       document.getElementById('view-' + v).style.display = (v === view) ? 'block' : 'none';
       document.getElementById('btn-' + v).classList.toggle('active', v === view);
@@ -2676,7 +2596,10 @@
     header.parentElement.classList.toggle('open');
   }
   function toggleAll(open) {
-    document.querySelectorAll('.category').forEach(c => {
+    /* Scoperto SOLO alla vista "Per tipologia": le viste "Per bando" e "Per regione"
+       hanno i propri controlli espandi/comprimi (toggleAllBandi / toggleAllRegioni)
+       per non interferire tra viste, come già fatto per la FAQ. */
+    document.querySelectorAll('#view-tipologia .category').forEach(c => {
       if (open) c.classList.add('open');
       else c.classList.remove('open');
     });
@@ -3056,6 +2979,7 @@
   /* ---- INIT ---- */
   document.addEventListener('DOMContentLoaded', function () {
     initRegioni();
+    initBandi();
     setView('tipologia');
     initUpdateBox();
     initSimGacAutoUpdate();
