@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-11-06T15:45:15Z",
-  "data": "2026-11-06",
+  "timestamp": "2026-11-07T14:44:53Z",
+  "data": "2026-11-07",
   "fonte": "GitHub Actions — verifica AI giornaliera con ricerca web",
-  "testo": "Errore: risposta vuota dal modello. Dettaglio: {\"type\": \"error\", \"error\": {\"type\": \"invalid_request_error\", \"message\": \"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"}, \"request_id\": \"req_011Cgmw5qt1dS2H5AE6fUUH1\"}"
+  "testo": "Errore: risposta vuota dal modello. Dettaglio: {\"type\": \"error\", \"error\": {\"type\": \"invalid_request_error\", \"message\": \"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"}, \"request_id\": \"req_011CgokHjuQ3s6JdGk72CSRu\"}"
 }
